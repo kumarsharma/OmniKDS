@@ -7,6 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE50006723C70E5300A14306 /* KDCoreDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */; };
+		CE5000BD23C9C25000A14306 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000BC23C9C24F00A14306 /* Constants.swift */; };
+		CE5000BF23C9DBF700A14306 /* OPDateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000BE23C9DBF700A14306 /* OPDateTools.swift */; };
+		CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */; };
+		CE5000C723C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */; };
+		CEC515D523CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */; };
+		CEC515D623CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CA23CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift */; };
+		CEC515D723CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CB23CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift */; };
+		CEC515D823CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CC23CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift */; };
+		CEC515D923CA1B4400DA0645 /* OmniKitchen+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CD23CA1B4400DA0645 /* OmniKitchen+CoreDataClass.swift */; };
+		CEC515DA23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CE23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift */; };
+		CEC515DB23CA1B4400DA0645 /* Order+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CF23CA1B4400DA0645 /* Order+CoreDataClass.swift */; };
+		CEC515DC23CA1B4400DA0645 /* Order+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515D023CA1B4400DA0645 /* Order+CoreDataProperties.swift */; };
+		CEC515DD23CA1B4400DA0645 /* ItemOption+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515D123CA1B4400DA0645 /* ItemOption+CoreDataClass.swift */; };
+		CEC515DE23CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515D223CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift */; };
+		CEC515DF23CA1B4400DA0645 /* OrderItem+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515D323CA1B4400DA0645 /* OrderItem+CoreDataClass.swift */; };
+		CEC515E023CA1B4400DA0645 /* OrderItem+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515D423CA1B4400DA0645 /* OrderItem+CoreDataProperties.swift */; };
+		CEC515E323CA2F0700DA0645 /* OPCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515E223CA2F0700DA0645 /* OPCommunicator.swift */; };
+		CEC515E923CB457700DA0645 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC515E623CB457600DA0645 /* AsyncSocket.m */; };
+		CEC515EA23CB457700DA0645 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC515E823CB457700DA0645 /* GCDAsyncUdpSocket.m */; };
+		CEC515ED23CB74F100DA0645 /* OPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC515EC23CB74F100DA0645 /* OPReachability.m */; };
 		CEED07BB23BF986700731147 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BA23BF986700731147 /* AppDelegate.swift */; };
 		CEED07BD23BF986700731147 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BC23BF986700731147 /* SceneDelegate.swift */; };
 		CEED07BF23BF986700731147 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BE23BF986700731147 /* ViewController.swift */; };
@@ -36,6 +57,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCoreDataCoordinator.swift; sourceTree = "<group>"; };
+		CE5000BC23C9C24F00A14306 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CE5000BE23C9DBF700A14306 /* OPDateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPDateTools.swift; sourceTree = "<group>"; };
+		CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CEC515CA23CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC515CB23CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenTransaction+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CEC515CC23CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenTransaction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC515CD23CA1B4400DA0645 /* OmniKitchen+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OmniKitchen+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CEC515CE23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OmniKitchen+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC515CF23CA1B4400DA0645 /* Order+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CEC515D023CA1B4400DA0645 /* Order+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Order+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC515D123CA1B4400DA0645 /* ItemOption+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemOption+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CEC515D223CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemOption+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC515D323CA1B4400DA0645 /* OrderItem+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderItem+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CEC515D423CA1B4400DA0645 /* OrderItem+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderItem+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CEC515E223CA2F0700DA0645 /* OPCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPCommunicator.swift; sourceTree = "<group>"; };
+		CEC515E423CB457600DA0645 /* OmniKDS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OmniKDS-Bridging-Header.h"; sourceTree = "<group>"; };
+		CEC515E523CB457600DA0645 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		CEC515E623CB457600DA0645 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		CEC515E723CB457700DA0645 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		CEC515E823CB457700DA0645 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		CEC515EB23CB74F000DA0645 /* OPReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPReachability.h; sourceTree = "<group>"; };
+		CEC515EC23CB74F100DA0645 /* OPReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPReachability.m; sourceTree = "<group>"; };
 		CEED07B723BF986700731147 /* OmniKDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniKDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEED07BA23BF986700731147 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEED07BC23BF986700731147 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +124,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE5000BB23C9C21700A14306 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				CE5000BC23C9C24F00A14306 /* Constants.swift */,
+				CE5000BE23C9DBF700A14306 /* OPDateTools.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		CEC515E123CA2EDB00DA0645 /* Netowrking */ = {
+			isa = PBXGroup;
+			children = (
+				CEC515EB23CB74F000DA0645 /* OPReachability.h */,
+				CEC515EC23CB74F100DA0645 /* OPReachability.m */,
+				CEC515E523CB457600DA0645 /* AsyncSocket.h */,
+				CEC515E623CB457600DA0645 /* AsyncSocket.m */,
+				CEC515E723CB457700DA0645 /* GCDAsyncUdpSocket.h */,
+				CEC515E823CB457700DA0645 /* GCDAsyncUdpSocket.m */,
+				CEC515E223CA2F0700DA0645 /* OPCommunicator.swift */,
+				CEC515E423CB457600DA0645 /* OmniKDS-Bridging-Header.h */,
+			);
+			path = Netowrking;
+			sourceTree = "<group>";
+		};
 		CEED07AE23BF986700731147 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +171,9 @@
 		CEED07B923BF986700731147 /* OmniKDS */ = {
 			isa = PBXGroup;
 			children = (
+				CEC515E123CA2EDB00DA0645 /* Netowrking */,
+				CE5000BB23C9C21700A14306 /* Tools */,
+				CEED07ED23BFAD8400731147 /* Models */,
 				CEED07BA23BF986700731147 /* AppDelegate.swift */,
 				CEED07BC23BF986700731147 /* SceneDelegate.swift */,
 				CEED07BE23BF986700731147 /* ViewController.swift */,
@@ -129,6 +202,28 @@
 				CEED07E123BF986800731147 /* Info.plist */,
 			);
 			path = OmniKDSUITests;
+			sourceTree = "<group>";
+		};
+		CEED07ED23BFAD8400731147 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */,
+				CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */,
+				CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */,
+				CEC515CD23CA1B4400DA0645 /* OmniKitchen+CoreDataClass.swift */,
+				CEC515CE23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift */,
+				CEC515CF23CA1B4400DA0645 /* Order+CoreDataClass.swift */,
+				CEC515D023CA1B4400DA0645 /* Order+CoreDataProperties.swift */,
+				CEC515D323CA1B4400DA0645 /* OrderItem+CoreDataClass.swift */,
+				CEC515D423CA1B4400DA0645 /* OrderItem+CoreDataProperties.swift */,
+				CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */,
+				CEC515CA23CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift */,
+				CEC515CB23CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift */,
+				CEC515CC23CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift */,
+				CEC515D123CA1B4400DA0645 /* ItemOption+CoreDataClass.swift */,
+				CEC515D223CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +294,7 @@
 				TargetAttributes = {
 					CEED07B623BF986700731147 = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 					CEED07CF23BF986800731147 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -262,10 +358,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEC515ED23CB74F100DA0645 /* OPReachability.m in Sources */,
 				CEED07BF23BF986700731147 /* ViewController.swift in Sources */,
+				CEC515DE23CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift in Sources */,
+				CE50006723C70E5300A14306 /* KDCoreDataCoordinator.swift in Sources */,
+				CEC515E323CA2F0700DA0645 /* OPCommunicator.swift in Sources */,
+				CEC515EA23CB457700DA0645 /* GCDAsyncUdpSocket.m in Sources */,
 				CEED07C523BF986700731147 /* OmniKDS.xcdatamodeld in Sources */,
+				CEC515E923CB457700DA0645 /* AsyncSocket.m in Sources */,
+				CEC515DC23CA1B4400DA0645 /* Order+CoreDataProperties.swift in Sources */,
+				CEC515D523CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift in Sources */,
+				CEC515DB23CA1B4400DA0645 /* Order+CoreDataClass.swift in Sources */,
+				CEC515E023CA1B4400DA0645 /* OrderItem+CoreDataProperties.swift in Sources */,
+				CEC515D623CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift in Sources */,
+				CEC515D723CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift in Sources */,
 				CEED07BB23BF986700731147 /* AppDelegate.swift in Sources */,
+				CEC515D923CA1B4400DA0645 /* OmniKitchen+CoreDataClass.swift in Sources */,
+				CEC515DF23CA1B4400DA0645 /* OrderItem+CoreDataClass.swift in Sources */,
+				CE5000BF23C9DBF700A14306 /* OPDateTools.swift in Sources */,
 				CEED07BD23BF986700731147 /* SceneDelegate.swift in Sources */,
+				CE5000C723C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift in Sources */,
+				CEC515D823CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift in Sources */,
+				CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */,
+				CEC515DD23CA1B4400DA0645 /* ItemOption+CoreDataClass.swift in Sources */,
+				CEC515DA23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift in Sources */,
+				CE5000BD23C9C25000A14306 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +555,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USPNU3D3XV;
 				INFOPLIST_FILE = OmniKDS/Info.plist;
@@ -447,8 +565,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OmniSystems.OmniKDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OmniKDS/Netowrking/OmniKDS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -456,6 +576,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USPNU3D3XV;
 				INFOPLIST_FILE = OmniKDS/Info.plist;
@@ -465,8 +586,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.OmniSystems.OmniKDS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OmniKDS/Netowrking/OmniKDS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

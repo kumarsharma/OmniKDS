@@ -1,4 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ItemOption" representedClassName="ItemOption" parentEntity="OPManagedObject" syncable="YES">
+        <attribute name="itemName" optional="YES" attributeType="String"/>
+        <attribute name="itemName2" optional="YES" attributeType="String"/>
+        <attribute name="optionId" optional="YES" attributeType="String"/>
+        <attribute name="orderItemId" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="KitchenTransaction" representedClassName="KitchenTransaction" parentEntity="OPManagedObject" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="itemId" optional="YES" attributeType="String"/>
+        <attribute name="orderId" optional="YES" attributeType="String"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="trId" optional="YES" attributeType="String"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="KitchenUser" representedClassName="KitchenUser" parentEntity="OPManagedObject" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="firstName" optional="YES" attributeType="String"/>
+        <attribute name="isAdmin" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="userId" optional="YES" attributeType="String"/>
+        <attribute name="userPIN" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="OmniKitchen" representedClassName="OmniKitchen" parentEntity="OPManagedObject" syncable="YES">
+        <attribute name="bgColor" optional="YES" attributeType="String"/>
+        <attribute name="fontSize" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kitchenId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kitchenName" optional="YES" attributeType="String"/>
+        <attribute name="soundMode" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="soundType" optional="YES" attributeType="String"/>
+        <attribute name="ticketSize" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="viewMode" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="OPManagedObject" representedClassName="OPManagedObject" syncable="YES"/>
+    <entity name="Order" representedClassName="Order" parentEntity="OPManagedObject" syncable="YES">
+        <attribute name="closedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="customerName" optional="YES" attributeType="String"/>
+        <attribute name="orderBy" optional="YES" attributeType="String"/>
+        <attribute name="orderDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="orderId" optional="YES" attributeType="String"/>
+        <attribute name="orderNo" optional="YES" attributeType="String"/>
+        <attribute name="tableName" optional="YES" attributeType="String"/>
+        <attribute name="tableText" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="OrderItem" representedClassName="OrderItem" parentEntity="OPManagedObject" syncable="YES">
+        <attribute name="courseId" optional="YES" attributeType="String"/>
+        <attribute name="courseName" optional="YES" attributeType="String"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isStarted" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="itemId" optional="YES" attributeType="String"/>
+        <attribute name="itemName" optional="YES" attributeType="String"/>
+        <attribute name="itemName2" optional="YES" attributeType="String"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
+        <attribute name="orderId" optional="YES" attributeType="String"/>
+        <attribute name="orderItemId" optional="YES" attributeType="String"/>
+        <attribute name="placeTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="seatNo" optional="YES" attributeType="String"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="takenBy" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="ItemOption" positionX="18" positionY="180" width="128" height="103"/>
+        <element name="KitchenTransaction" positionX="-36" positionY="90" width="128" height="163"/>
+        <element name="KitchenUser" positionX="-54" positionY="63" width="128" height="148"/>
+        <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="OPManagedObject" positionX="-9" positionY="144" width="128" height="43"/>
+        <element name="Order" positionX="-18" positionY="126" width="128" height="163"/>
+        <element name="OrderItem" positionX="0" positionY="153" width="128" height="283"/>
+    </elements>
 </model>
