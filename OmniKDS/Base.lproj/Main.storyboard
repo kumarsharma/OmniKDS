@@ -15,17 +15,186 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d3v-5L-e4Z">
-                                <rect key="frame" x="320" y="170" width="456" height="345"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ppE-Om-Oac">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_small.png" translatesAutoresizingMaskIntoConstraints="NO" id="hvR-G3-E5F">
+                                        <rect key="frame" x="0.0" y="0.0" width="177" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="AKu-Bj-kiQ">
+                                <rect key="frame" x="0.0" y="47" width="1024" height="721"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zh4-ge-AYD">
+                                <rect key="frame" x="334" y="187" width="357" height="441"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter PIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH9-47-30R">
+                                        <rect key="frame" x="0.0" y="2" width="357" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUX-0v-nUe">
+                                        <rect key="frame" x="8" y="87" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="1.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="1.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7fk-88-a5W"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Wy-Jb-fkv">
+                                        <rect key="frame" x="138" y="86.5" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="2.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="2.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iI7-v9-Ydr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LPc-Du-mou">
+                                        <rect key="frame" x="120" y="110.5" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4nc-aM-iiu">
+                                        <rect key="frame" x="268" y="84.5" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="3.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="3.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c9Y-a7-eRm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LAn-Kc-wGB">
+                                        <rect key="frame" x="10" y="174.5" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="4.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="4.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PYu-DR-zm4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pf0-yo-Okd">
+                                        <rect key="frame" x="140" y="174.5" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="5.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="5.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vDE-kk-Znp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="92F-Hq-7hf">
+                                        <rect key="frame" x="270" y="172.5" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="6.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="6.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="74T-Ag-dZN"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuG-yZ-EpT">
+                                        <rect key="frame" x="10" y="263" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="7.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="7.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mMs-rk-3Dh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6wW-dF-HFq">
+                                        <rect key="frame" x="140" y="263" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="8.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="8.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BY0-zG-Gf4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgs-mQ-frw">
+                                        <rect key="frame" x="270" y="261" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="9.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="9.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Eg-kA-4Dy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AeE-En-2ue">
+                                        <rect key="frame" x="10" y="353" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="delete.left" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="delete.left.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="backButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5cO-lv-N3K"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTU-A7-kma">
+                                        <rect key="frame" x="140" y="353" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="0.circle" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="0.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="numsButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uXs-xQ-31v"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRV-ba-GX5">
+                                        <rect key="frame" x="270" y="351" width="77" height="71"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                        <state key="normal" backgroundImage="clear" catalog="system"/>
+                                        <state key="highlighted" backgroundImage="clear.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="clearButtonPressedWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sbL-8p-rud"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YGT-Yt-09r">
+                                        <rect key="frame" x="13" y="33" width="327" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7D4-GL-TPi">
+                                <rect key="frame" x="334" y="629" width="357" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="23"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonActionWith_sender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5rv-qY-4hs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="pinView" destination="d3v-5L-e4Z" id="Vac-Ld-4Mi"/>
+                        <outlet property="backgroundView" destination="AKu-Bj-kiQ" id="P07-78-ORe"/>
+                        <outlet property="pinField" destination="YGT-Yt-09r" id="F5j-94-mih"/>
+                        <outlet property="pinView" destination="8bC-Xf-vdC" id="V3C-PQ-2Mf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -33,4 +202,32 @@
             <point key="canvasLocation" x="138.8671875" y="126.5625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="0.circle" catalog="system" width="64" height="60"/>
+        <image name="0.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="1.circle" catalog="system" width="64" height="60"/>
+        <image name="1.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="2.circle" catalog="system" width="64" height="60"/>
+        <image name="2.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="3.circle" catalog="system" width="64" height="60"/>
+        <image name="3.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="4.circle" catalog="system" width="64" height="60"/>
+        <image name="4.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="5.circle" catalog="system" width="64" height="60"/>
+        <image name="5.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="6.circle" catalog="system" width="64" height="60"/>
+        <image name="6.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="7.circle" catalog="system" width="64" height="60"/>
+        <image name="7.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="8.circle" catalog="system" width="64" height="60"/>
+        <image name="8.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="9.circle" catalog="system" width="64" height="60"/>
+        <image name="9.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="bg.png" width="1117.0909423828125" height="837.81817626953125"/>
+        <image name="clear" catalog="system" width="64" height="56"/>
+        <image name="clear.fill" catalog="system" width="64" height="56"/>
+        <image name="delete.left" catalog="system" width="64" height="52"/>
+        <image name="delete.left.fill" catalog="system" width="64" height="52"/>
+        <image name="logo_small.png" width="121.09091186523438" height="34.909091949462891"/>
+    </resources>
 </document>

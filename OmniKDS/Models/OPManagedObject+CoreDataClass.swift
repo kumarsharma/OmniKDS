@@ -20,6 +20,11 @@ public class OPManagedObject: NSManagedObject {
     class func fetchObjectWithId(objId:String) -> OPManagedObject? {
         
         let predicate = NSPredicate(format: "\(self.primaryKeyName())=\(GlobalKitchenID)")
+        return self.fetchObjectWithPredicate(predicate: predicate)
+    }
+    
+    class func fetchObjectWithPredicate(predicate:NSPredicate) -> OPManagedObject{
+        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: self.entity().name!)
         fetchRequest.predicate=predicate
         

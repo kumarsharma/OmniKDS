@@ -17,4 +17,32 @@ public class KitchenTransaction: OPManagedObject {
         
         return "trId"
     }
+    /*
+     @NSManaged public var date: Date?
+     @NSManaged public var endTime: Date?
+     @NSManaged public var itemId: String?
+     @NSManaged public var orderId: String?
+     @NSManaged public var quantity: Int32
+     @NSManaged public var startTime: Date?
+     @NSManaged public var trId: String?
+     @NSManaged public var userId: String?
+     
+     */
+    class func addTransactionItem(itemId:String, orderId:String, startTime:Date, endTime:Date, qty:Int32, userId:String) -> KitchenTransaction{
+        
+        var aTransaction : KitchenTransaction?
+        
+        let trEntity = NSEntityDescription.entity(forEntityName: "KitchenTransaction", in: sharedCoredataCoordinator.persistentContainer.viewContext)
+        aTransaction = NSManagedObject(entity: trEntity!, insertInto: sharedCoredataCoordinator.persistentContainer.viewContext) as? KitchenTransaction
+        
+        aTransaction?.date = Date.init()
+        aTransaction?.itemId = itemId
+        aTransaction?.orderId = orderId
+        aTransaction?.startTime = startTime
+        aTransaction?.endTime = endTime
+        aTransaction?.trId = UUID().uuidString
+        aTransaction?.userId = userId
+        
+        return aTransaction!
+    }
 }
