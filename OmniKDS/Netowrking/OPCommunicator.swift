@@ -72,13 +72,13 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
             print("Error in parsing data: Error \(error.userInfo)")
         }
         
-        let key : NSString = dict?.value(forKey: kSYNC_ACTION) as! NSString
-        if key.isEqual(to: kSYNC_ACTION_KITCHEN_DOCKETS){
+        let key : NSString = dict?.value(forKey: NIK.SYNC_ACTION) as! NSString
+        if key.isEqual(to: NIK.SYNC_ACTION_KITCHEN_DOCKETS){
             
-            let key2 : NSString = dict?.value(forKey: kAUTH) as! NSString
-            if key2.isEqual(to: kSIGNATURE){
+            let key2 : NSString = dict?.value(forKey: NIK.AUTH) as! NSString
+            if key2.isEqual(to: NIK.SIGNATURE){
                 
-                let msgBody : NSString = dict?.value(forKey: kMESSAGE) as! NSString
+                let msgBody : NSString = dict?.value(forKey: NIK.MESSAGE) as! NSString
                 if msgBody.length>0
                 {
                     print("Received data on KDS: \(msgBody)")

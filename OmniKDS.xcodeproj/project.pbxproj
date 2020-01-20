@@ -38,6 +38,7 @@
 		CEC5160323CC56E200DA0645 /* logo_small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC5160023CC56E200DA0645 /* logo_small@3x.png */; };
 		CEC5160423CC56E200DA0645 /* logo_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC5160123CC56E200DA0645 /* logo_small@2x.png */; };
 		CEC5160623CC863A00DA0645 /* OPKitchenDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */; };
+		CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */; };
 		CEED07BB23BF986700731147 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BA23BF986700731147 /* AppDelegate.swift */; };
 		CEED07BD23BF986700731147 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BC23BF986700731147 /* SceneDelegate.swift */; };
 		CEED07BF23BF986700731147 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BE23BF986700731147 /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		CEED07CA23BF986800731147 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEED07C823BF986800731147 /* LaunchScreen.storyboard */; };
 		CEED07D523BF986800731147 /* OmniKDSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07D423BF986800731147 /* OmniKDSTests.swift */; };
 		CEED07E023BF986800731147 /* OmniKDSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07DF23BF986800731147 /* OmniKDSUITests.swift */; };
+		CEFE374E23D58D1A0033C0A1 /* OPTableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,7 @@
 		CEC5160023CC56E200DA0645 /* logo_small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_small@3x.png"; sourceTree = "<group>"; };
 		CEC5160123CC56E200DA0645 /* logo_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_small@2x.png"; sourceTree = "<group>"; };
 		CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenDisplayViewController.swift; sourceTree = "<group>"; };
+		CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenItemView.swift; sourceTree = "<group>"; };
 		CEED07B723BF986700731147 /* OmniKDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniKDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEED07BA23BF986700731147 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEED07BC23BF986700731147 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +120,7 @@
 		CEED07DB23BF986800731147 /* OmniKDSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OmniKDSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEED07DF23BF986800731147 /* OmniKDSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniKDSUITests.swift; sourceTree = "<group>"; };
 		CEED07E123BF986800731147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPTableItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,15 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		CED893C723D0BFEF00BB7355 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */,
+				CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CEED07AE23BF986700731147 = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +236,7 @@
 		CEED07B923BF986700731147 /* OmniKDS */ = {
 			isa = PBXGroup;
 			children = (
+				CED893C723D0BFEF00BB7355 /* Views */,
 				CEC515F123CC554A00DA0645 /* Resources */,
 				CEC515EE23CC54D700DA0645 /* ViewControllers */,
 				CEC515E123CA2EDB00DA0645 /* Netowrking */,
@@ -424,7 +438,9 @@
 				CEC515ED23CB74F100DA0645 /* OPReachability.m in Sources */,
 				CEED07BF23BF986700731147 /* ViewController.swift in Sources */,
 				CEC515DE23CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift in Sources */,
+				CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */,
 				CEC5160623CC863A00DA0645 /* OPKitchenDisplayViewController.swift in Sources */,
+				CEFE374E23D58D1A0033C0A1 /* OPTableItemView.swift in Sources */,
 				CE50006723C70E5300A14306 /* KDCoreDataCoordinator.swift in Sources */,
 				CEC515E323CA2F0700DA0645 /* OPCommunicator.swift in Sources */,
 				CEC515EA23CB457700DA0645 /* GCDAsyncUdpSocket.m in Sources */,

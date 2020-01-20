@@ -19,6 +19,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         backgroundView?.frame = self.view.bounds
+        pinView?.layer.borderWidth=1
+        pinView?.layer.cornerRadius=15
+        pinView?.layer.borderColor=UIColor.darkGray.cgColor
+        
+        pinView?.center=self.view.center
     }
     
     @IBAction func loginButtonAction(_sender:UIButton) {
@@ -28,7 +33,7 @@ class ViewController: UIViewController {
             
         }*/
         
-        let kdView : OPKitchenDisplayViewController? = OPKitchenDisplayViewController()
+        let kdView : OPKitchenDisplayViewController? = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "OPKItchenDisplayViewController")
         let nav : UINavigationController = UINavigationController(rootViewController: kdView!)
         nav.modalPresentationStyle=UIModalPresentationStyle.fullScreen
         self.present(nav, animated: true, completion: nil)

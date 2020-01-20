@@ -24,7 +24,22 @@ public class OmniKitchen: OPManagedObject {
         let predicate = NSPredicate(format: "kitchenId=\(GlobalKitchenID)")
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "OmniKitchen")
         fetchRequest.predicate=predicate
-        var kitchen : OmniKitchen! = OmniKitchen.fetchObjectWithId(objId: "\(GlobalKitchenID)") as? OmniKitchen
+        var kitchen : OmniKitchen! = nil
+        
+        fetchRequest.predicate=predicate
+        
+//        var mObj : OPManagedObject! = nil
+        do {
+            let records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest)
+            
+            if records.count>0
+            {
+                kitchen = records.first as? OmniKitchen
+            }
+        } catch let error as NSError {
+            
+            print("Could not fetch the shared kitchen. Error: \(error.userInfo)")
+        }
  
         if kitchen==nil
         {
