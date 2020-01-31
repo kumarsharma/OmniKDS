@@ -7,11 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE1F672423E16D2D00536C40 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1F672323E16D2D00536C40 /* colorPalette.plist */; };
+		CE1F672623E170FE00536C40 /* OPColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F672523E170FE00536C40 /* OPColorPickerController.swift */; };
 		CE50006723C70E5300A14306 /* KDCoreDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */; };
 		CE5000BD23C9C25000A14306 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000BC23C9C24F00A14306 /* Constants.swift */; };
 		CE5000BF23C9DBF700A14306 /* OPDateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000BE23C9DBF700A14306 /* OPDateTools.swift */; };
 		CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */; };
 		CE5000C723C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */; };
+		CE7D298223D6E1EA0009D699 /* KDSectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */; };
+		CE7D298423D6E1F90009D699 /* KDRowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298323D6E1F90009D699 /* KDRowObject.swift */; };
+		CE7D298623D6EAA50009D699 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */; };
+		CE7D298D23D708CF0009D699 /* sound3.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE7D298823D708CF0009D699 /* sound3.m4r */; };
+		CE7D298E23D708CF0009D699 /* sound1.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE7D298923D708CF0009D699 /* sound1.m4r */; };
+		CE7D298F23D708CF0009D699 /* sound2.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE7D298A23D708CF0009D699 /* sound2.m4r */; };
+		CE7D299023D708CF0009D699 /* sound5.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE7D298B23D708CF0009D699 /* sound5.m4r */; };
+		CE7D299123D708CF0009D699 /* sound4.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE7D298C23D708CF0009D699 /* sound4.m4r */; };
+		CE7D299323D70D300009D699 /* KDSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D299223D70D300009D699 /* KDSettingsTableViewCell.swift */; };
 		CEC515D523CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */; };
 		CEC515D623CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CA23CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift */; };
 		CEC515D723CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515CB23CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift */; };
@@ -39,6 +50,8 @@
 		CEC5160423CC56E200DA0645 /* logo_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC5160123CC56E200DA0645 /* logo_small@2x.png */; };
 		CEC5160623CC863A00DA0645 /* OPKitchenDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */; };
 		CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */; };
+		CEEB8F3823E3F05900494334 /* KDPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB8F3723E3F05900494334 /* KDPickerController.swift */; };
+		CEEB8F3A23E4064600494334 /* KDUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB8F3923E4064600494334 /* KDUserViewController.swift */; };
 		CEED07BB23BF986700731147 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BA23BF986700731147 /* AppDelegate.swift */; };
 		CEED07BD23BF986700731147 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BC23BF986700731147 /* SceneDelegate.swift */; };
 		CEED07BF23BF986700731147 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07BE23BF986700731147 /* ViewController.swift */; };
@@ -49,6 +62,7 @@
 		CEED07D523BF986800731147 /* OmniKDSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07D423BF986800731147 /* OmniKDSTests.swift */; };
 		CEED07E023BF986800731147 /* OmniKDSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED07DF23BF986800731147 /* OmniKDSUITests.swift */; };
 		CEFE374E23D58D1A0033C0A1 /* OPTableItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */; };
+		CEFE375123D5BE410033C0A1 /* OPSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFE375023D5BE410033C0A1 /* OPSettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,11 +83,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE1F672323E16D2D00536C40 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
+		CE1F672523E170FE00536C40 /* OPColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPColorPickerController.swift; sourceTree = "<group>"; };
 		CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCoreDataCoordinator.swift; sourceTree = "<group>"; };
 		CE5000BC23C9C24F00A14306 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE5000BE23C9DBF700A14306 /* OPDateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPDateTools.swift; sourceTree = "<group>"; };
 		CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSectionObject.swift; sourceTree = "<group>"; };
+		CE7D298323D6E1F90009D699 /* KDRowObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDRowObject.swift; sourceTree = "<group>"; };
+		CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		CE7D298823D708CF0009D699 /* sound3.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound3.m4r; sourceTree = "<group>"; };
+		CE7D298923D708CF0009D699 /* sound1.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound1.m4r; sourceTree = "<group>"; };
+		CE7D298A23D708CF0009D699 /* sound2.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound2.m4r; sourceTree = "<group>"; };
+		CE7D298B23D708CF0009D699 /* sound5.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound5.m4r; sourceTree = "<group>"; };
+		CE7D298C23D708CF0009D699 /* sound4.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound4.m4r; sourceTree = "<group>"; };
+		CE7D299223D70D300009D699 /* KDSettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSettingsTableViewCell.swift; sourceTree = "<group>"; };
 		CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenUser+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CEC515CA23CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CEC515CB23CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenTransaction+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -105,6 +130,8 @@
 		CEC5160123CC56E200DA0645 /* logo_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_small@2x.png"; sourceTree = "<group>"; };
 		CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenDisplayViewController.swift; sourceTree = "<group>"; };
 		CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenItemView.swift; sourceTree = "<group>"; };
+		CEEB8F3723E3F05900494334 /* KDPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDPickerController.swift; sourceTree = "<group>"; };
+		CEEB8F3923E4064600494334 /* KDUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDUserViewController.swift; sourceTree = "<group>"; };
 		CEED07B723BF986700731147 /* OmniKDS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OmniKDS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEED07BA23BF986700731147 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEED07BC23BF986700731147 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +148,7 @@
 		CEED07DF23BF986800731147 /* OmniKDSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmniKDSUITests.swift; sourceTree = "<group>"; };
 		CEED07E123BF986800731147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPTableItemView.swift; sourceTree = "<group>"; };
+		CEFE375023D5BE410033C0A1 /* OPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPSettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,13 +176,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE1F672223E16CCA00536C40 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				CE1F672323E16D2D00536C40 /* colorPalette.plist */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
 		CE5000BB23C9C21700A14306 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
 				CE5000BC23C9C24F00A14306 /* Constants.swift */,
 				CE5000BE23C9DBF700A14306 /* OPDateTools.swift */,
+				CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */,
+				CE7D298323D6E1F90009D699 /* KDRowObject.swift */,
+				CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */,
+				CE1F672523E170FE00536C40 /* OPColorPickerController.swift */,
+				CEEB8F3723E3F05900494334 /* KDPickerController.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		CE7D298723D708BB0009D699 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				CE7D298923D708CF0009D699 /* sound1.m4r */,
+				CE7D298A23D708CF0009D699 /* sound2.m4r */,
+				CE7D298823D708CF0009D699 /* sound3.m4r */,
+				CE7D298C23D708CF0009D699 /* sound4.m4r */,
+				CE7D298B23D708CF0009D699 /* sound5.m4r */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		CEC515E123CA2EDB00DA0645 /* Netowrking */ = {
@@ -176,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */,
+				CEFE375023D5BE410033C0A1 /* OPSettingsViewController.swift */,
+				CEEB8F3923E4064600494334 /* KDUserViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -183,6 +238,8 @@
 		CEC515F123CC554A00DA0645 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE1F672223E16CCA00536C40 /* Others */,
+				CE7D298723D708BB0009D699 /* Sounds */,
 				CEC515F223CC555200DA0645 /* Images */,
 			);
 			path = Resources;
@@ -209,6 +266,7 @@
 			children = (
 				CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */,
 				CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */,
+				CE7D299223D70D300009D699 /* KDSettingsTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,17 +458,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC515F723CC55EA00DA0645 /* bg.png in Resources */,
+				CE7D298D23D708CF0009D699 /* sound3.m4r in Resources */,
 				CEC5160323CC56E200DA0645 /* logo_small@3x.png in Resources */,
+				CE7D298E23D708CF0009D699 /* sound1.m4r in Resources */,
 				CEC515FD23CC561F00DA0645 /* settings2@3x.png in Resources */,
+				CE7D298F23D708CF0009D699 /* sound2.m4r in Resources */,
 				CEC5160223CC56E200DA0645 /* logo_small.png in Resources */,
 				CEC515F623CC55EA00DA0645 /* bg@3x.png in Resources */,
 				CEC515FE23CC561F00DA0645 /* settings2.png in Resources */,
+				CE7D299023D708CF0009D699 /* sound5.m4r in Resources */,
+				CE1F672423E16D2D00536C40 /* colorPalette.plist in Resources */,
 				CEC515FC23CC561F00DA0645 /* settings2@2x.png in Resources */,
 				CEC5160423CC56E200DA0645 /* logo_small@2x.png in Resources */,
 				CEED07CA23BF986800731147 /* LaunchScreen.storyboard in Resources */,
 				CEC515F823CC55EA00DA0645 /* bg@2x.png in Resources */,
 				CEED07C723BF986800731147 /* Assets.xcassets in Resources */,
 				CEED07C223BF986700731147 /* Main.storyboard in Resources */,
+				CE7D299123D708CF0009D699 /* sound4.m4r in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,12 +500,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEC515ED23CB74F100DA0645 /* OPReachability.m in Sources */,
+				CE7D299323D70D300009D699 /* KDSettingsTableViewCell.swift in Sources */,
+				CEEB8F3A23E4064600494334 /* KDUserViewController.swift in Sources */,
 				CEED07BF23BF986700731147 /* ViewController.swift in Sources */,
+				CEEB8F3823E3F05900494334 /* KDPickerController.swift in Sources */,
 				CEC515DE23CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift in Sources */,
 				CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */,
 				CEC5160623CC863A00DA0645 /* OPKitchenDisplayViewController.swift in Sources */,
 				CEFE374E23D58D1A0033C0A1 /* OPTableItemView.swift in Sources */,
 				CE50006723C70E5300A14306 /* KDCoreDataCoordinator.swift in Sources */,
+				CE7D298223D6E1EA0009D699 /* KDSectionObject.swift in Sources */,
 				CEC515E323CA2F0700DA0645 /* OPCommunicator.swift in Sources */,
 				CEC515EA23CB457700DA0645 /* GCDAsyncUdpSocket.m in Sources */,
 				CEED07C523BF986700731147 /* OmniKDS.xcdatamodeld in Sources */,
@@ -449,14 +517,18 @@
 				CEC515DC23CA1B4400DA0645 /* Order+CoreDataProperties.swift in Sources */,
 				CEC515D523CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift in Sources */,
 				CEC515DB23CA1B4400DA0645 /* Order+CoreDataClass.swift in Sources */,
+				CE1F672623E170FE00536C40 /* OPColorPickerController.swift in Sources */,
 				CEC515E023CA1B4400DA0645 /* OrderItem+CoreDataProperties.swift in Sources */,
+				CEFE375123D5BE410033C0A1 /* OPSettingsViewController.swift in Sources */,
 				CEC515D623CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift in Sources */,
 				CEC515D723CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift in Sources */,
 				CEED07BB23BF986700731147 /* AppDelegate.swift in Sources */,
 				CEC515D923CA1B4400DA0645 /* OmniKitchen+CoreDataClass.swift in Sources */,
 				CEC515DF23CA1B4400DA0645 /* OrderItem+CoreDataClass.swift in Sources */,
 				CE5000BF23C9DBF700A14306 /* OPDateTools.swift in Sources */,
+				CE7D298423D6E1F90009D699 /* KDRowObject.swift in Sources */,
 				CEED07BD23BF986700731147 /* SceneDelegate.swift in Sources */,
+				CE7D298623D6EAA50009D699 /* UIColor+Hex.swift in Sources */,
 				CE5000C723C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift in Sources */,
 				CEC515D823CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift in Sources */,
 				CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */,
@@ -639,6 +711,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USPNU3D3XV;
 				INFOPLIST_FILE = OmniKDS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -660,6 +733,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = USPNU3D3XV;
 				INFOPLIST_FILE = OmniKDS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

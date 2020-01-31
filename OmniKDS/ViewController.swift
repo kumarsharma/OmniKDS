@@ -33,10 +33,32 @@ class ViewController: UIViewController {
             
         }*/
         
-        let kdView : OPKitchenDisplayViewController? = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "OPKItchenDisplayViewController")
-        let nav : UINavigationController = UINavigationController(rootViewController: kdView!)
-        nav.modalPresentationStyle=UIModalPresentationStyle.fullScreen
-        self.present(nav, animated: true, completion: nil)
+        if (pinField?.text!.count)!>0{
+            
+            let isAuthenticated = KitchenUser.authenticateUserWithPIN(pin: (pinField?.text!)!)
+            if isAuthenticated{
+             
+                let kdView : OPKitchenDisplayViewController? = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "OPKItchenDisplayViewController")
+                let nav : UINavigationController = UINavigationController(rootViewController: kdView!)
+                nav.modalPresentationStyle=UIModalPresentationStyle.fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+            else{
+                let alert = UIAlertController(title: "Unable to Login", message: "The entered PIN is invalid.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+                self.present(alert, animated: true) { 
+                    
+                }
+            }
+        }
+        else{
+            
+            let alert = UIAlertController(title: "Unable to Login", message: "Please enter PIN.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+            self.present(alert, animated: true) { 
+                
+            }
+        }
     }
 
     @IBAction func numsButtonPressed(sender: UIButton){

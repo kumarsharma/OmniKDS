@@ -30,6 +30,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         let settingsBarBtn : UIBarButtonItem = UIBarButtonItem(title: "Settings", style: UIBarButtonItem.Style.done, target: self, action: #selector(settingsAction))
         self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn]
         
+        
         let segmentedBar : UISegmentedControl = UISegmentedControl(items: ["Open", "Closed"])
         segmentedBar.addTarget(self, action: #selector(segmentedControlAction), for: UIControl.Event.valueChanged)
         segmentedBar.selectedSegmentIndex=0
@@ -57,7 +58,10 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     @objc func settingsAction(){
         
-        
+        let settingsVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SettingsViewController")
+        let navVc = UINavigationController(rootViewController: settingsVc)
+        navVc.modalPresentationStyle=UIModalPresentationStyle.fullScreen
+        self.present(navVc, animated: true, completion: nil)
     }
     
     @objc func segmentedControlAction(sender:UISegmentedControl){

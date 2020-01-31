@@ -21,10 +21,22 @@ public class KitchenUser: OPManagedObject {
     class func addDefaultAdminUser() {
         
         let predicate = NSPredicate(format: "isAdmin=true")
-        var adminUser = self.fetchObjectWithPredicate(predicate: predicate) as? KitchenUser
+        var adminUser : KitchenUser? = nil
+        
+        do {
+            try adminUser = self.fetchObjectWithPredicate(predicate: predicate) as? KitchenUser
+        } catch DBError.NoObjectFound {
+            
+            adminUser=nil
+        }
+        catch{
+            
+            adminUser=nil
+        }
+        
         if adminUser==nil{
             
-            adminUser = self.addNewUser(firstName: "Admin", lastName: "Admin", isAdmin: true, email: "email@example.com", phone: "1234567890", userPIN: "9999")
+            adminUser = self.addNewUser(firstName: "Admin", lastName: "Admin", isAdmin: true, email: "email@example.com", phone: "1234567890", userPIN: "\(GlobalAdminUserID)")
             sharedCoredataCoordinator.saveContext()
         }
         else{
@@ -39,14 +51,44 @@ public class KitchenUser: OPManagedObject {
         var newUser : KitchenUser?
         let userEntity = NSEntityDescription.entity(forEntityName: "KitchenUser", in: sharedCoredataCoordinator.persistentContainer.viewContext)
         newUser = NSManagedObject(entity: userEntity!, insertInto: sharedCoredataCoordinator.persistentContainer.viewContext) as? KitchenUser
-        newUser?.firstName="Admin"
-        newUser?.lastName="Admin"
-        newUser?.isAdmin=true
-        newUser?.email="email@example.com"
-        newUser?.phone="1234567890"
-        newUser?.userPIN="9999"
+        newUser?.firstName=firstName
+        newUser?.lastName=lastName
+        newUser?.isAdmin=isAdmin
+        newUser?.email=email
+        newUser?.phone=phone
+        newUser?.userPIN=userPIN
         newUser?.userId=UUID().uuidString
         
         return newUser!
     }
+    
+    class func authenticateUserWithPIN(pin:String) -> Bool{
+        
+        let predicate = NSPredicate(format: "userPIN=\(pin)")
+        var user : KitchenUser? = nil
+        
+        do {
+            try user = self.fetchObjectWithPredicate(predicate: predicate) as? KitchenUser
+        } catch {
+            
+            user=nil
+        }
+        
+        if user==nil{
+            
+            return false
+        }
+        else{
+            
+            return true
+        }
+    }
+    
+      class func viewFetchRequest()->NSFetchRequest<NSFetchRequestResult>{
+           
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "KitchenUser")
+            let sd = NSSortDescriptor(key: "firstName", ascending: true)
+            fetchRequest.sortDescriptors = [sd]
+            return fetchRequest as! NSFetchRequest<NSFetchRequestResult>
+       }
 }

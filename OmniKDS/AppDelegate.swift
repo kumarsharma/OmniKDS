@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var sharedKitchen : OmniKitchen? = nil
         sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        KitchenUser.addDefaultAdminUser()
+        
         if sharedKitchen==nil{
             
             print("Unable to start kitchen display!!")
@@ -24,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             print("ready to go!! good luck!!!!!")
         }
+        
+        sharedCommunicator.startServer()
         
         return true
     }

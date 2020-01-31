@@ -46,15 +46,15 @@ public class OmniKitchen: OPManagedObject {
             let kitchenEntity = NSEntityDescription.entity(forEntityName: "OmniKitchen", in: container.viewContext)
             kitchen = NSManagedObject(entity: kitchenEntity!, insertInto: container.viewContext) as? OmniKitchen
             kitchen.setValue(Int32(GlobalKitchenID), forKey: "kitchenId")
-            kitchen.bgColor="gray"
-            kitchen.fontSize=17
+            kitchen.bgColor="#C0C0C0"
+            kitchen.fontSize=12
             kitchen.kitchenName="Kitchen Display"
             kitchen.soundMode = false
-            kitchen.soundType=""
             kitchen.ticketSize = 1
             kitchen.turnToRedAfter=5
             kitchen.turnToYellowAfter=5
             kitchen.viewMode=1
+            kitchen.soundType = "sound1"
             
             sharedCoredataCoordinator.saveContext()
         }
@@ -64,5 +64,5 @@ public class OmniKitchen: OPManagedObject {
         }
         
         return kitchen
-    }
+    } 
 }

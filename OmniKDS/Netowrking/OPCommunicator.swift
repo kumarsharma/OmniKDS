@@ -14,6 +14,8 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
     var udpSocket : GCDAsyncUdpSocket!
     
     override init() {
+        
+        
     }
     
     func startInitials() {
@@ -34,6 +36,7 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
     
     func startServer() {
         
+        startInitials()
         let port : UInt16 = 6002
         
         do{

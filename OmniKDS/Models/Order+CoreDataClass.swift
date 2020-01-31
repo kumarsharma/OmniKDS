@@ -23,8 +23,12 @@ public class Order: OPManagedObject {
         var anOrder : Order!
         let orderId : String! = jsonDict.value(forKey: "orderId") as? String
         
-        anOrder = Order.fetchObjectWithId(objId: orderId) as? Order
-        
+        do {
+            try anOrder = Order.fetchObjectWithId(objId: orderId) as? Order
+        } catch {
+            
+        }
+
         if(anOrder==nil)
         {
             let orderEntity = NSEntityDescription.entity(forEntityName: "Order", in: container.viewContext)

@@ -8,6 +8,7 @@
 import Foundation
 
 let GlobalKitchenID = 1111
+let GlobalAdminUserID = 9999
 let kNotReachable = 0
 let kReachableViaWiFi = 1
 let kReachableViaWWAN = 2
@@ -22,5 +23,21 @@ struct NIK { //network interchange keys
     static let SIGNATURE = "58df8b0c36d6982b82c3ecf6b4662e34fe8c25bba48f5369f135bf843651c3a4"
     static let AUTH = "AUTH"
     static let MESSAGE = "MESSAGE"
+}
+
+enum DBError : Error{
+    case NoObjectFound
+    case CorruptedObject
+    case UnknownError
+}
+
+enum RowType{
+    
+    case RowTypeBool
+    case RowTypeText
+    case RowTypeColor
+    case RowTypeSegment
+    case RowTypeSlider
+    case RowTypeList
 }
 

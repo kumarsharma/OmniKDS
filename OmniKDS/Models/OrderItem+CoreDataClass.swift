@@ -21,7 +21,13 @@ public class OrderItem: OPManagedObject {
     func createItemFromJSONDict(jsonDict:NSDictionary, container:NSPersistentContainer) -> OrderItem {
         var anItem : OrderItem!
         let orderItemId : String! = jsonDict.value(forKey: "orderItemId") as? String
-        anItem = OrderItem.fetchObjectWithId(objId: orderItemId) as? OrderItem
+        
+        do{
+            try anItem = OrderItem.fetchObjectWithId(objId: orderItemId) as? OrderItem
+        }
+        catch{
+            
+        }
         if(anItem==nil)
         {
             let itemEntity = NSEntityDescription.entity(forEntityName: "OrderItem", in: container.viewContext)
