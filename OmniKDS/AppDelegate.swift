@@ -6,6 +6,14 @@
 //  Copyright © 2020 Omni Systems. All rights reserved.
 //
 
+/**
+ 
+ Desc: OmniKDS is a Kitchen Display System for showing currently confirmed orders on targeted kitchens. 
+ It is available as a ready-made setup KDS. No need to configure anything. Sample orders are shown when the app is opened. 
+  Once ready to user, just press the button "Ready to Use". To see the sample orders go to Settings and select "Reload Sample orders".
+ 
+ */
+
 import UIKit
 import CoreData
 

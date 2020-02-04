@@ -17,8 +17,10 @@ public class OmniKitchen: OPManagedObject {
         return "kitchenId"
     }
     
-    //throughout this app we will use only kitchen object. Kitchen Display is one in the app
-    //do not create more than one kitchen
+    /**     
+        Throughout the app, only one kitchen object is used. 
+        Kitchen Display is one in the app, so do not create more than one kitchen
+    */
     class func getSharedKItchen(container:NSPersistentContainer) -> OmniKitchen {
         
         let predicate = NSPredicate(format: "kitchenId=\(GlobalKitchenID)")
@@ -28,7 +30,6 @@ public class OmniKitchen: OPManagedObject {
         
         fetchRequest.predicate=predicate
         
-//        var mObj : OPManagedObject! = nil
         do {
             let records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest)
             
@@ -46,21 +47,12 @@ public class OmniKitchen: OPManagedObject {
             let kitchenEntity = NSEntityDescription.entity(forEntityName: "OmniKitchen", in: container.viewContext)
             kitchen = NSManagedObject(entity: kitchenEntity!, insertInto: container.viewContext) as? OmniKitchen
             kitchen.setValue(Int32(GlobalKitchenID), forKey: "kitchenId")
-            kitchen.bgColor="#C0C0C0"
-            kitchen.fontSize=12
-            kitchen.kitchenName="Kitchen Display"
-            kitchen.soundMode = false
-            kitchen.ticketSize = 1
-            kitchen.turnToRedAfter=5
-            kitchen.turnToYellowAfter=5
-            kitchen.viewMode=1
-            kitchen.soundType = "sound1"
-            
+            //all defaults are set on xcdatamodel
             sharedCoredataCoordinator.saveContext()
         }
         else{
             
-            print("Global KItchen is Active!!")
+            print("Global Kitchen is Active!!")
         }
         
         return kitchen

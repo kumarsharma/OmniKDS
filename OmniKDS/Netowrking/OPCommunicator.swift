@@ -81,24 +81,27 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
             let key2 : NSString = dict?.value(forKey: NIK.AUTH) as! NSString
             if key2.isEqual(to: NIK.SIGNATURE){
                 
-                let msgBody : NSString = dict?.value(forKey: NIK.MESSAGE) as! NSString
-                if msgBody.length>0
+                let msgBody : String = dict?.value(forKey: NIK.MESSAGE) as! String
+                if msgBody.count>0
                 {
                     print("Received data on KDS: \(msgBody)")
-                    var dictionary : NSDictionary?
-                    if let data = msgBody.data(using: String.Encoding.utf8.rawValue){
+                    var dictionary : Dictionary<String, Any>?
+                    let data = Data(msgBody.utf8)
                         
-                        do{
-                            dictionary = try JSONSerialization.data(withJSONObject: data, options: []) as? [String:AnyObject] as NSDictionary?
+                    do{
+                        dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
+                        
+                        let dict = NSDictionary(dictionary: dictionary!)
+                        if dict != nil{
                             
-                            if dictionary != nil{
-                                
+                            let newOrder = Order.createOrderFromJSONDict(jsonDict: dict, container: sharedCoredataCoordinator.persistentContainer)
+                            if newOrder != nil{
                                 
                             }
-                        }catch let error as NSError{
-                            
-                            print("error in parsing \(error.userInfo)")
                         }
+                    }catch let error as NSError{
+                        
+                        print("error in parsing \(error.userInfo)")
                     }
                 }
             }

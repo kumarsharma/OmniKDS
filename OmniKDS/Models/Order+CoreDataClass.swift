@@ -18,6 +18,7 @@ public class Order: OPManagedObject {
         return "orderId"
     }
     
+    //orders are received in JSON format. Following method parses json dictionary to actual CoreData Order object. 
     class func createOrderFromJSONDict(jsonDict:NSDictionary, container:NSPersistentContainer) -> Order {
         
         var anOrder : Order!
@@ -42,8 +43,25 @@ public class Order: OPManagedObject {
         anOrder.setValue(jsonDict.value(forKey: "tableName"), forKeyPath:"tableName")
         anOrder.setValue(jsonDict.value(forKey: "tableText"), forKeyPath:"tableText")
         
-        anOrder.orderDate = OPDateTools.convertToDateFromString(dateStr: jsonDict.value(forKey: "orderDate") as! String)
-        anOrder.closedAt = OPDateTools.convertToDateFromString(dateStr: jsonDict.value(forKey: "closedAt") as! String)
+        do{
+            let date = try OPDateTools.convertToDateFromString(dateStr: jsonDict.value(forKey: "orderDate") as? String)
+            anOrder.orderDate = date
+        }catch{
+            
+        }
+        
+        do{
+            let date = try OPDateTools.convertToDateFromString(dateStr: jsonDict.value(forKey: "closedAt") as? String)
+            anOrder.closedAt = date
+        }catch{
+            
+        }
+        
+        let items = jsonDict.value(forKey: "orderItems") as! NSArray
+        for item in items {
+            
+            _ = OrderItem.createItemFromJSONDict(jsonDict: item as! NSDictionary, container: sharedCoredataCoordinator.persistentContainer)
+        }
         
         return anOrder
     }

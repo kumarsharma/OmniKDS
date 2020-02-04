@@ -10,13 +10,18 @@ import UIKit
 
 class OPDateTools: NSObject {
 
-    class func convertToDateFromString(dateStr: String) -> Date{
+    class func convertToDateFromString(dateStr: String?) throws -> Date{
         
         var date : Date! = nil
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        date = formatter.date(from: dateStr)
         
-        return date
+        if dateStr?.count == 0 || dateStr == nil{
+            
+            throw DBError.UnknownError
+        }else{
+            date = formatter.date(from: dateStr!)
+            return date
+        }
     }
 }

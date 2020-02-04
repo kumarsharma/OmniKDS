@@ -13,17 +13,19 @@ import CoreData
 @objc(OPManagedObject)
 public class OPManagedObject: NSManagedObject {
 
-    
+    //child classes will override this method returning exact name for primary-key attribute
     class func primaryKeyName() -> String {
         return ""
     }
     
+    //a function to fetch any object using its id (primary-key attribute)
     class func fetchObjectWithId(objId:String) throws -> OPManagedObject? {
         
         let predicate = NSPredicate(format: "\(self.primaryKeyName())=\(GlobalKitchenID)")
         return try self.fetchObjectWithPredicate(predicate: predicate)
     }
     
+    //a function to fetch any object using a predicate (search criteria)
     class func fetchObjectWithPredicate(predicate:NSPredicate) throws -> OPManagedObject{
         
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: self.entity().name!)
@@ -39,7 +41,7 @@ public class OPManagedObject: NSManagedObject {
             }
         } catch let error as NSError {
             
-            print("Could not fetch the shared kitchen. Error: \(error.userInfo)")
+            print("Could not fetch the requested object. Error: \(error.userInfo)")
         }
         if mObj == nil{
             
@@ -47,9 +49,6 @@ public class OPManagedObject: NSManagedObject {
         }
         else{
             return mObj
-            
         }
     }
-    
-    
 }

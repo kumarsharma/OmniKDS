@@ -34,6 +34,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title="Display Settings"
 
         let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
         kitchenNameField?.text=sharedKitchen.kitchenName
@@ -63,6 +64,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         bgColorButton?.layer.borderColor=UIColor.darkGray.cgColor
     
         self.navigationItem.rightBarButtonItem=UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(cancelBtnAction))
+        self.navigationItem.leftBarButtonItem=UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancelBtnAction))
         
         userFRC = NSFetchedResultsController(fetchRequest: KitchenUser.viewFetchRequest(), managedObjectContext: sharedCoredataCoordinator.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         userFRC?.delegate=self

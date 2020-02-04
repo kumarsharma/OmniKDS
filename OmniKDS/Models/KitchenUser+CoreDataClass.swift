@@ -18,6 +18,8 @@ public class KitchenUser: OPManagedObject {
         return "userId"
     }
     
+    // we use a global admin user to easyly access the app.
+    // following method fetches the global-admin user, if first time, it creates new
     class func addDefaultAdminUser() {
         
         let predicate = NSPredicate(format: "isAdmin=true")
@@ -45,7 +47,7 @@ public class KitchenUser: OPManagedObject {
         }
     }
     
-    
+    //following method adds a new user
     class func addNewUser(firstName:String, lastName:String, isAdmin:Bool, email:String, phone:String, userPIN:String) -> KitchenUser{
         
         var newUser : KitchenUser?

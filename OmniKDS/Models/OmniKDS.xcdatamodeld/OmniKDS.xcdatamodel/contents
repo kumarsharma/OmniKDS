@@ -26,15 +26,15 @@
         <attribute name="userPIN" optional="YES" attributeType="String"/>
     </entity>
     <entity name="OmniKitchen" representedClassName="OmniKitchen" parentEntity="OPManagedObject" syncable="YES">
-        <attribute name="bgColor" optional="YES" attributeType="String"/>
-        <attribute name="fontSize" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bgColor" optional="YES" attributeType="String" defaultValueString="#C0C0C0"/>
+        <attribute name="fontSize" optional="YES" attributeType="Integer 32" defaultValueString="12" usesScalarValueType="YES"/>
         <attribute name="kitchenId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="kitchenName" optional="YES" attributeType="String"/>
-        <attribute name="soundMode" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="soundType" optional="YES" attributeType="String"/>
-        <attribute name="ticketSize" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="kitchenName" optional="YES" attributeType="String" defaultValueString="Kitchen Display"/>
+        <attribute name="soundMode" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="soundType" optional="YES" attributeType="String" defaultValueString="sound1"/>
+        <attribute name="ticketSize" optional="YES" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
+        <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
         <attribute name="viewMode" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="OPManagedObject" representedClassName="OPManagedObject" syncable="YES"/>

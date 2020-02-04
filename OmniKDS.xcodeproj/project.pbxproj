@@ -294,20 +294,19 @@
 		CEED07B923BF986700731147 /* OmniKDS */ = {
 			isa = PBXGroup;
 			children = (
+				CEED07BA23BF986700731147 /* AppDelegate.swift */,
+				CEED07BC23BF986700731147 /* SceneDelegate.swift */,
+				CEED07BE23BF986700731147 /* ViewController.swift */,
+				CEED07ED23BFAD8400731147 /* Models */,
 				CED893C723D0BFEF00BB7355 /* Views */,
 				CEC515F123CC554A00DA0645 /* Resources */,
 				CEC515EE23CC54D700DA0645 /* ViewControllers */,
 				CEC515E123CA2EDB00DA0645 /* Netowrking */,
 				CE5000BB23C9C21700A14306 /* Tools */,
-				CEED07ED23BFAD8400731147 /* Models */,
-				CEED07BA23BF986700731147 /* AppDelegate.swift */,
-				CEED07BC23BF986700731147 /* SceneDelegate.swift */,
-				CEED07BE23BF986700731147 /* ViewController.swift */,
 				CEED07C023BF986700731147 /* Main.storyboard */,
 				CEED07C623BF986800731147 /* Assets.xcassets */,
 				CEED07C823BF986800731147 /* LaunchScreen.storyboard */,
 				CEED07CB23BF986800731147 /* Info.plist */,
-				CEED07C323BF986700731147 /* OmniKDS.xcdatamodeld */,
 			);
 			path = OmniKDS;
 			sourceTree = "<group>";
@@ -333,6 +332,7 @@
 		CEED07ED23BFAD8400731147 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CEED07C323BF986700731147 /* OmniKDS.xcdatamodeld */,
 				CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */,
 				CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */,
 				CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */,
@@ -342,12 +342,12 @@
 				CEC515D023CA1B4400DA0645 /* Order+CoreDataProperties.swift */,
 				CEC515D323CA1B4400DA0645 /* OrderItem+CoreDataClass.swift */,
 				CEC515D423CA1B4400DA0645 /* OrderItem+CoreDataProperties.swift */,
+				CEC515D123CA1B4400DA0645 /* ItemOption+CoreDataClass.swift */,
+				CEC515D223CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift */,
 				CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */,
 				CEC515CA23CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift */,
 				CEC515CB23CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift */,
 				CEC515CC23CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift */,
-				CEC515D123CA1B4400DA0645 /* ItemOption+CoreDataClass.swift */,
-				CEC515D223CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

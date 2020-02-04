@@ -47,6 +47,4 @@ class KDCoreDataCoordinator: NSObject {
             }
         }
     }
-    
-    
 }

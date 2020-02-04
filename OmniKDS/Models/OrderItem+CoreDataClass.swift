@@ -18,7 +18,8 @@ public class OrderItem: OPManagedObject {
         return "orderItemId"
     }
     
-    func createItemFromJSONDict(jsonDict:NSDictionary, container:NSPersistentContainer) -> OrderItem {
+    //orders are received in JSON format. Following method parses json dictionary to actual CoreData OrderItem object. 
+    class func createItemFromJSONDict(jsonDict:NSDictionary, container:NSPersistentContainer) -> OrderItem {
         var anItem : OrderItem!
         let orderItemId : String! = jsonDict.value(forKey: "orderItemId") as? String
         
@@ -35,22 +36,33 @@ public class OrderItem: OPManagedObject {
             anItem.orderItemId = orderItemId
         }
         
-        anItem.courseId = jsonDict.value(forKey: "courseId") as? String
-        anItem.courseName = jsonDict.value(forKey: "courseName") as? String
         anItem.itemId = jsonDict.value(forKey: "itemId") as? String
         anItem.itemName = jsonDict.value(forKey: "itemName") as? String
         anItem.itemName2 = jsonDict.value(forKey: "itemName2") as? String
         anItem.note = jsonDict.value(forKey: "note") as? String
         anItem.orderId = jsonDict.value(forKey: "orderId") as? String
-        
-        let str:String! = jsonDict.value(forKey: "placeTime") as? String
-        anItem.placeTime = OPDateTools.convertToDateFromString(dateStr: str)
-        
-        let str2:String! = jsonDict.value(forKey: "quantity") as? String 
-        anItem.quantity = Int32(str2)!
-        
+        anItem.courseId = jsonDict.value(forKey: "courseId") as? String
+        anItem.courseName = jsonDict.value(forKey: "courseName") as? String
         anItem.seatNo = jsonDict.value(forKey: "seatNo") as? String
         anItem.takenBy = jsonDict.value(forKey: "takenBy") as? String
+        
+        let str2:String! = jsonDict.value(forKey: "quantity") as? String 
+        anItem.quantity = Int32(str2) ?? 0
+        
+        let str:String! = jsonDict.value(forKey: "placeTime") as? String
+        
+        do{
+            let date = try OPDateTools.convertToDateFromString(dateStr: str)
+            anItem.placeTime = date
+        }catch{
+            
+        }
+    
+        let options = jsonDict.value(forKey: "itemOPtions") as! NSArray
+        for option in options {
+            
+            _ = ItemOption.createOptionFromJSONDict(jsonDict: option as! NSDictionary, container: sharedCoredataCoordinator.persistentContainer)
+        }
         return anItem
     }
     

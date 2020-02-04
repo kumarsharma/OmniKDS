@@ -30,7 +30,6 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         let settingsBarBtn : UIBarButtonItem = UIBarButtonItem(title: "Settings", style: UIBarButtonItem.Style.done, target: self, action: #selector(settingsAction))
         self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn]
         
-        
         let segmentedBar : UISegmentedControl = UISegmentedControl(items: ["Open", "Closed"])
         segmentedBar.addTarget(self, action: #selector(segmentedControlAction), for: UIControl.Event.valueChanged)
         segmentedBar.selectedSegmentIndex=0
