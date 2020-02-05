@@ -3,4 +3,70 @@
    uuid = "F184A66F-961E-4814-AB2D-0CE2D41EC7B5"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1AC79B29-1A59-4855-AFF6-72CF655B112A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OmniKDS/Netowrking/OPCommunicator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "udpSocket(_:didReceive:fromAddress:withFilterContext:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1AC79B29-1A59-4855-AFF6-72CF655B112A - 2f41f839702d70f6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OmniKDS.OPCommunicator.udpSocket(_: Swift.Optional&lt;__C.GCDAsyncUdpSocket&gt;, didReceive: Swift.Optional&lt;Foundation.Data&gt;, fromAddress: Swift.Optional&lt;Foundation.Data&gt;, withFilterContext: Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "OmniKDS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Documents/OmniPOS/Projects/KitchenDisplay/OmniKDS/OmniKDS/Netowrking/OPCommunicator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "2586">
+               </Location>
+               <Location
+                  uuid = "1AC79B29-1A59-4855-AFF6-72CF655B112A - 2f41f839702d70f6"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OmniKDS.OPCommunicator.udpSocket(_: Swift.Optional&lt;__C.GCDAsyncUdpSocket&gt;, didReceive: Swift.Optional&lt;Foundation.Data&gt;, fromAddress: Swift.Optional&lt;Foundation.Data&gt;, withFilterContext: Swift.Optional&lt;Any&gt;) -&gt; ()"
+                  moduleName = "OmniKDS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/user/Documents/OmniPOS/Projects/KitchenDisplay/OmniKDS/OmniKDS/Netowrking/OPCommunicator.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "7071">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90B49069-6B8C-4E0F-8C38-CF20D9F0C957"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OmniKDS/Models/Order+CoreDataClass.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "createOrderFromJSONDict(jsonDict:container:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

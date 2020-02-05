@@ -13,6 +13,7 @@ import CoreData
 @objc(OrderItem)
 public class OrderItem: OPManagedObject {
 
+    var itemOptions:NSArray?
     override class func primaryKeyName() -> String {
         
         return "orderItemId"
@@ -47,7 +48,7 @@ public class OrderItem: OPManagedObject {
         anItem.takenBy = jsonDict.value(forKey: "takenBy") as? String
         
         let str2:String! = jsonDict.value(forKey: "quantity") as? String 
-        anItem.quantity = Int32(str2) ?? 0
+        anItem.quantity = Float(str2) ?? 0
         
         let str:String! = jsonDict.value(forKey: "placeTime") as? String
         
@@ -66,4 +67,29 @@ public class OrderItem: OPManagedObject {
         return anItem
     }
     
+    class func getItemsForOrderId(orderId:String)-> NSArray{
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "OrderItem")
+        fetchRequest.predicate=NSPredicate(format: "orderId=%@",orderId)
+        var records : NSArray?
+        do {
+            records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest) as NSArray?
+            
+        } catch let error as NSError {
+            
+            print("Could not fetch the requested object. Error: \(error.userInfo)")
+        }
+        
+        return records!
+    }
+    
+    func getItemOptions()->NSArray{
+        
+        if itemOptions==nil{
+            
+            itemOptions = ItemOption.getOptionsForOrderItemId(orderItemId: self.orderItemId!) as NSArray?
+        }
+        
+        return itemOptions!
+    }
 }

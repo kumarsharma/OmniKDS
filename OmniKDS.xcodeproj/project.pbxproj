@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CE1F672423E16D2D00536C40 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1F672323E16D2D00536C40 /* colorPalette.plist */; };
 		CE1F672623E170FE00536C40 /* OPColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F672523E170FE00536C40 /* OPColorPickerController.swift */; };
+		CE3D138423EAC87E00729285 /* redo.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE3D138223EAC87E00729285 /* redo.m4r */; };
+		CE3D138523EAC87E00729285 /* done.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE3D138323EAC87E00729285 /* done.m4r */; };
+		CE3D138723EACBE300729285 /* successful.m4r in Resources */ = {isa = PBXBuildFile; fileRef = CE3D138623EACBE300729285 /* successful.m4r */; };
 		CE50006723C70E5300A14306 /* KDCoreDataCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */; };
 		CE5000BD23C9C25000A14306 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000BC23C9C24F00A14306 /* Constants.swift */; };
 		CE5000BF23C9DBF700A14306 /* OPDateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000BE23C9DBF700A14306 /* OPDateTools.swift */; };
@@ -85,6 +88,9 @@
 /* Begin PBXFileReference section */
 		CE1F672323E16D2D00536C40 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
 		CE1F672523E170FE00536C40 /* OPColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPColorPickerController.swift; sourceTree = "<group>"; };
+		CE3D138223EAC87E00729285 /* redo.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = redo.m4r; sourceTree = "<group>"; };
+		CE3D138323EAC87E00729285 /* done.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = done.m4r; sourceTree = "<group>"; };
+		CE3D138623EACBE300729285 /* successful.m4r */ = {isa = PBXFileReference; lastKnownFileType = file; path = successful.m4r; sourceTree = "<group>"; };
 		CE50006623C70E5300A14306 /* KDCoreDataCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCoreDataCoordinator.swift; sourceTree = "<group>"; };
 		CE5000BC23C9C24F00A14306 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CE5000BE23C9DBF700A14306 /* OPDateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPDateTools.swift; sourceTree = "<group>"; };
@@ -206,6 +212,9 @@
 				CE7D298823D708CF0009D699 /* sound3.m4r */,
 				CE7D298C23D708CF0009D699 /* sound4.m4r */,
 				CE7D298B23D708CF0009D699 /* sound5.m4r */,
+				CE3D138223EAC87E00729285 /* redo.m4r */,
+				CE3D138323EAC87E00729285 /* done.m4r */,
+				CE3D138623EACBE300729285 /* successful.m4r */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -299,9 +308,9 @@
 				CEED07BE23BF986700731147 /* ViewController.swift */,
 				CEED07ED23BFAD8400731147 /* Models */,
 				CED893C723D0BFEF00BB7355 /* Views */,
-				CEC515F123CC554A00DA0645 /* Resources */,
 				CEC515EE23CC54D700DA0645 /* ViewControllers */,
 				CEC515E123CA2EDB00DA0645 /* Netowrking */,
+				CEC515F123CC554A00DA0645 /* Resources */,
 				CE5000BB23C9C21700A14306 /* Tools */,
 				CEED07C023BF986700731147 /* Main.storyboard */,
 				CEED07C623BF986800731147 /* Assets.xcassets */,
@@ -460,8 +469,10 @@
 				CEC515F723CC55EA00DA0645 /* bg.png in Resources */,
 				CE7D298D23D708CF0009D699 /* sound3.m4r in Resources */,
 				CEC5160323CC56E200DA0645 /* logo_small@3x.png in Resources */,
+				CE3D138723EACBE300729285 /* successful.m4r in Resources */,
 				CE7D298E23D708CF0009D699 /* sound1.m4r in Resources */,
 				CEC515FD23CC561F00DA0645 /* settings2@3x.png in Resources */,
+				CE3D138423EAC87E00729285 /* redo.m4r in Resources */,
 				CE7D298F23D708CF0009D699 /* sound2.m4r in Resources */,
 				CEC5160223CC56E200DA0645 /* logo_small.png in Resources */,
 				CEC515F623CC55EA00DA0645 /* bg@3x.png in Resources */,
@@ -474,6 +485,7 @@
 				CEC515F823CC55EA00DA0645 /* bg@2x.png in Resources */,
 				CEED07C723BF986800731147 /* Assets.xcassets in Resources */,
 				CEED07C223BF986700731147 /* Main.storyboard in Resources */,
+				CE3D138523EAC87E00729285 /* done.m4r in Resources */,
 				CE7D299123D708CF0009D699 /* sound4.m4r in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

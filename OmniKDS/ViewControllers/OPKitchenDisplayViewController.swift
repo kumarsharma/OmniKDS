@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
-class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var docketCollectionView : UICollectionView?
     @IBOutlet weak var orderCollectionView : UICollectionView?
     @IBOutlet weak var scrollBgView:UIView?
+    
+    lazy var orderFetchedController :  NSFetchedResultsController<NSFetchRequestResult> = {
+        
+        let frc = NSFetchedResultsController(fetchRequest: Order.viewFetchRequest(), managedObjectContext: sharedCoredataCoordinator.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate=self
+        do{
+            try frc.performFetch()
+        }catch _{
+            
+        }
+        return frc
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +78,19 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     @objc func segmentedControlAction(sender:UISegmentedControl){
         
+        if sender.selectedSegmentIndex == 0{
+            
+            orderFetchedController.fetchRequest.predicate = NSPredicate(format: "isOpen=true")
+        }else{
+            orderFetchedController.fetchRequest.predicate = NSPredicate(format: "isOpen=false")
+        }
+        
+        do{
+            try orderFetchedController.performFetch()
+        }catch{
+            
+        }
+        docketCollectionView?.reloadData()
     }
     
     @objc func cancelBtnAction() {
@@ -79,7 +105,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     //2
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 5
+        return self.orderFetchedController.fetchedObjects!.count
     }
     
     //3
@@ -89,7 +115,10 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         if collectionView==docketCollectionView{
             let cell = collectionView
         .dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? OPKitchenItemView
+            let anOrder = self.orderFetchedController.object(at: indexPath) as? Order
             cell?.setupSubViews()
+            cell?.order = anOrder
+            cell?.reloadCell()
             colCell = cell
         }
         else{
@@ -107,7 +136,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = (collectionView==docketCollectionView) ? CGSize(width: 300, height: 600) : CGSize(width: 80, height: 80)
+        let size = (collectionView==docketCollectionView) ? CGSize(width: 350, height: 600) : CGSize(width: 80, height: 80)
         return size
     }
     
@@ -121,5 +150,9 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 5.0
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        docketCollectionView?.reloadData()
     }
 }

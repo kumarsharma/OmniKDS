@@ -96,7 +96,7 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
                             
                             let newOrder = Order.createOrderFromJSONDict(jsonDict: dict, container: sharedCoredataCoordinator.persistentContainer)
                             if newOrder != nil{
-                                
+                                sharedCoredataCoordinator.saveContext()
                             }
                         }
                     }catch let error as NSError{

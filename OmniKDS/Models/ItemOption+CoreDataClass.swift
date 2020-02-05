@@ -41,4 +41,19 @@ public class ItemOption: OPManagedObject {
         anItemOPtion.orderItemId = jsonDict.value(forKey: "orderItemId") as? String
         return anItemOPtion
     }
+    
+    class func getOptionsForOrderItemId(orderItemId:String)-> [ItemOption]{
+          
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ItemOption")
+        fetchRequest.predicate=NSPredicate(format: "orderItemId=%@",orderItemId)
+        var records : [ ItemOption ]
+        records = []
+        do {
+            records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest) as! [ItemOption]
+        } catch let error as NSError {
+               
+               print("Could not fetch the requested object. Error: \(error.userInfo)")
+        }   
+        return records
+       }
 }

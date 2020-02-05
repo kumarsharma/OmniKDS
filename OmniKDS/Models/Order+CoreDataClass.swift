@@ -42,17 +42,11 @@ public class Order: OPManagedObject {
         anOrder.setValue(jsonDict.value(forKey: "orderBy"), forKeyPath:"orderBy")
         anOrder.setValue(jsonDict.value(forKey: "tableName"), forKeyPath:"tableName")
         anOrder.setValue(jsonDict.value(forKey: "tableText"), forKeyPath:"tableText")
+        anOrder.setValue(jsonDict.value(forKey: "orderType"), forKeyPath:"orderType")
         
         do{
             let date = try OPDateTools.convertToDateFromString(dateStr: jsonDict.value(forKey: "orderDate") as? String)
             anOrder.orderDate = date
-        }catch{
-            
-        }
-        
-        do{
-            let date = try OPDateTools.convertToDateFromString(dateStr: jsonDict.value(forKey: "closedAt") as? String)
-            anOrder.closedAt = date
         }catch{
             
         }
@@ -64,5 +58,14 @@ public class Order: OPManagedObject {
         }
         
         return anOrder
+    }
+    
+    class func viewFetchRequest()->NSFetchRequest<NSFetchRequestResult>{
+        
+         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Order")
+         let sd = NSSortDescriptor(key: "orderId", ascending: false)
+         fetchRequest.sortDescriptors = [sd]
+         fetchRequest.predicate = NSPredicate(format: "isOpen=true")
+         return fetchRequest as! NSFetchRequest<NSFetchRequestResult>
     }
 }

@@ -41,10 +41,12 @@
     <entity name="Order" representedClassName="Order" parentEntity="OPManagedObject" syncable="YES">
         <attribute name="closedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="customerName" optional="YES" attributeType="String"/>
+        <attribute name="isOpen" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="orderBy" optional="YES" attributeType="String"/>
         <attribute name="orderDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="orderId" optional="YES" attributeType="String"/>
         <attribute name="orderNo" optional="YES" attributeType="String"/>
+        <attribute name="orderType" optional="YES" attributeType="String"/>
         <attribute name="tableName" optional="YES" attributeType="String"/>
         <attribute name="tableText" optional="YES" attributeType="String"/>
     </entity>
@@ -61,7 +63,7 @@
         <attribute name="orderId" optional="YES" attributeType="String"/>
         <attribute name="orderItemId" optional="YES" attributeType="String"/>
         <attribute name="placeTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="quantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="seatNo" optional="YES" attributeType="String"/>
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="takenBy" optional="YES" attributeType="String"/>
@@ -72,7 +74,7 @@
         <element name="KitchenUser" positionX="-54" positionY="63" width="128" height="148"/>
         <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="193"/>
         <element name="OPManagedObject" positionX="-9" positionY="144" width="128" height="43"/>
-        <element name="Order" positionX="-18" positionY="126" width="128" height="163"/>
+        <element name="Order" positionX="-18" positionY="126" width="128" height="193"/>
         <element name="OrderItem" positionX="0" positionY="153" width="128" height="283"/>
     </elements>
 </model>

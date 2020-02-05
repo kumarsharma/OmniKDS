@@ -29,7 +29,7 @@ extension OrderItem {
     @NSManaged public var orderId: String?
     @NSManaged public var orderItemId: String?
     @NSManaged public var placeTime: Date?
-    @NSManaged public var quantity: Int32
+    @NSManaged public var quantity: Float
     @NSManaged public var seatNo: String?
     @NSManaged public var startTime: Date?
     @NSManaged public var takenBy: String?

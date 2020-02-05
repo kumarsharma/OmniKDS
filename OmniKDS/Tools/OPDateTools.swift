@@ -14,7 +14,7 @@ class OPDateTools: NSObject {
         
         var date : Date! = nil
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "dd/MM/YYYY, hh-mm-ss"
         
         if dateStr?.count == 0 || dateStr == nil{
             
@@ -23,5 +23,12 @@ class OPDateTools: NSObject {
             date = formatter.date(from: dateStr!)
             return date
         }
+    }
+    
+    class func getTimeStringFrom(date: Date) -> String{
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        return formatter.string(from: date)
     }
 }

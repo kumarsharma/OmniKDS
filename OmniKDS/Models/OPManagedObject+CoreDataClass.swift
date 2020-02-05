@@ -21,7 +21,7 @@ public class OPManagedObject: NSManagedObject {
     //a function to fetch any object using its id (primary-key attribute)
     class func fetchObjectWithId(objId:String) throws -> OPManagedObject? {
         
-        let predicate = NSPredicate(format: "\(self.primaryKeyName())=\(GlobalKitchenID)")
+        let predicate = NSPredicate(format: "\(self.primaryKeyName())=%@",objId)
         return try self.fetchObjectWithPredicate(predicate: predicate)
     }
     
