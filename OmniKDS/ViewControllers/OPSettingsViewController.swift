@@ -20,8 +20,6 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var userTableView:UITableView?
     
     @IBOutlet weak var bgColorButton : UIButton?
-    @IBOutlet weak var docketFontSlider:UISlider?
-    @IBOutlet weak var docketFontCurrentLabel:UILabel?
     @IBOutlet weak var kitchenNameField:UITextField?
     @IBOutlet weak var soundModeSwitch:UISwitch?
     @IBOutlet weak var soundTypeField:UITextField?
@@ -29,6 +27,10 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var turnToRedField:UITextField?
     @IBOutlet weak var turnToYelloField:UITextField?
     @IBOutlet weak var controlsBgView:UIView?
+    @IBOutlet weak var userBgView:UIView?
+    @IBOutlet weak var mainBgView:UIView?
+    
+    @IBOutlet weak var addUserButton : UIButton?
     
     var userFRC : NSFetchedResultsController<NSFetchRequestResult>?
     
@@ -40,12 +42,10 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         kitchenNameField?.text=sharedKitchen.kitchenName
         turnToRedField?.text="\(sharedKitchen.turnToRedAfter)"
         turnToYelloField?.text="\(sharedKitchen.turnToYellowAfter)"
-        docketFontSlider?.value=Float(sharedKitchen.fontSize)
-        docketFontCurrentLabel?.text=String(format:"%0.0f", docketFontSlider!.value)
         soundModeSwitch?.isOn=sharedKitchen.soundMode
         docketSizeControl?.selectedSegmentIndex=Int(sharedKitchen.ticketSize)
         soundTypeField?.text=sharedKitchen.soundType
-        
+                
         if sharedKitchen.soundType!.count>0{
             
             soundTypeField?.rightViewMode = UITextField.ViewMode.always
@@ -62,10 +62,14 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         bgColorButton?.layer.cornerRadius=15
         bgColorButton?.layer.borderWidth=0.5
         bgColorButton?.layer.borderColor=UIColor.darkGray.cgColor
-    
-        self.navigationItem.rightBarButtonItem=UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(cancelBtnAction))
-        self.navigationItem.leftBarButtonItem=UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(cancelBtnAction))
         
+        
+        let privacyBtn=UIBarButtonItem(image: UIImage(named: "privacyIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(privacyAction))
+        let saveBtn=UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(saveChanges))
+        self.navigationItem.rightBarButtonItems = [saveBtn, privacyBtn]
+        
+        self.navigationItem.leftBarButtonItem=UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(dismissView))
+            
         userFRC = NSFetchedResultsController(fetchRequest: KitchenUser.viewFetchRequest(), managedObjectContext: sharedCoredataCoordinator.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         userFRC?.delegate=self
         do{
@@ -73,6 +77,30 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         }catch _{
             
         }
+        
+        if !loggedInUser!.isAdmin {
+            
+            addUserButton?.isEnabled = false
+            kitchenNameField?.isUserInteractionEnabled=false
+            turnToRedField?.isUserInteractionEnabled=false
+            turnToYelloField?.isUserInteractionEnabled=false
+            bgColorButton?.isUserInteractionEnabled=false
+            soundModeSwitch?.isUserInteractionEnabled=false
+            soundTypeField?.isUserInteractionEnabled=false
+            docketSizeControl?.isUserInteractionEnabled=false
+        }
+        
+        controlsBgView?.layer.borderWidth = 2
+        controlsBgView?.layer.borderColor = UIColor.darkGray.cgColor
+        controlsBgView?.layer.cornerRadius = 5
+        
+        userBgView?.layer.borderWidth = 2
+        userBgView?.layer.borderColor = UIColor.darkGray.cgColor
+        userBgView?.layer.cornerRadius = 5
+        
+//        mainBgView?.frame = self.view.bounds
+        mainBgView?.backgroundColor = .clear
+        mainBgView?.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2)
     }
     
     @objc func playBtnAction(){
@@ -89,7 +117,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    @objc func cancelBtnAction(){
+    @objc func dismissView(){
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -117,6 +145,32 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if loggedInUser!.isAdmin {
+           
+            let user = userFRC?.object(at: indexPath) as! KitchenUser
+            let cell = tableView.cellForRow(at: indexPath)
+            let userVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "UserViewController") as? KDUserViewController
+            userVc?.currentUser = user
+            userVc!.modalPresentationStyle = .popover
+           
+            let viewPresentationController = userVc!.popoverPresentationController
+            if let presentationController = viewPresentationController{
+               
+                   presentationController.delegate=self
+                   presentationController.sourceView=cell
+                   presentationController.permittedArrowDirections=UIPopoverArrowDirection.any
+            }
+           
+            userVc!.preferredContentSize = CGSize(width: 900, height: 200)
+            self.present(userVc!, animated: true, completion: nil)
+            self.currentPopoverController=userVc!
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: IB Actions
     @IBAction func bgColorButtonAction(sender:UIButton){
         
@@ -138,12 +192,6 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.currentPopoverController=colorVc
     }
     
-    @IBAction func docketFontSliderAction(sender:UISlider){
-        
-        docketFontCurrentLabel?.text=String(format:"%0.0f", sender.value)
-        
-    }
-    
     @IBAction func soundModeSwitchAction(sender:UISwitch){
         
         
@@ -154,7 +202,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    @IBAction func saveButtonAction(sender:UIButton){
+    @objc func saveChanges(){
         
         let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
         
@@ -165,13 +213,14 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let m=turnToYelloField?.text as NSString?
         sharedKitchen.turnToYellowAfter=m?.intValue ?? 0
         
-        sharedKitchen.fontSize=Int32(Int(docketFontSlider?.value ?? 0))
         sharedKitchen.soundMode=soundModeSwitch!.isOn
         sharedKitchen.ticketSize=Int32(docketSizeControl?.selectedSegmentIndex ?? 0)
         sharedKitchen.bgColor=self.selectedBgColorHex!
         sharedKitchen.soundType=soundTypeField?.text
-        
         sharedCoredataCoordinator.saveContext()
+        
+        //dismiss now
+        dismissView()
     }
     
     func didSelectColorHex(colorHex: String) {
@@ -230,7 +279,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBAction func addUserBtnAction(sender:UIButton){
         
         let userVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "UserViewController") as? KDUserViewController
-//        let navVc = UINavigationController(rootViewController: userVc!)
+        
         userVc!.modalPresentationStyle = .popover
        
         let viewPresentationController = userVc!.popoverPresentationController
@@ -244,6 +293,98 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         userVc!.preferredContentSize = CGSize(width: 900, height: 200)
         self.present(userVc!, animated: true, completion: nil)
         self.currentPopoverController=userVc!
+    }
+    
+    @objc func privacyAction(){
+        
+        let alert = UIAlertController(title: "Enter password", message: nil, preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField()
+        alert.textFields![0].isSecureTextEntry = true
+        alert.textFields![0].textAlignment = .center
+        alert.textFields![0].font = UIFont.boldSystemFont(ofSize: 12)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Submit", style: UIAlertAction.Style.default, handler: { [unowned alert] _ in
+            
+            let pwd = alert.textFields![0]
+            self.performSelector(onMainThread: #selector(self.checkPasswordAndPresentPrivacyAlert), with: pwd.text, waitUntilDone: false)
+            
+        }))
+        self.present(alert, animated: true) { }
+    }
+    
+    @objc func checkPasswordAndPresentPrivacyAlert(password:String){
+        
+        if loggedInUser?.userPIN! == password{
+            
+            let alert = UIAlertController(title: "Admin Action", message: nil, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Clear All Dockets", style: UIAlertAction.Style.destructive, handler: { [unowned alert] _ in
+                
+               
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Reload Sample Dockets", style: UIAlertAction.Style.default, handler: { [unowned alert] _ in
+                
+               
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            self.present(alert, animated: true) {}
+            
+        }else{
+            
+            let alert = UIAlertController(title: "Incorrect Password", message: "The entered password is incorrect. Please try again!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+            self.present(alert, animated: true) {}
+        }
+    }
+    
+    @objc func clearAllDockets(){
+        
+        
+    }
+    
+    // MARK: Loading Sample Orders
+    @objc func loadSampleOrders(){
+        
+        let filePath = Bundle.main.path(forResource: "SampleOrders", ofType: "txt")
+        let url = URL.init(fileURLWithPath: filePath!)
+        
+        do{
+            let ordersFromFile = try String(contentsOf: url)            
+            if ordersFromFile.count>0
+            {
+                var dictionary : Dictionary<String, Any>?
+                let data = Data(ordersFromFile.utf8)
+                    
+                do{
+                    dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
+                    
+                    let dict = NSDictionary(dictionary: dictionary!)
+                    if dict != nil{
+                        
+                        let allOrders = (dict.value(forKey: "SampleOrders") as? NSArray)!
+                        
+                        for orderDict in allOrders{
+                        
+                            let newOrder = Order.createOrderFromJSONDict(jsonDict: orderDict as! NSDictionary, container: sharedCoredataCoordinator.persistentContainer)
+                            if newOrder != nil{
+                                sharedCoredataCoordinator.saveContext()
+                            }
+                        }
+                    }
+                }catch let error as NSError{
+                    
+                    print("error in parsing \(error.userInfo)")
+                }
+            }
+            
+            
+        }catch{
+            
+        }
     }
 }
 

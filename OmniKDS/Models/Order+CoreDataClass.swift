@@ -35,6 +35,7 @@ public class Order: OPManagedObject {
             let orderEntity = NSEntityDescription.entity(forEntityName: "Order", in: container.viewContext)
             anOrder = NSManagedObject(entity: orderEntity!, insertInto: container.viewContext) as? Order
             anOrder.setValue(jsonDict.value(forKey: "orderId"), forKeyPath:"orderId")
+            anOrder.orderDate = Date()
         }
         
         anOrder.setValue(jsonDict.value(forKey: "orderNo"), forKeyPath:"orderNo")
@@ -43,13 +44,15 @@ public class Order: OPManagedObject {
         anOrder.setValue(jsonDict.value(forKey: "tableName"), forKeyPath:"tableName")
         anOrder.setValue(jsonDict.value(forKey: "tableText"), forKeyPath:"tableText")
         anOrder.setValue(jsonDict.value(forKey: "orderType"), forKeyPath:"orderType")
+        anOrder.setValue(jsonDict.value(forKey: "guestCount"), forKeyPath:"guestCount")
         
+        /*//turn it ON when live
         do{
             let date = try OPDateTools.convertToDateFromString(dateStr: jsonDict.value(forKey: "orderDate") as? String)
             anOrder.orderDate = date
         }catch{
             
-        }
+        }*/
         
         let items = jsonDict.value(forKey: "orderItems") as! NSArray
         for item in items {
@@ -63,7 +66,7 @@ public class Order: OPManagedObject {
     class func viewFetchRequest()->NSFetchRequest<NSFetchRequestResult>{
         
          let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Order")
-         let sd = NSSortDescriptor(key: "orderId", ascending: false)
+         let sd = NSSortDescriptor(key: "orderDate", ascending: false)
          fetchRequest.sortDescriptors = [sd]
          fetchRequest.predicate = NSPredicate(format: "isOpen=true")
          return fetchRequest as! NSFetchRequest<NSFetchRequestResult>

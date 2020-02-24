@@ -51,4 +51,41 @@ public class OPManagedObject: NSManagedObject {
             return mObj
         }
     }
+    
+    //a function to fetch objects using a predicate (search criteria)
+    class func fetchWithPredicate(predicate:NSPredicate) throws -> NSArray{
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: self.entity().name!)
+        fetchRequest.predicate=predicate
+        var records : [Any]?
+        
+        do {
+            records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            
+            print("Could not fetch the requested object. Error: \(error.userInfo)")
+        }
+        if records == nil{
+            
+            throw DBError.NoObjectFound
+        }
+        else{
+            return (records as NSArray?)!
+        }
+    }
+    
+    //a function to fetch object's count using a predicate (search criteria)
+    class func fetchCountWithPredicate(predicate:NSPredicate) throws -> Int{
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: self.entity().name!)
+        fetchRequest.predicate=predicate
+        fetchRequest.resultType = .countResultType
+        
+        guard let result = (try sharedCoredataCoordinator.persistentContainer.viewContext.execute(fetchRequest)
+            as? NSAsynchronousFetchResult<NSNumber>)?
+            .finalResult?
+            .first as? Int else {return 0}
+        
+        return result
+    }
 }

@@ -35,9 +35,19 @@ class ViewController: UIViewController {
         
         if (pinField?.text!.count)!>0{
             
-            let isAuthenticated = KitchenUser.authenticateUserWithPIN(pin: (pinField?.text!)!)
-            if isAuthenticated{
+            var loginUser : KitchenUser?
+            
+            do{
+            
+                loginUser = try KitchenUser.authenticateUserWithPIN(pin: (pinField?.text!)!)
+            } catch{
+                
+            }
+            
+            if loginUser != nil {
              
+                pinField?.text = ""
+                loggedInUser = loginUser
                 let kdView : OPKitchenDisplayViewController? = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "OPKItchenDisplayViewController")
                 let nav : UINavigationController = UINavigationController(rootViewController: kdView!)
                 nav.modalPresentationStyle=UIModalPresentationStyle.fullScreen

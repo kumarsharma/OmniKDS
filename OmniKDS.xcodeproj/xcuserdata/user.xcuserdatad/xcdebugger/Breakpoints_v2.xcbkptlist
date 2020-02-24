@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1AC79B29-1A59-4855-AFF6-72CF655B112A"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OmniKDS/Netowrking/OPCommunicator.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "udpSocket(_:didReceive:fromAddress:withFilterContext:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1AC79B29-1A59-4855-AFF6-72CF655B112A - 2f41f839702d70f6"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OmniKDS.OPCommunicator.udpSocket(_: Swift.Optional&lt;__C.GCDAsyncUdpSocket&gt;, didReceive: Swift.Optional&lt;Foundation.Data&gt;, fromAddress: Swift.Optional&lt;Foundation.Data&gt;, withFilterContext: Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "OmniKDS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/OmniPOS/Projects/KitchenDisplay/OmniKDS/OmniKDS/Netowrking/OPCommunicator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "2586">
-               </Location>
-               <Location
-                  uuid = "1AC79B29-1A59-4855-AFF6-72CF655B112A - 2f41f839702d70f6"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OmniKDS.OPCommunicator.udpSocket(_: Swift.Optional&lt;__C.GCDAsyncUdpSocket&gt;, didReceive: Swift.Optional&lt;Foundation.Data&gt;, fromAddress: Swift.Optional&lt;Foundation.Data&gt;, withFilterContext: Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "OmniKDS"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/user/Documents/OmniPOS/Projects/KitchenDisplay/OmniKDS/OmniKDS/Netowrking/OPCommunicator.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "84"
-                  endingLineNumber = "84"
-                  offsetFromSymbolStart = "7071">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "90B49069-6B8C-4E0F-8C38-CF20D9F0C957"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -65,6 +17,49 @@
             startingLineNumber = "25"
             endingLineNumber = "25"
             landmarkName = "createOrderFromJSONDict(jsonDict:container:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A198336C-0865-402D-9485-830A32001004"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OmniKDS/Tools/KDTools.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "docketWidth()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            uuid = "368B3770-1C8C-4F0A-83A2-13A1C97ADC55"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "1"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8BE970EA-6FD6-4CDA-BD51-328666019071"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OmniKDS/ViewControllers/KDSummaryViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "updateSearchResults(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

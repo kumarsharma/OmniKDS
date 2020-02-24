@@ -27,4 +27,5 @@ extension Order {
     @NSManaged public var tableText: String?
     @NSManaged public var isOpen: Bool
     @NSManaged public var orderType: String?
+    @NSManaged public var guestCount: String?
 }

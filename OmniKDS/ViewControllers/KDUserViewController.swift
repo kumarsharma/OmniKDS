@@ -15,18 +15,38 @@ class KDUserViewController: UIViewController {
     @IBOutlet weak var phoneField:UITextField?
     @IBOutlet weak var pinField:UITextField?
     
+    @IBOutlet weak var cancelBtn : UIButton?
+    @IBOutlet weak var saveBtn : UIButton?
+    @IBOutlet weak var deleteBtn : UIButton?
+    
     var currentUser:KitchenUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        fNameField?.becomeFirstResponder()
 
+        self.view!.layer.borderWidth = 2
+        self.view!.layer.borderColor = UIColor.darkGray.cgColor
+        self.view!.layer.cornerRadius = 5
+        self.view.backgroundColor = .tertiaryLabel
+        
         if currentUser != nil{
             
             fNameField?.text=currentUser?.firstName
             lNameField?.text=currentUser?.lastName
             phoneField?.text=currentUser?.phone
             pinField?.text=currentUser?.userPIN
+            
+            deleteBtn?.isEnabled = true
+        }else{
+            
+            deleteBtn?.isEnabled = false
         }
+        
+        modifyButton(btn: cancelBtn!)
+        modifyButton(btn: saveBtn!)
+        modifyButton(btn: deleteBtn!)
     }
     
     @IBAction func saveBtnAction(){
@@ -43,21 +63,39 @@ class KDUserViewController: UIViewController {
             return
         } 
         
-        if currentUser == nil{
+        var checkUser: KitchenUser?
+        
+        
+        do{
+        
+            checkUser = try KitchenUser.fetchObjectWithPredicate(predicate: NSPredicate(format: "userPIN=%@", pinField!.text!)) as? KitchenUser
+        }catch{
             
-            let newUser = KitchenUser.addNewUser(firstName: fNameField!.text!, lastName: lNameField!.text!, isAdmin: false, email: "", phone: phoneField!.text!, userPIN: pinField!.text!)
-            currentUser=newUser
-        }
-        else{
-            
-           currentUser?.firstName = fNameField?.text
-           currentUser?.lastName = lNameField?.text
-           currentUser?.phone = phoneField?.text
-           currentUser?.userPIN = pinField?.text
         }
         
-        sharedCoredataCoordinator.saveContext()
-        self.dismiss(animated: true, completion: nil)
+        
+        if checkUser == nil || (checkUser != nil && currentUser?.userPIN == pinField?.text){
+            
+            if currentUser == nil{
+                
+                let newUser = KitchenUser.addNewUser(firstName: fNameField!.text!, lastName: lNameField!.text!, isAdmin: false, email: "", phone: phoneField!.text!, userPIN: pinField!.text!)
+                currentUser=newUser
+            }
+            else{
+                
+               currentUser?.firstName = fNameField?.text
+               currentUser?.lastName = lNameField?.text
+               currentUser?.phone = phoneField?.text
+               currentUser?.userPIN = pinField?.text
+            }
+            
+            sharedCoredataCoordinator.saveContext()
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            
+            self.showError(error: "User PIN already assigned!")
+            return
+        }
     }
     
     @IBAction func cancelBtnAction(){
@@ -65,23 +103,27 @@ class KDUserViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func deleteBtnAction(){
+        
+        sharedCoredataCoordinator.persistentContainer.viewContext.delete(currentUser!)
+        sharedCoredataCoordinator.saveContext()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func showError(error:String) {
         
-        let alert = UIAlertController(title: "Missing Field", message: error, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Invalid Entry", message: error, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true) { 
             
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func modifyButton(btn:UIButton){
+        
+        btn.layer.cornerRadius = 2
+        btn.layer.borderWidth=0.5
+        btn.layer.borderColor = UIColor.darkText.cgColor
     }
-    */
 
 }

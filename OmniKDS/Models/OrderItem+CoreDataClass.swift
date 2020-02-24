@@ -42,8 +42,23 @@ public class OrderItem: OPManagedObject {
         anItem.itemName2 = jsonDict.value(forKey: "itemName2") as? String
         anItem.note = jsonDict.value(forKey: "note") as? String
         anItem.orderId = jsonDict.value(forKey: "orderId") as? String
-        anItem.courseId = jsonDict.value(forKey: "courseId") as? String
-        anItem.courseName = jsonDict.value(forKey: "courseName") as? String
+        
+        
+        var course_Id = jsonDict.value(forKey: "courseId") as? String
+        if course_Id == nil{
+            
+            course_Id = "0"
+        }
+        anItem.courseId = course_Id
+        
+        
+        var course_Name = jsonDict.value(forKey: "courseName") as? String
+        if course_Name == nil || course_Name!.count <= 0 {
+            
+            course_Name = "NO COURSE"
+        }
+        anItem.courseName = course_Name
+        
         anItem.seatNo = jsonDict.value(forKey: "seatNo") as? String
         anItem.takenBy = jsonDict.value(forKey: "takenBy") as? String
         
@@ -91,5 +106,15 @@ public class OrderItem: OPManagedObject {
         }
         
         return itemOptions!
+    }
+    
+    class func viewFetchRequest(order_Id: String)->NSFetchRequest<NSFetchRequestResult>{
+        
+         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "OrderItem")
+         let sd = NSSortDescriptor(key: "placeTime", ascending: false)
+         let sd2 = NSSortDescriptor(key: "courseName", ascending: true)
+         fetchRequest.sortDescriptors = [sd2, sd]
+         fetchRequest.predicate = NSPredicate(format: "orderId=%@", order_Id)
+         return fetchRequest as! NSFetchRequest<NSFetchRequestResult>
     }
 }

@@ -10,9 +10,11 @@
 import Foundation
 import CoreData
 
+var sharedKitchen : OmniKitchen?
+
 @objc(OmniKitchen)
 public class OmniKitchen: OPManagedObject {
-
+    
     override class func primaryKeyName() -> String {
         return "kitchenId"
     }
@@ -23,38 +25,41 @@ public class OmniKitchen: OPManagedObject {
     */
     class func getSharedKItchen(container:NSPersistentContainer) -> OmniKitchen {
         
-        let predicate = NSPredicate(format: "kitchenId=\(GlobalKitchenID)")
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "OmniKitchen")
-        fetchRequest.predicate=predicate
-        var kitchen : OmniKitchen! = nil
-        
-        fetchRequest.predicate=predicate
-        
-        do {
-            let records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest)
+        if sharedKitchen == nil{
             
-            if records.count>0
-            {
-                kitchen = records.first as? OmniKitchen
+            let predicate = NSPredicate(format: "kitchenId=\(GlobalKitchenID)")
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "OmniKitchen")
+            fetchRequest.predicate=predicate
+//            var kitchen : OmniKitchen! = nil
+            
+            fetchRequest.predicate=predicate
+            
+            do {
+                let records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest)
+                
+                if records.count>0
+                {
+                    sharedKitchen = records.first as? OmniKitchen
+                }
+            } catch let error as NSError {
+                
+                print("Could not fetch the shared kitchen. Error: \(error.userInfo)")
             }
-        } catch let error as NSError {
-            
-            print("Could not fetch the shared kitchen. Error: \(error.userInfo)")
-        }
- 
-        if kitchen==nil
-        {
-            let kitchenEntity = NSEntityDescription.entity(forEntityName: "OmniKitchen", in: container.viewContext)
-            kitchen = NSManagedObject(entity: kitchenEntity!, insertInto: container.viewContext) as? OmniKitchen
-            kitchen.setValue(Int32(GlobalKitchenID), forKey: "kitchenId")
-            //all defaults are set on xcdatamodel
-            sharedCoredataCoordinator.saveContext()
-        }
-        else{
-            
-            print("Global Kitchen is Active!!")
+     
+            if sharedKitchen==nil
+            {
+                let kitchenEntity = NSEntityDescription.entity(forEntityName: "OmniKitchen", in: container.viewContext)
+                sharedKitchen = NSManagedObject(entity: kitchenEntity!, insertInto: container.viewContext) as? OmniKitchen
+                sharedKitchen!.setValue(Int32(GlobalKitchenID), forKey: "kitchenId")
+                //all defaults are set on xcdatamodel
+                sharedCoredataCoordinator.saveContext()
+            }
+            else{
+                
+                print("Global Kitchen is Active!!")
+            }
         }
         
-        return kitchen
+        return sharedKitchen!
     } 
 }

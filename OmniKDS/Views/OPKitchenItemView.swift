@@ -8,41 +8,52 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
-class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource {
+class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    var kitchenItems : NSArray?
     var tableView : UITableView?
     var headerLabel : UILabel?
     var footerButton : UIButton?
     var order : Order?
     var soundEffect : AVAudioPlayer?
+    var bgColor : UIColor?
+    var timer : Timer?
+    
+    lazy var itemFRC :  NSFetchedResultsController<NSFetchRequestResult> = {
+        
+        let orderId = self.order != nil ? self.order!.orderId! : "0" 
+        
+        let frc = NSFetchedResultsController(fetchRequest: OrderItem.viewFetchRequest(order_Id: orderId), managedObjectContext: sharedCoredataCoordinator.persistentContainer.viewContext, sectionNameKeyPath: "courseName", cacheName: nil)
+        frc.delegate=self
+        do{
+            try frc.performFetch()
+        }catch _{
+            
+        }
+        return frc
+    }()
     
     override init(frame: CGRect) {
         
         super.init(frame:.zero)
-//        self.contentView.layer.cornerRadius=10
-//        self.contentView.layer.borderWidth=2
-//        self.contentView.layer.borderColor = UIColor.magenta.cgColor
+        bgColor = UIColor(hexString: "E0E0E0")
         
         self.layer.cornerRadius=10
         self.layer.borderWidth=2
         self.layer.borderColor = UIColor.magenta.cgColor
-   
     }
     
     func setupSubViews(){
         
         if headerLabel==nil{
-            kitchenItems = []
+            
             headerLabel=UILabel(frame: CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: 70))
-            headerLabel!.text="Table 1         10min"
-            headerLabel!.textColor=UIColor.white
+            headerLabel!.textColor=UIColor.black
             headerLabel!.backgroundColor=UIColor.red
             headerLabel?.numberOfLines=10
             headerLabel?.textAlignment = .center
-            headerLabel?.font = UIFont.boldSystemFont(ofSize: 19)
-            
+            headerLabel?.font = KDTools.docketHeaderFont()
             headerLabel?.layer.cornerRadius=10
             headerLabel?.clipsToBounds=true
             headerLabel?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -60,31 +71,61 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             footerButton?.frame=CGRect(x: 0, y: 0, width: 44, height: 44)
             footerButton?.addTarget(self, action: #selector(orderDoneButtonAction), for: UIControl.Event.touchUpInside)
             footerButton?.backgroundColor = .green
-            footerButton?.isHidden=true
+            footerButton?.isHidden = !self.hasDoneAllItems()
             tableView?.tableFooterView=footerButton
             
             self.addSubview(headerLabel!)
             self.addSubview(tableView!)
         }
     }
-    
+
     @objc func orderDoneButtonAction(){
         
         order?.isOpen = false
+        order?.closedAt = Date()
         sharedCoredataCoordinator.saveContext()
-        self.playSound(soundName: "successful")
+        self.playSound(soundName: "done")
     }
     
-    func reloadCell(){
+     func reloadCell(){
         
-        kitchenItems=OrderItem.getItemsForOrderId(orderId: order!.orderId!)
+//        kitchenItems=OrderItem.getItemsForOrderId(orderId: order!.orderId!)
+        self.itemFRC.fetchRequest.predicate = NSPredicate(format: "orderId=%@", self.order!.orderId!)
+        do{
+            try self.itemFRC.performFetch()
+        }catch{
+            
+        }
+        
+        bgColor = UIColor(hexString: "E0E0E0")
         tableView?.reloadData()
         self.updateHeaderWithTime()
+        
+        if order!.isOpen{
+            
+            self.footerButton?.isHidden = !self.hasDoneAllItems()
+        }else{
+            
+            self.footerButton?.isHidden = true
+        }
+                
+        if timer != nil && timer!.isValid{
+            
+            timer?.invalidate()
+        }
+        
+        if order?.isOpen == true{
+            
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateHeaderWithTime), userInfo: nil, repeats: true)
+            timer?.fire()
+        }
     }
     
-    func updateHeaderWithTime(){
-        
+    @objc func updateHeaderWithTime(){
+
         var headerInfo = order!.orderType! + ": " + order!.tableName!
+        
+        headerInfo += " (" + order!.guestCount! + ")"
         headerInfo += "\nOrder#: " + order!.orderNo!
         if (order?.customerName!.count)! >= 1{
                 
@@ -93,30 +134,52 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
         if order?.orderDate != nil{
 
+            let endDate = order!.isOpen ? Date() : order?.closedAt
             
-            let formatter = DateComponentsFormatter()
-            formatter.allowedUnits = [.hour, .minute, .second]
+            let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: order!.orderDate!, to: endDate!)
+            let formattedString = String(format: "%02ld:%02ld:%02ld", difference.hour!, difference.minute!, difference.second!)
+
+            headerInfo += "\n" + OPDateTools.getTimeStringFrom(date: order!.orderDate!) + ", \t" + formattedString
             
-            let now = Date.init()
-            let formStr = formatter.string(from: order!.orderDate!, to: now)!
+            if difference.minute! >= Int(sharedKitchen!.turnToRedAfter){
+                
+                bgColor = .red
+            }
             
-            headerInfo += "\n" + OPDateTools.getTimeStringFrom(date: order!.orderDate!) + "\t" + formStr
+            if difference.minute! >= Int(sharedKitchen!.turnToYellowAfter){
+                
+                bgColor = .yellow
+            }
         }
+        
+        
+        self.layer.borderColor = bgColor?.cgColor
+        headerLabel!.backgroundColor = bgColor
         headerLabel!.text=headerInfo
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 1
+        return self.itemFRC.sections!.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.kitchenItems!.count
+        guard let sectionInfo = self.itemFRC.sections?[section] else {
+            return 0
+        }
+        return sectionInfo.numberOfObjects
+    }
+    
+     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let sectionInfo = self.itemFRC.sections?[section] else {
+            return nil
+        }
+        return sectionInfo.name
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let item = self.kitchenItems?.object(at: indexPath.row) as? OrderItem
+        let item = self.itemFRC.object(at: indexPath) as? OrderItem
         let optionCount = item?.getItemOptions().count
         var h = 30+(optionCount!*20)
         if (item?.note!.count)! > 0{
@@ -140,9 +203,13 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
             cell.textLabel?.numberOfLines=10
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
+            cell.layer.cornerRadius=5
+            cell.layer.borderWidth=1
+            cell.layer.borderColor = UIColor.brown.cgColor
             
+            cell.textLabel?.font = KDTools.docketTextFont()
         }
-        let item = self.kitchenItems?.object(at: indexPath.row) as? OrderItem
+        let item = self.itemFRC.object(at: indexPath) as? OrderItem
         var title = String(format:"%0.0f X ", item!.quantity)+item!.itemName!
         if (item?.getItemOptions().count)!>=1{
             
@@ -179,6 +246,14 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if order?.isOpen == true{
+            
+            self.performDoneOnItemAt(indexPath: indexPath)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -198,30 +273,11 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let item = self.kitchenItems?.object(at: indexPath.row) as? OrderItem
-        
+        let item = self.itemFRC.object(at: indexPath) as? OrderItem
         let title = item!.isFinished ? "Redo" : "Done"
         let action = UIContextualAction(style: UIContextualAction.Style.normal, title: title) { (action, view, completionHandler) in
             
-            if item!.isFinished{
-                
-                item?.isFinished=false
-                self.playSound(soundName: "redo")
-            }else{
-                item?.isFinished=true
-                self.playSound(soundName: "done")
-            }
-            sharedCoredataCoordinator.saveContext()
-            
-            let remainingItems = self.kitchenItems?.filtered(using: NSPredicate(format: "isFinished=false"))
-            if remainingItems!.count <= 0{
-                
-                self.footerButton?.isHidden = false
-            }else{
-                self.footerButton?.isHidden=true
-            }
-            
-            tableView.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            self.performDoneOnItemAt(indexPath: indexPath)
             completionHandler(true)
         }
         
@@ -255,5 +311,40 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         }
     }
     
+    //MARK: Actions on individual Items
+    
+    func performDoneOnItemAt(indexPath: IndexPath){
+        
+        let item = self.itemFRC.object(at: indexPath) as? OrderItem
+        if item!.isFinished{
+            
+            item?.isFinished=false
+            self.playSound(soundName: "redo")
+        }else{
+            item?.isFinished=true
+            self.playSound(soundName: "successful")
+        }
+        sharedCoredataCoordinator.saveContext()
+        self.footerButton?.isHidden = !self.hasDoneAllItems()
+        self.tableView!.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+    }
+    
+    func hasDoneAllItems()->Bool{
+        
+        var kitchenItems : NSArray?
+        kitchenItems = self.itemFRC.fetchedObjects as NSArray?
+        let remainingItems = kitchenItems?.filtered(using: NSPredicate(format: "isFinished=false"))
+        
+        if remainingItems != nil{
+            if remainingItems!.count <= 0{
+                
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+    }
     
 }

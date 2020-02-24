@@ -64,7 +64,7 @@ public class KitchenUser: OPManagedObject {
         return newUser!
     }
     
-    class func authenticateUserWithPIN(pin:String) -> Bool{
+    class func authenticateUserWithPIN(pin:String) throws -> KitchenUser{
         
         let predicate = NSPredicate(format: "userPIN=\(pin)")
         var user : KitchenUser? = nil
@@ -78,12 +78,10 @@ public class KitchenUser: OPManagedObject {
         
         if user==nil{
             
-            return false
+            throw DBError.NoObjectFound
         }
-        else{
-            
-            return true
-        }
+        
+        return user!
     }
     
       class func viewFetchRequest()->NSFetchRequest<NSFetchRequestResult>{

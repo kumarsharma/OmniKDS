@@ -17,17 +17,7 @@ public class KitchenTransaction: OPManagedObject {
         
         return "trId"
     }
-    /*
-     @NSManaged public var date: Date?
-     @NSManaged public var endTime: Date?
-     @NSManaged public var itemId: String?
-     @NSManaged public var orderId: String?
-     @NSManaged public var quantity: Int32
-     @NSManaged public var startTime: Date?
-     @NSManaged public var trId: String?
-     @NSManaged public var userId: String?
-     
-     */
+
     class func addTransactionItem(itemId:String, orderId:String, startTime:Date, endTime:Date, qty:Int32, userId:String) -> KitchenTransaction{
         
         var aTransaction : KitchenTransaction?

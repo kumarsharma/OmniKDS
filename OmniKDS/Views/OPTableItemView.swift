@@ -12,6 +12,7 @@ class OPTableItemView: UICollectionViewCell {
     
     
     var headerLabel, footerLabel : UILabel? 
+    var order: Order?
     
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
@@ -29,17 +30,21 @@ class OPTableItemView: UICollectionViewCell {
             
             headerLabel=UILabel(frame: CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height/2))
             headerLabel!.text="Table 1"
-            headerLabel!.textColor=UIColor.white
-            headerLabel!.backgroundColor=UIColor.red
+            headerLabel!.textColor = .white
+            headerLabel!.backgroundColor = .red
+            headerLabel?.textAlignment = .center
             
             footerLabel=UILabel()
             footerLabel?.frame=CGRect.init(x: 0, y: headerLabel!.frame.size.height, width: self.frame.size.width, height: self.frame.size.height/2)
             footerLabel!.text="6:25 PM"
-            footerLabel!.textColor=UIColor.darkGray
-            footerLabel!.backgroundColor=UIColor.darkText
+            footerLabel!.textColor = .white
+            footerLabel!.backgroundColor = .darkText
 
             self.addSubview(headerLabel!)
             self.addSubview(footerLabel!)
         }
+        
+        headerLabel!.text = order!.tableName!
+        footerLabel!.text = OPDateTools.getTimeStringFrom(date: order!.orderDate!)
     }
 }
