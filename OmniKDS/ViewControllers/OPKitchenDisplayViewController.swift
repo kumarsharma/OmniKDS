@@ -25,6 +25,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     var isSearchActive : Bool?
     var lowerScrollIndicator : UIView? 
     var soundEffect : AVAudioPlayer?
+    var segmentedControl : UISegmentedControl?
 
     lazy var orderFetchedController :  NSFetchedResultsController<NSFetchRequestResult> = {
         
@@ -46,6 +47,11 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         doInitialsForCollectionView()
         updateCountLabels()
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrderContent), name: Notification.Name(kDidChangeOrderContentNotification), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(someItemStateDidChange), name: Notification.Name(kSomeItemStateDidChangeNotification), object: nil)
+        
 //        print(doSumOfDigits(num: 439230))
     }
     
@@ -54,6 +60,18 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         self.title = sharedKitchen!.kitchenName! + " (" + loggedInUser!.firstName! + ")"
         docketCollectionView!.backgroundColor = UIColor(hexString: sharedKitchen!.bgColor!)
         self.view!.backgroundColor = UIColor(hexString: sharedKitchen!.bgColor!)
+    }
+    
+    @objc func didChangeOrderContent(){
+        
+        segmentedControl!.selectedSegmentIndex = 0
+        docketCollectionView?.reloadData()
+        orderCollectionView?.reloadData()
+    }
+    
+    @objc func someItemStateDidChange(){
+        
+        updateCountLabels()
     }
     
     func doInitialsForNavigationBar() {
@@ -67,7 +85,9 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let logoutBarBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "logoutIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))//UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))
         
-        self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn, logoutBarBtn]
+        let analyticsBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "analyticsIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(analyticsAction))
+        
+        self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn, logoutBarBtn, analyticsBtn]
         
         docketSearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
         docketSearchBar!.placeholder = "Enter order# to search"
@@ -76,15 +96,15 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         docketSearchBar?.showsSearchResultsButton = true
         docketSearchBar?.showsCancelButton=true
         
-        let segmentedBar : UISegmentedControl = UISegmentedControl(items: ["Open", "Closed"])
-        segmentedBar.addTarget(self, action: #selector(segmentedControlAction), for: UIControl.Event.valueChanged)
-        segmentedBar.backgroundColor = .brown
+        segmentedControl = UISegmentedControl(items: ["Open", "Closed"])
+        segmentedControl!.addTarget(self, action: #selector(segmentedControlAction), for: UIControl.Event.valueChanged)
+        segmentedControl!.backgroundColor = .brown
         
         let font = UIFont.boldSystemFont(ofSize: 16)
-        segmentedBar.setTitleTextAttributes([NSAttributedString.Key.font : font], for: UIControl.State.normal)
+        segmentedControl!.setTitleTextAttributes([NSAttributedString.Key.font : font], for: UIControl.State.normal)
         
-        segmentedBar.selectedSegmentIndex=0
-        let segBarButtonItem = UIBarButtonItem.init(customView: segmentedBar)
+        segmentedControl!.selectedSegmentIndex=0
+        let segBarButtonItem = UIBarButtonItem.init(customView: segmentedControl!)
         let txtBarButtonItem = UIBarButtonItem.init(customView: docketSearchBar!)
         
         self.navigationItem.setRightBarButtonItems([segBarButtonItem, txtBarButtonItem], animated: true)
@@ -97,20 +117,23 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         let docketFrame : CGRect = (docketCollectionView?.frame)!
         
         scrollBgView?.frame=CGRect(x: 0, y: (docketFrame.size.height+docketFrame.origin.y)+5, width: self.view.bounds.size.width, height: 106)
-        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "cell")
+        
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "cell0")
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "cell1")
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "cell2")
         
         orderCollectionView!.frame = CGRect(x: 2, y: 25, width: (scrollBgView?.bounds.size.width)!, height: (orderCollectionView?.frame.size.height)!)
         
         nextButton?.frame = CGRect(x: (scrollBgView?.frame.size.width)!-(nextButton?.frame.size.width)!, y: 0, width: (nextButton?.frame.size.width)!, height: 25)
-        orderCollectionView?.register(OPTableItemView.self, forCellWithReuseIdentifier: "cell2")
+        orderCollectionView?.register(OPTableItemView.self, forCellWithReuseIdentifier: "cell_2")
         docketCollectionView?.delegate=self
         docketCollectionView?.dataSource=self
         docketCollectionView?.reloadData()
         
         var dockCount : Int?
-        if sharedKitchen?.ticketSize == 0 {
+        if sharedKitchen?.docketSize == 0 {
             dockCount = 5
-        }else if sharedKitchen?.ticketSize == 1{
+        }else if sharedKitchen?.docketSize == 1{
             dockCount = 4
         }else{
             dockCount = 3
@@ -159,6 +182,11 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         self.dismiss(animated: true, completion: nil)
     }
     
+    @objc func analyticsAction(){
+        
+        
+    }
+    
     @objc func segmentedControlAction(sender:UISegmentedControl){
         
         if sender.selectedSegmentIndex == 0{
@@ -195,11 +223,20 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     //3
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        var cellId = "cell0"
+        if sharedKitchen?.docketSize == 1{
+            
+            cellId = "cell1"
+        }else if sharedKitchen?.docketSize == 2{
+            
+            cellId = "cell2"
+        }
+        
         var colCell : UICollectionViewCell?
         let anOrder = self.orderFetchedController.object(at: indexPath) as? Order
         if collectionView==docketCollectionView{
             let cell = collectionView
-        .dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? OPKitchenItemView
+        .dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as? OPKitchenItemView
             cell?.order = anOrder
             cell?.setupSubViews()
             cell?.reloadCell()
@@ -208,7 +245,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         else{
             
             let cell = collectionView
-            .dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as? OPTableItemView
+            .dequeueReusableCell(withReuseIdentifier: "cell_2", for: indexPath) as? OPTableItemView
             cell?.order = anOrder
             cell?.setupSubViews()
             colCell = cell
@@ -222,7 +259,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: 600) : CGSize(width: 80, height: 80)
+        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: 600) : CGSize(width: 80, height: 55)
         return size
     }
     
@@ -235,7 +272,9 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 5.0
+        
+        let sp = (collectionView==docketCollectionView) ? 0.0 : 5.0
+        return CGFloat(Float(sp))
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -249,16 +288,16 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        docketCollectionView?.reloadData()
+        docketCollectionView?.reloadData()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         if type == NSFetchedResultsChangeType.insert{
         
-            if sharedKitchen!.soundMode{
+            if sharedKitchen!.newDocketNotification{
                 
-                self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.soundType!, waitUntilDone: true)
+                self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.newDocketSoundName!, waitUntilDone: true)
             }
             docketCollectionView?.insertItems(at: [newIndexPath!])
             orderCollectionView?.insertItems(at: [newIndexPath!])

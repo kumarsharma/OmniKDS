@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var pinView : UIView?
     @IBOutlet weak var pinField : UITextField?
     @IBOutlet weak var backgroundView: UIImageView?
+    @IBOutlet weak var loginBtn : UIButton?
+    @IBOutlet weak var pinBgView : UIView?
     
 
     override func viewDidLoad() {
@@ -23,7 +25,19 @@ class ViewController: UIViewController {
         pinView?.layer.cornerRadius=15
         pinView?.layer.borderColor=UIColor.darkGray.cgColor
         
-        pinView?.center=self.view.center
+        loginBtn?.layer.cornerRadius=15
+        loginBtn?.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
+        pinBgView?.center=self.view.center
+    }
+    
+    @IBAction func infoBtnAction(sender:UIButton){
+        
+        let alert = UIAlertController(title: "Thank You for downloading OmniKDS", message: "We are incredibly excited to have you here. You can use \"9999\" as an admin PIN which you can change it later from the settings!", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true) { 
+            
+        }
     }
     
     @IBAction func loginButtonAction(_sender:UIButton) {

@@ -21,11 +21,12 @@ extension OmniKitchen {
     @NSManaged public var fontSize: Int32
     @NSManaged public var kitchenId: Int32
     @NSManaged public var kitchenName: String?
-    @NSManaged public var soundMode: Bool
-    @NSManaged public var soundType: String?
-    @NSManaged public var ticketSize: Int32
+    @NSManaged public var newDocketNotification: Bool
+    @NSManaged public var newDocketSoundName: String?
+    @NSManaged public var docketSize: Int32
     @NSManaged public var turnToRedAfter: Int32
     @NSManaged public var turnToYellowAfter: Int32
     @NSManaged public var viewMode: Int32
-
+    @NSManaged public var closeDocketNotification: Bool
+    @NSManaged public var closeDocketSoundName: String?
 }

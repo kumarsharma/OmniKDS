@@ -14,6 +14,8 @@ let kReachableViaWiFi = 1
 let kReachableViaWWAN = 2
 let kReachable = 3
 let kReachabilityChangedNotification = "kNetworkReachabilityChangedNotification"
+let kDidChangeOrderContentNotification = "DidChangeOrderContent"
+let kSomeItemStateDidChangeNotification = "SomeItemStateDidChangeNotification"
 
 struct NIK { //network interchange keys
     

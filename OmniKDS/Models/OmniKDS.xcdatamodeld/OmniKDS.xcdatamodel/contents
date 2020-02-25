@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="ItemOption" representedClassName="ItemOption" parentEntity="OPManagedObject" syncable="YES">
         <attribute name="itemName" optional="YES" attributeType="String"/>
         <attribute name="itemName2" optional="YES" attributeType="String"/>
@@ -27,12 +27,14 @@
     </entity>
     <entity name="OmniKitchen" representedClassName="OmniKitchen" parentEntity="OPManagedObject" syncable="YES">
         <attribute name="bgColor" optional="YES" attributeType="String" defaultValueString="#C0C0C0"/>
+        <attribute name="closeDocketNotification" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="closeDocketSoundName" optional="YES" attributeType="String" defaultValueString="done"/>
+        <attribute name="docketSize" optional="YES" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="fontSize" optional="YES" attributeType="Integer 32" defaultValueString="12" usesScalarValueType="YES"/>
         <attribute name="kitchenId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="kitchenName" optional="YES" attributeType="String" defaultValueString="Kitchen Display"/>
-        <attribute name="soundMode" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="soundType" optional="YES" attributeType="String" defaultValueString="sound1"/>
-        <attribute name="ticketSize" optional="YES" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
+        <attribute name="newDocketNotification" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="newDocketSoundName" optional="YES" attributeType="String" defaultValueString="sound1"/>
         <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
         <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
         <attribute name="viewMode" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -73,7 +75,7 @@
         <element name="ItemOption" positionX="18" positionY="180" width="128" height="103"/>
         <element name="KitchenTransaction" positionX="-36" positionY="90" width="128" height="163"/>
         <element name="KitchenUser" positionX="-54" positionY="63" width="128" height="148"/>
-        <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="223"/>
         <element name="OPManagedObject" positionX="-9" positionY="144" width="128" height="43"/>
         <element name="Order" positionX="-18" positionY="126" width="128" height="208"/>
         <element name="OrderItem" positionX="0" positionY="153" width="128" height="283"/>

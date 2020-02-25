@@ -84,7 +84,11 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         order?.isOpen = false
         order?.closedAt = Date()
         sharedCoredataCoordinator.saveContext()
-        self.playSound(soundName: "done")
+        
+        if sharedKitchen!.closeDocketNotification{
+        
+            self.playSound(soundName: sharedKitchen!.closeDocketSoundName!)
+        }
     }
     
      func reloadCell(){
@@ -292,6 +296,14 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return .none
     }
     
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        view.tintColor = .red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = .orange
+        header.textLabel?.font = .boldSystemFont(ofSize: 21)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
@@ -327,6 +339,8 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         sharedCoredataCoordinator.saveContext()
         self.footerButton?.isHidden = !self.hasDoneAllItems()
         self.tableView!.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(kSomeItemStateDidChangeNotification), object: nil)
     }
     
     func hasDoneAllItems()->Bool{

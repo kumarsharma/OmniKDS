@@ -17,18 +17,26 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     var selectedBgColorHex : String?
     var currentPopoverController : UIViewController?
     var soundEffect : AVAudioPlayer?
-    @IBOutlet weak var userTableView:UITableView?
+    var activeTextField : UITextField?
     
+    @IBOutlet weak var userTableView:UITableView?
     @IBOutlet weak var bgColorButton : UIButton?
     @IBOutlet weak var kitchenNameField:UITextField?
-    @IBOutlet weak var soundModeSwitch:UISwitch?
-    @IBOutlet weak var soundTypeField:UITextField?
+    @IBOutlet weak var newDocketNotiSwitch:UISwitch?
+    @IBOutlet weak var closeDocketNotiSwitch:UISwitch?
+    @IBOutlet weak var newDocketSoundField:UITextField?
+    @IBOutlet weak var closeDocketSoundField:UITextField?
     @IBOutlet weak var docketSizeControl:UISegmentedControl?
     @IBOutlet weak var turnToRedField:UITextField?
     @IBOutlet weak var turnToYelloField:UITextField?
     @IBOutlet weak var controlsBgView:UIView?
     @IBOutlet weak var userBgView:UIView?
     @IBOutlet weak var mainBgView:UIView?
+    @IBOutlet weak var newDocketBgView:UIView?
+    @IBOutlet weak var itemDoneBgView:UIView?
+    @IBOutlet weak var itemUnDoneBgView:UIView?
+    @IBOutlet weak var docketDoneBgView:UIView?
+    
     
     @IBOutlet weak var addUserButton : UIButton?
     
@@ -42,19 +50,33 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         kitchenNameField?.text=sharedKitchen.kitchenName
         turnToRedField?.text="\(sharedKitchen.turnToRedAfter)"
         turnToYelloField?.text="\(sharedKitchen.turnToYellowAfter)"
-        soundModeSwitch?.isOn=sharedKitchen.soundMode
-        docketSizeControl?.selectedSegmentIndex=Int(sharedKitchen.ticketSize)
-        soundTypeField?.text=sharedKitchen.soundType
+        docketSizeControl?.selectedSegmentIndex=Int(sharedKitchen.docketSize)
+        newDocketNotiSwitch?.isOn=sharedKitchen.newDocketNotification
+        newDocketSoundField?.text=sharedKitchen.newDocketSoundName
+        
+        closeDocketNotiSwitch?.isOn=sharedKitchen.closeDocketNotification
+        closeDocketSoundField?.text=sharedKitchen.closeDocketSoundName
                 
-        if sharedKitchen.soundType!.count>0{
+        if sharedKitchen.newDocketSoundName!.count>0{
             
-            soundTypeField?.rightViewMode = UITextField.ViewMode.always
+            newDocketSoundField?.rightViewMode = UITextField.ViewMode.always
             let btn = UIButton(type: UIButton.ButtonType.custom)
-            btn.frame = CGRect(x: 0, y: 0, width: 200, height: (soundTypeField?.frame.size.height)!)
+            btn.frame = CGRect(x: 0, y: 0, width: 200, height: (newDocketSoundField?.frame.size.height)!)
             btn.setTitleColor(.blue, for: UIControl.State.normal)
             btn.setTitle("▶️", for: UIControl.State.normal)
-            btn.addTarget(self, action: #selector(playBtnAction), for: UIControl.Event.touchUpInside)
-            soundTypeField?.rightView=btn
+            btn.addTarget(self, action: #selector(playNewDocketSoundName), for: UIControl.Event.touchUpInside)
+            newDocketSoundField?.rightView=btn
+        }
+        
+        if sharedKitchen.closeDocketSoundName!.count>0{
+            
+            closeDocketSoundField?.rightViewMode = UITextField.ViewMode.always
+            let btn = UIButton(type: UIButton.ButtonType.custom)
+            btn.frame = CGRect(x: 0, y: 0, width: 200, height: (closeDocketSoundField?.frame.size.height)!)
+            btn.setTitleColor(.blue, for: UIControl.State.normal)
+            btn.setTitle("▶️", for: UIControl.State.normal)
+            btn.addTarget(self, action: #selector(playCloseDocketSoundName), for: UIControl.Event.touchUpInside)
+            closeDocketSoundField?.rightView=btn
         }
         
         self.selectedBgColorHex=sharedKitchen.bgColor
@@ -62,12 +84,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         bgColorButton?.layer.cornerRadius=15
         bgColorButton?.layer.borderWidth=0.5
         bgColorButton?.layer.borderColor=UIColor.darkGray.cgColor
-        
-        
-        let privacyBtn=UIBarButtonItem(image: UIImage(named: "privacyIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(privacyAction))
-        let saveBtn=UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(saveChanges))
-        self.navigationItem.rightBarButtonItems = [saveBtn, privacyBtn]
-        
+
         self.navigationItem.leftBarButtonItem=UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(dismissView))
             
         userFRC = NSFetchedResultsController(fetchRequest: KitchenUser.viewFetchRequest(), managedObjectContext: sharedCoredataCoordinator.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -85,9 +102,21 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
             turnToRedField?.isUserInteractionEnabled=false
             turnToYelloField?.isUserInteractionEnabled=false
             bgColorButton?.isUserInteractionEnabled=false
-            soundModeSwitch?.isUserInteractionEnabled=false
-            soundTypeField?.isUserInteractionEnabled=false
+            newDocketNotiSwitch?.isUserInteractionEnabled=false
+            newDocketSoundField?.isUserInteractionEnabled=false
             docketSizeControl?.isUserInteractionEnabled=false
+            
+            closeDocketNotiSwitch?.isUserInteractionEnabled=false
+            closeDocketSoundField?.isUserInteractionEnabled=false
+
+            let saveBtn=UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(saveChanges))
+            self.navigationItem.rightBarButtonItems = [saveBtn]
+                   
+        }else{
+            
+            let privacyBtn=UIBarButtonItem(image: UIImage(named: "privacyIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(privacyAction))
+            let saveBtn=UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(saveChanges))
+            self.navigationItem.rightBarButtonItems = [saveBtn, privacyBtn]       
         }
         
         controlsBgView?.layer.borderWidth = 2
@@ -101,12 +130,33 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
 //        mainBgView?.frame = self.view.bounds
         mainBgView?.backgroundColor = .clear
         mainBgView?.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2)
+        
+        newDocketBgView?.layer.borderWidth = 1
+        newDocketBgView?.layer.borderColor = UIColor.darkGray.cgColor
+        newDocketBgView?.layer.cornerRadius = 5
+        
+        docketDoneBgView?.layer.borderWidth = 1
+        docketDoneBgView?.layer.borderColor = UIColor.darkGray.cgColor
+        docketDoneBgView?.layer.cornerRadius = 5
     }
     
-    @objc func playBtnAction(){
+    @objc func playNewDocketSoundName(){
         
         let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
-        let path = Bundle.main.path(forResource: "\(sharedKitchen.soundType!)", ofType: "m4r")!
+        let path = Bundle.main.path(forResource: "\(sharedKitchen.newDocketSoundName!)", ofType: "m4r")!
+        let url = URL(fileURLWithPath: path)
+        do {
+            
+            soundEffect=try AVAudioPlayer(contentsOf: url)
+            soundEffect?.play()
+        }catch {
+            
+        }
+    }
+    @objc func playCloseDocketSoundName(){
+        
+        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let path = Bundle.main.path(forResource: "\(sharedKitchen.closeDocketSoundName!)", ofType: "m4r")!
         let url = URL(fileURLWithPath: path)
         do {
             
@@ -213,14 +263,19 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let m=turnToYelloField?.text as NSString?
         sharedKitchen.turnToYellowAfter=m?.intValue ?? 0
         
-        sharedKitchen.soundMode=soundModeSwitch!.isOn
-        sharedKitchen.ticketSize=Int32(docketSizeControl?.selectedSegmentIndex ?? 0)
+        sharedKitchen.newDocketNotification=newDocketNotiSwitch!.isOn
+        sharedKitchen.docketSize=Int32(docketSizeControl?.selectedSegmentIndex ?? 0)
         sharedKitchen.bgColor=self.selectedBgColorHex!
-        sharedKitchen.soundType=soundTypeField?.text
-        sharedCoredataCoordinator.saveContext()
+        sharedKitchen.newDocketSoundName=newDocketSoundField?.text
         
+        sharedKitchen.closeDocketSoundName=closeDocketSoundField?.text
+        sharedKitchen.closeDocketNotification=closeDocketNotiSwitch!.isOn
+        
+        sharedCoredataCoordinator.saveContext()
+        NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
         //dismiss now
         dismissView()
+        
     }
     
     func didSelectColorHex(colorHex: String) {
@@ -239,7 +294,8 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: text-field delegates
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
         
-        if textField == soundTypeField{
+        self.activeTextField = textField
+        if textField == newDocketSoundField || textField == closeDocketSoundField{
             
             self.showSoundTypeSelectionUI()
             return false
@@ -252,8 +308,8 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let pickerVc = KDPickerController(style: UITableView.Style.grouped)
         pickerVc.delegate=self
-        pickerVc.itemList=NSArray(array: ["sound1","sound2", "sound3", "sound4", "sound5"])
-        pickerVc.selectedItem=soundTypeField?.text
+        pickerVc.itemList=NSArray(array: ["sound1","sound2", "sound3", "sound4", "sound5", "done"])
+        pickerVc.selectedItem=newDocketSoundField?.text
         let navVc = UINavigationController(rootViewController: pickerVc)
         navVc.modalPresentationStyle = .popover
         
@@ -261,7 +317,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         if let presentationController = viewPresentationController{
             
             presentationController.delegate=self
-            presentationController.sourceView=soundTypeField
+            presentationController.sourceView=newDocketSoundField
             presentationController.permittedArrowDirections=UIPopoverArrowDirection.down
         }
         
@@ -272,7 +328,14 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func didSelectItem(item: String) {
     
-        soundTypeField?.text=item
+        if self.activeTextField == newDocketSoundField{
+        
+            newDocketSoundField?.text=item
+        }else if self.activeTextField == closeDocketSoundField{
+            
+            closeDocketSoundField?.text = item
+        }
+        
     }
     
     // MARK: Users
@@ -301,7 +364,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         alert.addTextField()
         alert.textFields![0].isSecureTextEntry = true
         alert.textFields![0].textAlignment = .center
-        alert.textFields![0].font = UIFont.boldSystemFont(ofSize: 12)
+        alert.textFields![0].font = UIFont.boldSystemFont(ofSize: 17)
         
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Submit", style: UIAlertAction.Style.default, handler: { [unowned alert] _ in
@@ -318,15 +381,15 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         if loggedInUser?.userPIN! == password{
             
             let alert = UIAlertController(title: "Admin Action", message: nil, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Clear All Dockets", style: UIAlertAction.Style.destructive, handler: { [unowned alert] _ in
+            alert.addAction(UIAlertAction(title: "Clear All Dockets", style: UIAlertAction.Style.destructive, handler: { _ in
                 
-               
+               self.performSelector(onMainThread: #selector(self.clearAllDockets), with: nil, waitUntilDone: false)
                 
             }))
             
-            alert.addAction(UIAlertAction(title: "Reload Sample Dockets", style: UIAlertAction.Style.default, handler: { [unowned alert] _ in
+            alert.addAction(UIAlertAction(title: "Reload Sample Dockets", style: UIAlertAction.Style.default, handler: { _ in
                 
-               
+                self.performSelector(onMainThread: #selector(self.loadSampleOrders), with: nil, waitUntilDone: false)
                 
             }))
             
@@ -343,11 +406,22 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func clearAllDockets(){
         
+        Order.removeAll()
+        OrderItem.removeAll()
+        ItemOption.removeAll()
         
+        let alert = UIAlertController(title: "All dockets have been cleared!", message: nil, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true) {}
+        NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
     }
     
     // MARK: Loading Sample Orders
     @objc func loadSampleOrders(){
+        
+        Order.removeAll()
+        OrderItem.removeAll()
+        ItemOption.removeAll()
         
         let filePath = Bundle.main.path(forResource: "SampleOrders", ofType: "txt")
         let url = URL.init(fileURLWithPath: filePath!)
@@ -385,6 +459,8 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         }catch{
             
         }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
     }
 }
 

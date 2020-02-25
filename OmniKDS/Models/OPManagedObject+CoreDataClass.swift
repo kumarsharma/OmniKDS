@@ -88,4 +88,17 @@ public class OPManagedObject: NSManagedObject {
         
         return result
     }
+    
+    class func removeAll(){
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: self.entity().name!)
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
+        do {
+            
+            try sharedCoredataCoordinator.getPersistentContainer().viewContext.execute(batchDeleteRequest)
+        }catch{
+            
+        }
+        sharedCoredataCoordinator.saveContext()
+    }
 }
