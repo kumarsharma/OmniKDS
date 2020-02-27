@@ -33,6 +33,7 @@ class OPTableItemView: UICollectionViewCell {
             headerLabel!.textColor = .white
             headerLabel!.backgroundColor = .red
             headerLabel?.textAlignment = .center
+            headerLabel?.adjustsFontSizeToFitWidth = true
             
             footerLabel=UILabel()
             footerLabel?.frame=CGRect.init(x: 0, y: headerLabel!.frame.size.height, width: self.frame.size.width, height: self.frame.size.height/2)
@@ -44,7 +45,7 @@ class OPTableItemView: UICollectionViewCell {
             self.addSubview(footerLabel!)
         }
         
-        headerLabel!.text = order!.tableName!
+        headerLabel!.text = order!.tableName! + " - " + order!.orderNo!
         footerLabel!.text = OPDateTools.getTimeStringFrom(date: order!.orderDate!)
     }
 }

@@ -419,48 +419,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: Loading Sample Orders
     @objc func loadSampleOrders(){
         
-        Order.removeAll()
-        OrderItem.removeAll()
-        ItemOption.removeAll()
-        
-        let filePath = Bundle.main.path(forResource: "SampleOrders", ofType: "txt")
-        let url = URL.init(fileURLWithPath: filePath!)
-        
-        do{
-            let ordersFromFile = try String(contentsOf: url)            
-            if ordersFromFile.count>0
-            {
-                var dictionary : Dictionary<String, Any>?
-                let data = Data(ordersFromFile.utf8)
-                    
-                do{
-                    dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
-                    
-                    let dict = NSDictionary(dictionary: dictionary!)
-                    if dict != nil{
-                        
-                        let allOrders = (dict.value(forKey: "SampleOrders") as? NSArray)!
-                        
-                        for orderDict in allOrders{
-                        
-                            let newOrder = Order.createOrderFromJSONDict(jsonDict: orderDict as! NSDictionary, container: sharedCoredataCoordinator.persistentContainer)
-                            if newOrder != nil{
-                                sharedCoredataCoordinator.saveContext()
-                            }
-                        }
-                    }
-                }catch let error as NSError{
-                    
-                    print("error in parsing \(error.userInfo)")
-                }
-            }
-            
-            
-        }catch{
-            
-        }
-        
-        NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
+        sharedCoredataCoordinator.loadSampleOrders()
     }
 }
 

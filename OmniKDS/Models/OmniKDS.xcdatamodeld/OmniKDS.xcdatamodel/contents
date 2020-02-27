@@ -38,6 +38,7 @@
         <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
         <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
         <attribute name="viewMode" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wasSampleOrderLoaded" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>
     <entity name="OPManagedObject" representedClassName="OPManagedObject" syncable="YES"/>
     <entity name="Order" representedClassName="Order" parentEntity="OPManagedObject" syncable="YES">
@@ -75,7 +76,7 @@
         <element name="ItemOption" positionX="18" positionY="180" width="128" height="103"/>
         <element name="KitchenTransaction" positionX="-36" positionY="90" width="128" height="163"/>
         <element name="KitchenUser" positionX="-54" positionY="63" width="128" height="148"/>
-        <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="223"/>
+        <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="238"/>
         <element name="OPManagedObject" positionX="-9" positionY="144" width="128" height="43"/>
         <element name="Order" positionX="-18" positionY="126" width="128" height="208"/>
         <element name="OrderItem" positionX="0" positionY="153" width="128" height="283"/>

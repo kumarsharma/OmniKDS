@@ -29,4 +29,5 @@ extension OmniKitchen {
     @NSManaged public var viewMode: Int32
     @NSManaged public var closeDocketNotification: Bool
     @NSManaged public var closeDocketSoundName: String?
+    @NSManaged public var wasSampleOrderLoaded: Bool
 }

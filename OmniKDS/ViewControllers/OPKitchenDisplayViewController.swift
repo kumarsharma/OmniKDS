@@ -26,6 +26,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     var lowerScrollIndicator : UIView? 
     var soundEffect : AVAudioPlayer?
     var segmentedControl : UISegmentedControl?
+    var loadingIndicatorView : LoadingIndicatorView?
 
     lazy var orderFetchedController :  NSFetchedResultsController<NSFetchRequestResult> = {
         
@@ -47,12 +48,45 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         doInitialsForCollectionView()
         updateCountLabels()
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(didChangeOrderContent), name: Notification.Name(kDidChangeOrderContentNotification), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(someItemStateDidChange), name: Notification.Name(kSomeItemStateDidChangeNotification), object: nil)
         
+        if !sharedKitchen!.wasSampleOrderLoaded{
+            
+            sharedKitchen?.wasSampleOrderLoaded = true
+            sharedCoredataCoordinator.saveContext()
+            
+            let alertC = UIAlertController(title: "Explore App with sample dockets", message: "This is for demo purpose. You can clear sample dockets any time from Settings->Privacy. Load sample dockets now?", preferredStyle: UIAlertController.Style.alert)
+            
+            alertC.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (UIAlertAction) in
+                
+                
+            }))
+            
+            alertC.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
+                
+                self.performSelector(onMainThread: #selector(self.loadSampleOrders), with: nil, waitUntilDone:  false)
+            }))
+            
+            self.present(alertC, animated: true);
+        }
+        
 //        print(doSumOfDigits(num: 439230))
+    }
+    
+    @objc func loadSampleOrders(){
+        
+        loadingIndicatorView = LoadingIndicatorView.showLoadingIndicator(in: self.view, withMessage: "Loading sample dockets, please wait...", shouldIgnoreEvents: false)
+        self.perform(#selector(loadSampleDocketsWithDelay), with: nil, afterDelay: 2)
+    }
+    
+    @objc func loadSampleDocketsWithDelay(){
+        
+        sharedCoredataCoordinator.loadSampleOrders()
+        LoadingIndicatorView.removeLoadingIndicator(loadingIndicatorView)
+        StatusView.showLargeBottomPopup(withMessage: "Sample dockets loaded successfully!", timeToStay: 2, viewColor: nil, textColor: nil, on: self.view)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -259,7 +293,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: 600) : CGSize(width: 80, height: 55)
+        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: 600) : CGSize(width: 90, height: 55)
         return size
     }
     
@@ -297,7 +331,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
             if sharedKitchen!.newDocketNotification{
                 
-                self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.newDocketSoundName!, waitUntilDone: true)
+//                self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.newDocketSoundName!, waitUntilDone: true)
             }
             docketCollectionView?.insertItems(at: [newIndexPath!])
             orderCollectionView?.insertItems(at: [newIndexPath!])
