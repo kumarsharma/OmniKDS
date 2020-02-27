@@ -158,7 +158,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         orderCollectionView!.frame = CGRect(x: 2, y: 25, width: (scrollBgView?.bounds.size.width)!, height: (orderCollectionView?.frame.size.height)!)
         
-        nextButton?.frame = CGRect(x: (scrollBgView?.frame.size.width)!-(nextButton?.frame.size.width)!, y: 0, width: (nextButton?.frame.size.width)!, height: 25)
+        nextButton?.frame = CGRect(x: (scrollBgView?.frame.size.width)!-(nextButton?.frame.size.width)!, y: 0, width: (nextButton?.frame.size.width)!, height: 45)
         orderCollectionView?.register(OPTableItemView.self, forCellWithReuseIdentifier: "cell_2")
         docketCollectionView?.delegate=self
         docketCollectionView?.dataSource=self
@@ -174,7 +174,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         }
         
         let indicatorWidth = dockCount! * 80
-        lowerScrollIndicator = UIView(frame: CGRect(x: 15, y: 5, width: indicatorWidth, height: 5))
+        lowerScrollIndicator = UIView(frame: CGRect(x: 15, y: 20, width: indicatorWidth, height: 5))
         lowerScrollIndicator?.backgroundColor = .blue
         lowerScrollIndicator?.layer.cornerRadius = 5
         lowerScrollIndicator?.layer.borderWidth=0.5
@@ -300,7 +300,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
+        return 1.0
     }
 
     func collectionView(_ collectionView: UICollectionView, layout
@@ -362,11 +362,11 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     //MARK: scrolling
 
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if scrollView == docketCollectionView{
-            
-            self.performSelector(onMainThread: #selector(indicateVisibleOrders), with: nil, waitUntilDone: false)
+                   
+                   self.performSelector(onMainThread: #selector(indicateVisibleOrders), with: nil, waitUntilDone: false)
         } 
     }
     
@@ -400,27 +400,26 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let offset = docketCollectionView?.contentOffset
         let contentSize = docketCollectionView?.contentSize
-        let noOfPages = Float(contentSize!.width/1108)
+        let pageWidth = Float((docketCollectionView?.frame.size.width)!)
+        let noOfPages = Float(floor(Float(contentSize!.width)/pageWidth))
         
         if noOfPages > 1{
             
-            let currentPage = Float(offset!.x) == 0 ? 0 : (Float(offset!.x) / Float(contentSize!.width)) * noOfPages
+            let currentPage = Float(offset!.x) == 0 ? 0 : ceil((Float(offset!.x) / Float(contentSize!.width)) * noOfPages)
             
             let condition = isNext ? (currentPage < noOfPages) : (currentPage > 0)
             if condition{
                 
                 if isNext{
                     
-                    let toPointX = CGFloat((currentPage*1108)+1108)
-                    
+                    let toPointX = CGFloat((currentPage*pageWidth)+pageWidth)
                     if Float(toPointX) < Float(contentSize!.width){
                      
                         docketCollectionView?.setContentOffset(CGPoint(x: toPointX, y: offset!.y), animated: true)
                     }
                 }else{
                     
-                    let toPointX = CGFloat((currentPage*1108)-1108)
-                    
+                    let toPointX = CGFloat((currentPage*pageWidth)-pageWidth)
                     if Float(toPointX) >= 0{
                      
                         docketCollectionView?.setContentOffset(CGPoint(x: toPointX, y: offset!.y), animated: true)
@@ -436,8 +435,9 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let offset = docketCollectionView?.contentOffset
         let contentSize = docketCollectionView?.contentSize
-        let noOfPages = Float(contentSize!.width/1108)
-        let currentPage = Float(offset!.x) == 0 ? 0 : (Float(offset!.x) / Float(contentSize!.width)) * noOfPages
+        let pageWidth = Float((docketCollectionView?.frame.size.width)!)
+        let noOfPages = Float(floor(Float(contentSize!.width)/pageWidth))
+        let currentPage = Float(offset!.x) == 0 ? 0 : ceil((Float(offset!.x) / Float(contentSize!.width)) * noOfPages)
         
         if noOfPages > 1{
             
@@ -468,7 +468,6 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         do{
             predicate = NSPredicate(format: "orderId IN %@ AND isFinished=true", orderIds)
             totalItemsDone = try OrderItem.fetchCountWithPredicate(predicate: predicate)
-            
             predicate = NSPredicate(format: "orderId IN %@ AND isFinished=false", orderIds)
             totalItemsPending = try OrderItem.fetchCountWithPredicate(predicate: predicate)
             
@@ -513,7 +512,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         if searchText.count>0{
             
-            let predicate = NSPredicate(format: "isOpen=true AND orderNo CONTAINS[c] %@", searchText)
+            let predicate = NSPredicate(format: "isOpen=true AND (orderNo CONTAINS[c] %@ OR tableName CONTAINS[c] %@ OR customerName CONTAINS[c] %@) ", searchText, searchText, searchText)
             self.orderFetchedController.fetchRequest.predicate = predicate
             
             do{
@@ -543,7 +542,6 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         docketCollectionView?.reloadData()
         orderCollectionView?.reloadData()
-        
         docketSearchBar?.resignFirstResponder()
     }
 }

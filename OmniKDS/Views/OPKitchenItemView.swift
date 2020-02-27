@@ -19,6 +19,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     var soundEffect : AVAudioPlayer?
     var bgColor : UIColor?
     var timer : Timer?
+    var servedByLabel : UILabel?
     
     lazy var itemFRC :  NSFetchedResultsController<NSFetchRequestResult> = {
         
@@ -67,12 +68,27 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
            tableView!.backgroundView=bgview
             tableView?.backgroundColor = .clear
             
-            footerButton = UIButton(type: UIButton.ButtonType.close)
-            footerButton?.frame=CGRect(x: 0, y: 0, width: 44, height: 44)
+            let footerView = UIView(frame: CGRect(x: 0, y: 0, width: (tableView?.frame.size.width)!, height: 64))
+            footerView.backgroundColor = .clear
+            
+            servedByLabel = UILabel(frame: CGRect(x: 0, y: 0, width: footerView.frame.size.width, height: 20))
+            servedByLabel?.backgroundColor = .lightGray
+            servedByLabel?.font = .italicSystemFont(ofSize: 17)
+            servedByLabel?.textAlignment = .center
+
+            footerButton = UIButton(type: UIButton.ButtonType.custom)
+            footerButton?.setImage(UIImage(named: "checkAllIcn"), for: UIControl.State.normal)
+            footerButton?.frame=CGRect(x: 0, y: 20, width: footerView.frame.size.width, height: 44)
             footerButton?.addTarget(self, action: #selector(orderDoneButtonAction), for: UIControl.Event.touchUpInside)
             footerButton?.backgroundColor = .green
             footerButton?.isHidden = !self.hasDoneAllItems()
-            tableView?.tableFooterView=footerButton
+            footerButton?.layer.cornerRadius = 8
+            footerButton?.layer.borderWidth = 0.5
+            footerButton?.layer.borderColor = UIColor.darkGray.cgColor
+            
+            footerView.addSubview(servedByLabel!)
+            footerView.addSubview(footerButton!)
+            tableView?.tableFooterView=footerView
             
             self.addSubview(headerLabel!)
             self.addSubview(tableView!)
@@ -122,6 +138,11 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateHeaderWithTime), userInfo: nil, repeats: true)
             timer?.fire()
+        }
+        
+        if (order?.orderBy!.count)!>0{
+            
+            servedByLabel?.text = "Served by " + (order?.orderBy!)!
         }
     }
     
@@ -331,10 +352,18 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         if item!.isFinished{
             
             item?.isFinished=false
-            self.playSound(soundName: "redo")
+            
+            if (sharedKitchen?.unDoItemNotification)!{
+                
+                self.playSound(soundName: sharedKitchen!.unDoItemSoundEffect!)
+            }
         }else{
             item?.isFinished=true
-            self.playSound(soundName: "successful")
+            
+            if sharedKitchen!.doneItemNotification{
+                
+                self.playSound(soundName: sharedKitchen!.doneItemSoundEffect!)
+            }
         }
         sharedCoredataCoordinator.saveContext()
         self.footerButton?.isHidden = !self.hasDoneAllItems()

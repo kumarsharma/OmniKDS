@@ -30,4 +30,9 @@ extension OmniKitchen {
     @NSManaged public var closeDocketNotification: Bool
     @NSManaged public var closeDocketSoundName: String?
     @NSManaged public var wasSampleOrderLoaded: Bool
+    @NSManaged public var doneItemNotification: Bool
+    @NSManaged public var doneItemSoundEffect: String?
+    @NSManaged public var unDoItemNotification: Bool
+    @NSManaged public var unDoItemSoundEffect: String?
+    
 }

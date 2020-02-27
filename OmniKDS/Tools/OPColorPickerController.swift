@@ -22,8 +22,23 @@ class OPColorPickerController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title="Select an Item"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
+        
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
+    
+    @objc func cancelBtnAction(){
+           
+           self.dismiss(animated: true, completion: nil)
+       }
+       
+       @objc func doneBtnAction(){
+          
+           self.dismiss(animated: true, completion: nil)
+       }
+
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -59,7 +74,7 @@ class OPColorPickerController: UICollectionViewController {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = CGSize(width: 50, height: 50)
+        let size = CGSize(width: 10, height: 10)
         return size
     }
     

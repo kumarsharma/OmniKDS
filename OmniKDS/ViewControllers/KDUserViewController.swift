@@ -38,10 +38,16 @@ class KDUserViewController: UIViewController {
             phoneField?.text=currentUser?.phone
             pinField?.text=currentUser?.userPIN
             
-            deleteBtn?.isEnabled = true
+            if !currentUser!.isAdmin{
+                
+                deleteBtn?.isEnabled = true
+            }else{
+                
+                deleteBtn?.isHidden = true
+            }
         }else{
             
-            deleteBtn?.isEnabled = false
+            deleteBtn?.isHidden = true
         }
         
         modifyButton(btn: cancelBtn!)

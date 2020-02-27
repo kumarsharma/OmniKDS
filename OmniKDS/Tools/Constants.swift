@@ -17,6 +17,7 @@ let kReachabilityChangedNotification = "kNetworkReachabilityChangedNotification"
 let kDidChangeOrderContentNotification = "DidChangeOrderContent"
 let kSomeItemStateDidChangeNotification = "SomeItemStateDidChangeNotification"
 let kDidArriveNewDocketNotification = "DidArriveNewDocketNotification"
+let kDidUpdateUsersDBNOtification = "DidUpdateUsersDBNOtification"
 
 struct NIK { //network interchange keys
     
