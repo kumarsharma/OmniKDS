@@ -25,5 +25,5 @@ extension KitchenTransaction {
     @NSManaged public var startTime: Date?
     @NSManaged public var trId: String?
     @NSManaged public var userId: String?
-
+    @NSManaged public var itemName: String?
 }
