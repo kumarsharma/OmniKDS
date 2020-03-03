@@ -166,17 +166,16 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
 
             headerInfo += "\n" + OPDateTools.getTimeStringFrom(date: order!.orderDate!) + ", \t" + formattedString
             
-            if difference.minute! >= Int(sharedKitchen!.turnToRedAfter){
-                
-                bgColor = .red
-            }
-            
             if difference.minute! >= Int(sharedKitchen!.turnToYellowAfter){
                 
                 bgColor = .yellow
             }
+            
+            if difference.minute! >= Int(sharedKitchen!.turnToRedAfter){
+                
+                bgColor = .red
+            }
         }
-        
         
         self.layer.borderColor = bgColor?.cgColor
         headerLabel!.backgroundColor = bgColor

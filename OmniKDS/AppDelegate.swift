@@ -36,9 +36,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("ready to go!! good luck!!!!!")
         }
         
+        doAdminLogin()
         sharedCommunicator.startServer()
         
         return true
+    }
+    
+    func doAdminLogin(){
+        
+        var loginUser : KitchenUser?
+        
+        do{
+        
+            loginUser = try KitchenUser.authenticateUserWithPIN(pin: "9999")
+        } catch{
+            
+        }
+        
+        if loginUser != nil {
+         
+            loggedInUser = loginUser
+        }
     }
 
     // MARK: UISceneSession Lifecycle

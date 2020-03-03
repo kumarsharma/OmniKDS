@@ -38,8 +38,8 @@
         <attribute name="kitchenName" optional="YES" attributeType="String" defaultValueString="Kitchen Display"/>
         <attribute name="newDocketNotification" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="newDocketSoundName" optional="YES" attributeType="String" defaultValueString="sound1"/>
-        <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
-        <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="5" usesScalarValueType="YES"/>
+        <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="4" usesScalarValueType="YES"/>
+        <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="2" usesScalarValueType="YES"/>
         <attribute name="unDoItemNotification" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="unDoItemSoundEffect" optional="YES" attributeType="String" defaultValueString="sound6"/>
         <attribute name="viewMode" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>

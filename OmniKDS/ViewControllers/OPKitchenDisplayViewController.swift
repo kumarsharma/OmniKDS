@@ -43,6 +43,8 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = sharedKitchen!.kitchenName!
+        
         isSearchActive = false
         doInitialsForNavigationBar()
         doInitialsForCollectionView()
@@ -61,7 +63,6 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
             
             alertC.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: { (UIAlertAction) in
                 
-                
             }))
             
             alertC.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
@@ -71,8 +72,6 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
             
             self.present(alertC, animated: true);
         }
-        
-//        print(doSumOfDigits(num: 439230))
     }
     
     @objc func loadSampleOrders(){
@@ -91,7 +90,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = sharedKitchen!.kitchenName! + " (" + loggedInUser!.firstName! + ")"
+        
         docketCollectionView!.backgroundColor = UIColor(hexString: sharedKitchen!.bgColor!)
         self.view!.backgroundColor = UIColor(hexString: sharedKitchen!.bgColor!)
     }
@@ -121,11 +120,12 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let analyticsBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "analyticsIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(analyticsAction))
         
-        self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn, logoutBarBtn, analyticsBtn]
+        let courseBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "courseIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(courseAction))
+        
+        self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn, logoutBarBtn, analyticsBtn, courseBtn]
         
         docketSearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
         docketSearchBar!.placeholder = "Enter order# to search"
-//        searchTextField!.backgroundColor = .white
         docketSearchBar!.delegate = self
         docketSearchBar?.showsSearchResultsButton = true
         docketSearchBar?.showsCancelButton=true
@@ -188,6 +188,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let navController = UINavigationController(rootViewController: summaryVc)
         navController.modalPresentationStyle = .popover
+        navController.navigationBar.barStyle = .black
         
         let viewPresentationController = navController.popoverPresentationController
          if let presentationController = viewPresentationController{
@@ -206,6 +207,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let settingsVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "SettingsViewController")
         let navVc = UINavigationController(rootViewController: settingsVc)
+        navVc.navigationBar.barStyle = .black
         navVc.modalPresentationStyle=UIModalPresentationStyle.fullScreen
         self.present(navVc, animated: true, completion: nil)
     }
@@ -219,6 +221,26 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     @objc func analyticsAction(){
         
         
+    }
+    
+    @objc func courseAction(sender:UIBarButtonItem){
+        
+        let summaryVc = KDCourseSummaryViewController()        
+        let navController = UINavigationController(rootViewController: summaryVc)
+        navController.modalPresentationStyle = .popover
+        navController.navigationBar.barStyle = .black
+       
+        let viewPresentationController = navController.popoverPresentationController
+        if let presentationController = viewPresentationController{
+           
+           presentationController.delegate=self
+           presentationController.barButtonItem = sender
+           presentationController.permittedArrowDirections=UIPopoverArrowDirection.any
+        }
+       
+        navController.preferredContentSize = CGSize(width: 400, height: 900)
+        self.present(navController, animated: true, completion: nil)
+        self.currentPopoverController=navController
     }
     
     @objc func segmentedControlAction(sender:UISegmentedControl){
@@ -293,7 +315,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: 600) : CGSize(width: 90, height: 55)
+        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: 300) : CGSize(width: 90, height: 55)
         return size
     }
     

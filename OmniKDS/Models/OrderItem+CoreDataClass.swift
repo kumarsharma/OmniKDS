@@ -114,7 +114,15 @@ public class OrderItem: OPManagedObject {
          let sd = NSSortDescriptor(key: "placeTime", ascending: false)
          let sd2 = NSSortDescriptor(key: "courseName", ascending: true)
          fetchRequest.sortDescriptors = [sd2, sd]
-         fetchRequest.predicate = NSPredicate(format: "orderId=%@", order_Id)
+        
+        if order_Id.elementsEqual("0"){
+            
+            fetchRequest.predicate = NSPredicate(format: "isFinished=false")
+        }else{
+            
+            fetchRequest.predicate = NSPredicate(format: "orderId=%@", order_Id)
+        }
+         
          return fetchRequest as! NSFetchRequest<NSFetchRequestResult>
     }
 }

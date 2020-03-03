@@ -297,6 +297,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         layout.scrollDirection = .vertical
         let colorVc = OPColorPickerController(collectionViewLayout: layout)
         let nav = UINavigationController(rootViewController: colorVc)
+        nav.navigationBar.barStyle = .black
         nav.modalPresentationStyle = .popover
         colorVc.delegate=self
         let viewPresentationController = nav.popoverPresentationController
@@ -386,7 +387,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         pickerVc.selectedItem=newDocketSoundField?.text
         let navVc = UINavigationController(rootViewController: pickerVc)
         navVc.modalPresentationStyle = .popover
-        
+        navVc.navigationBar.barStyle = .black
         let viewPresentationController = navVc.popoverPresentationController
         if let presentationController = viewPresentationController{
             

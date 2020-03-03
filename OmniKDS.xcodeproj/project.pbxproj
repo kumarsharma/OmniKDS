@@ -49,8 +49,10 @@
 		CE5000BF23C9DBF700A14306 /* OPDateTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000BE23C9DBF700A14306 /* OPDateTools.swift */; };
 		CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */; };
 		CE5000C723C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */; };
+		CE529D53240E67E5001B949C /* courseIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE529D52240E67E5001B949C /* courseIcn.png */; };
 		CE5400AF23EBFD2100F7FC46 /* KDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5400AE23EBFD2100F7FC46 /* KDTools.swift */; };
 		CE5400B123EC0A6300F7FC46 /* KDSoundTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5400B023EC0A6300F7FC46 /* KDSoundTool.swift */; };
+		CE5EA416240E68E100330A76 /* KDCourseSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EA415240E68E100330A76 /* KDCourseSummaryViewController.swift */; };
 		CE5FB10E2403C93C00AE068E /* privacyIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB10D2403C93C00AE068E /* privacyIcn.png */; };
 		CE5FB1102403CC5F00AE068E /* SampleOrders.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */; };
 		CE5FB1122403D6C400AE068E /* doneIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB1112403D6C400AE068E /* doneIcn.png */; };
@@ -163,8 +165,10 @@
 		CE5000BE23C9DBF700A14306 /* OPDateTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPDateTools.swift; sourceTree = "<group>"; };
 		CE5000C423C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPManagedObject+CoreDataClass.swift"; sourceTree = "<group>"; };
 		CE5000C523C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OPManagedObject+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CE529D52240E67E5001B949C /* courseIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = courseIcn.png; sourceTree = "<group>"; };
 		CE5400AE23EBFD2100F7FC46 /* KDTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDTools.swift; sourceTree = "<group>"; };
 		CE5400B023EC0A6300F7FC46 /* KDSoundTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSoundTool.swift; sourceTree = "<group>"; };
+		CE5EA415240E68E100330A76 /* KDCourseSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCourseSummaryViewController.swift; sourceTree = "<group>"; };
 		CE5FB10D2403C93C00AE068E /* privacyIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = privacyIcn.png; sourceTree = "<group>"; };
 		CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SampleOrders.txt; sourceTree = "<group>"; };
 		CE5FB1112403D6C400AE068E /* doneIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneIcn.png; sourceTree = "<group>"; };
@@ -271,8 +275,6 @@
 				CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */,
 				CE7D298323D6E1F90009D699 /* KDRowObject.swift */,
 				CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */,
-				CE1F672523E170FE00536C40 /* OPColorPickerController.swift */,
-				CEEB8F3723E3F05900494334 /* KDPickerController.swift */,
 				CE5400AE23EBFD2100F7FC46 /* KDTools.swift */,
 				CE5400B023EC0A6300F7FC46 /* KDSoundTool.swift */,
 				CECE98D823FBE547003E04B7 /* KDSummaryItem.swift */,
@@ -339,6 +341,9 @@
 				CEFE375023D5BE410033C0A1 /* OPSettingsViewController.swift */,
 				CEEB8F3923E4064600494334 /* KDUserViewController.swift */,
 				CEE1AA1A23F824160042752C /* KDSummaryViewController.swift */,
+				CE5EA415240E68E100330A76 /* KDCourseSummaryViewController.swift */,
+				CE1F672523E170FE00536C40 /* OPColorPickerController.swift */,
+				CEEB8F3723E3F05900494334 /* KDPickerController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				CE26801024079D26002F33CA /* checkAllIcn.png */,
 				CE2680172407A52B002F33CA /* nextIcn.png */,
 				CE2680182407A52B002F33CA /* prevIcn.png */,
+				CE529D52240E67E5001B949C /* courseIcn.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				CE2680382407BDC4002F33CA /* sound16.m4r in Resources */,
 				CE7D299023D708CF0009D699 /* sound5.m4r in Resources */,
 				CE1F672423E16D2D00536C40 /* colorPalette.plist in Resources */,
+				CE529D53240E67E5001B949C /* courseIcn.png in Resources */,
 				CE2680372407BDC4002F33CA /* sound27.m4r in Resources */,
 				CEED07CA23BF986800731147 /* LaunchScreen.storyboard in Resources */,
 				CE12E8DF23FD1B600028BF56 /* OmniKDS_Splash.png in Resources */,
@@ -690,6 +697,7 @@
 				CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */,
 				CEC515DD23CA1B4400DA0645 /* ItemOption+CoreDataClass.swift in Sources */,
 				CEC515DA23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift in Sources */,
+				CE5EA416240E68E100330A76 /* KDCourseSummaryViewController.swift in Sources */,
 				CE5000BD23C9C25000A14306 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

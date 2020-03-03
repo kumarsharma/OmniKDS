@@ -31,14 +31,13 @@ class OPColorPickerController: UICollectionViewController {
     
     @objc func cancelBtnAction(){
            
-           self.dismiss(animated: true, completion: nil)
-       }
+        self.dismiss(animated: true, completion: nil)
+    }
        
-       @objc func doneBtnAction(){
+    @objc func doneBtnAction(){
           
-           self.dismiss(animated: true, completion: nil)
-       }
-
+        self.dismiss(animated: true, completion: nil)
+    }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
