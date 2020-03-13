@@ -17,7 +17,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     var currentPopoverController : UIViewController?
     var soundEffect : AVAudioPlayer?
     var activeTextField : UITextField?
-    
+
     @IBOutlet weak var userTableView:UITableView?
     @IBOutlet weak var bgColorButton : UIButton?
     @IBOutlet weak var kitchenNameField:UITextField?
@@ -42,6 +42,8 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var itemUnDoNotiSwitch:UISwitch?
     @IBOutlet weak var itemUnDoSoundField:UITextField?
     
+    @IBOutlet weak var templateButtonOne : UIButton?
+    @IBOutlet weak var templateButtonTwo : UIButton?
     
     @IBOutlet weak var addUserButton : UIButton?
     
@@ -116,6 +118,9 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         bgColorButton?.layer.cornerRadius=15
         bgColorButton?.layer.borderWidth=0.5
         bgColorButton?.layer.borderColor=UIColor.darkGray.cgColor
+        
+        templateButtonOne?.isSelected = sharedKitchen.screenTemplate == 1 ? true : false
+        templateButtonTwo?.isSelected = sharedKitchen.screenTemplate == 2 ? true : false
 
         self.navigationItem.leftBarButtonItem=UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(dismissView))
             
@@ -345,6 +350,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         sharedKitchen.doneItemNotification = itemDoneNotiSwitch!.isOn
         sharedKitchen.unDoItemSoundEffect = itemUnDoSoundField?.text
         sharedKitchen.unDoItemNotification = itemUnDoNotiSwitch!.isOn
+        sharedKitchen.screenTemplate = templateButtonOne!.isSelected ? 1 : 2
         
         sharedCoredataCoordinator.saveContext()
         NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
@@ -412,6 +418,20 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
             
             closeDocketSoundField?.text = item
         }*/
+    }
+    
+    @IBAction func templateButtonActions(sender:UIButton){
+        
+        sender.isSelected = !sender.isSelected
+        
+        if sender == templateButtonOne{
+            
+            templateButtonTwo?.isSelected = sender.isSelected ? false : true
+        }
+        else if sender == templateButtonTwo{
+            
+            templateButtonOne?.isSelected = sender.isSelected ? false : true
+        }
     }
     
     // MARK: Users

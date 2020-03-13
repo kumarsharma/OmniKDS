@@ -42,7 +42,7 @@ public class OrderItem: OPManagedObject {
         anItem.itemName2 = jsonDict.value(forKey: "itemName2") as? String
         anItem.note = jsonDict.value(forKey: "note") as? String
         anItem.orderId = jsonDict.value(forKey: "orderId") as? String
-        
+        anItem.startTime = Date.init()
         
         var course_Id = jsonDict.value(forKey: "courseId") as? String
         if course_Id == nil{

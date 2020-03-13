@@ -27,6 +27,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     var soundEffect : AVAudioPlayer?
     var segmentedControl : UISegmentedControl?
     var loadingIndicatorView : LoadingIndicatorView?
+    var isLoadingSampleOrder : Bool?
 
     lazy var orderFetchedController :  NSFetchedResultsController<NSFetchRequestResult> = {
         
@@ -44,7 +45,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = sharedKitchen!.kitchenName!
-        
+        self.isLoadingSampleOrder = false
         isSearchActive = false
         doInitialsForNavigationBar()
         doInitialsForCollectionView()
@@ -76,16 +77,18 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     @objc func loadSampleOrders(){
         
+        sharedKitchen?.wasSampleOrderLoaded = true
         loadingIndicatorView = LoadingIndicatorView.showLoadingIndicator(in: self.view, withMessage: "Loading sample dockets, please wait...", shouldIgnoreEvents: false)
         self.perform(#selector(loadSampleDocketsWithDelay), with: nil, afterDelay: 2)
     }
     
     @objc func loadSampleDocketsWithDelay(){
         
+        isLoadingSampleOrder = true
         sharedCoredataCoordinator.loadSampleOrders()
         LoadingIndicatorView.removeLoadingIndicator(loadingIndicatorView)
         StatusView.showLargeBottomPopup(withMessage: "Sample dockets loaded successfully!", timeToStay: 2, viewColor: nil, textColor: nil, on: self.view)
-        
+        isLoadingSampleOrder = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +125,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let courseBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "courseIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(courseAction))
         
-        self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn, logoutBarBtn, analyticsBtn, courseBtn]
+        self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn, analyticsBtn, courseBtn]
         
         docketSearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: 300, height: 30))
         docketSearchBar!.placeholder = "Enter order# to search"
@@ -152,9 +155,13 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         scrollBgView?.frame=CGRect(x: 0, y: (docketFrame.size.height+docketFrame.origin.y)+5, width: self.view.bounds.size.width, height: 106)
         
-        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "cell0")
-        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "cell1")
-        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "cell2")
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "large_cell0")
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "large_cell1")
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "large_cell2")
+        
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "small_cell0")
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "small_cell1")
+        docketCollectionView?.register(OPKitchenItemView.self, forCellWithReuseIdentifier: "small_cell2")
         
         orderCollectionView!.frame = CGRect(x: 2, y: 25, width: (scrollBgView?.bounds.size.width)!, height: (orderCollectionView?.frame.size.height)!)
         
@@ -279,13 +286,15 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     //3
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        var cellId = "cell0"
+        let cellPrefix = sharedKitchen?.screenTemplate == 1 ? "large" : "small"
+        
+        var cellId = cellPrefix+"_cell0"
         if sharedKitchen?.docketSize == 1{
             
-            cellId = "cell1"
+            cellId = cellPrefix+"_cell1"
         }else if sharedKitchen?.docketSize == 2{
             
-            cellId = "cell2"
+            cellId = cellPrefix+"_cell2"
         }
         
         var colCell : UICollectionViewCell?
@@ -315,7 +324,9 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: 300) : CGSize(width: 90, height: 55)
+        let docketHeight = sharedKitchen?.screenTemplate == 1 ? 600 : 300
+        
+        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: docketHeight) : CGSize(width: 90, height: 55)
         return size
     }
     
@@ -329,7 +340,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         
-        let sp = (collectionView==docketCollectionView) ? 0.0 : 5.0
+        let sp = (collectionView==docketCollectionView) ? 1.0 : 5.0
         return CGFloat(Float(sp))
     }
     
@@ -353,7 +364,10 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
             if sharedKitchen!.newDocketNotification{
                 
-//                self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.newDocketSoundName!, waitUntilDone: true)
+                if !self.isLoadingSampleOrder!{
+                
+                    self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.newDocketSoundName!, waitUntilDone: true)
+                }
             }
             docketCollectionView?.insertItems(at: [newIndexPath!])
             orderCollectionView?.insertItems(at: [newIndexPath!])

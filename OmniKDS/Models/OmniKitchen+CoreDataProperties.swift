@@ -34,5 +34,5 @@ extension OmniKitchen {
     @NSManaged public var doneItemSoundEffect: String?
     @NSManaged public var unDoItemNotification: Bool
     @NSManaged public var unDoItemSoundEffect: String?
-    
+    @NSManaged public var screenTemplate: Int32
 }

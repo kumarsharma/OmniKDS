@@ -352,7 +352,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7JP-fL-mAz">
-                                        <rect key="frame" x="107" y="13" width="755" height="622"/>
+                                        <rect key="frame" x="107" y="13" width="759" height="637"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Background Color:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bX-4Q-cV2">
@@ -532,7 +532,7 @@
                                                 <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YLL-TC-bFa">
-                                                <rect key="frame" x="31" y="450" width="257" height="96"/>
+                                                <rect key="frame" x="31" y="420" width="257" height="96"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notification" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBg-vf-S0a">
@@ -576,7 +576,7 @@
                                                 <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMg-KC-fqs">
-                                                <rect key="frame" x="400" y="452" width="251" height="91"/>
+                                                <rect key="frame" x="400" y="420" width="251" height="91"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notification" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoA-DQ-jVs">
@@ -620,6 +620,50 @@
                                                 <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" cocoaTouchSystemColor="lightTextColor"/>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Screen Template" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ndg-R5-yEA">
+                                                <rect key="frame" x="400" y="121" width="142" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1 row 4 columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhJ-bT-AtZ">
+                                                <rect key="frame" x="606" y="94" width="175" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFf-Vw-Hlh">
+                                                <rect key="frame" x="546" y="134" width="59" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" backgroundImage="rectangle" catalog="system">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected" backgroundImage="checkmark.rectangle" catalog="system"/>
+                                                <state key="highlighted" backgroundImage="checkmark.rectangle" catalog="system"/>
+                                                <connections>
+                                                    <action selector="templateButtonActionsWithSender:" destination="kMp-dY-TNa" eventType="touchUpInside" id="AaE-8j-diV"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foh-48-vHT">
+                                                <rect key="frame" x="546" y="80" width="59" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" backgroundImage="rectangle" catalog="system">
+                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected" backgroundImage="checkmark.rectangle" catalog="system"/>
+                                                <connections>
+                                                    <action selector="templateButtonActionsWithSender:" destination="kMp-dY-TNa" eventType="touchUpInside" id="0fI-Iz-MVc"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2 rows 4 columns" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wg-hE-flZ">
+                                                <rect key="frame" x="609" y="148" width="175" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
@@ -683,6 +727,8 @@
                         <outlet property="newDocketBgView" destination="dVd-gp-DmY" id="UGl-Fx-lco"/>
                         <outlet property="newDocketNotiSwitch" destination="5jF-PE-gbq" id="Yxf-Qb-fn7"/>
                         <outlet property="newDocketSoundField" destination="xn4-0W-KAE" id="8pA-pK-MyC"/>
+                        <outlet property="templateButtonOne" destination="foh-48-vHT" id="Brn-F3-r0m"/>
+                        <outlet property="templateButtonTwo" destination="dFf-Vw-Hlh" id="UwU-Jz-4bw"/>
                         <outlet property="turnToRedField" destination="yNh-IW-Fl3" id="HzC-JF-COz"/>
                         <outlet property="turnToYelloField" destination="ymw-XV-HyT" id="dqT-XP-pZs"/>
                         <outlet property="userBgView" destination="aBS-NF-CjN" id="gRk-e1-Smz"/>
@@ -846,6 +892,22 @@
             </objects>
             <point key="canvasLocation" x="-626" y="-471"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="bue-fd-vWa">
+            <objects>
+                <viewController id="hMD-2d-Crs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WJF-8v-t6b">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="IHy-A9-Dkq"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ex9-9x-CZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="397" y="-1259"/>
+        </scene>
     </scenes>
     <resources>
         <image name="0.circle" catalog="system" width="64" height="60"/>
@@ -870,6 +932,7 @@
         <image name="9.circle.fill" catalog="system" width="64" height="60"/>
         <image name="OmniKDS_BG_Plain.png" width="512" height="384"/>
         <image name="OmniKDS_Logo.png" width="320" height="117"/>
+        <image name="checkmark.rectangle" catalog="system" width="64" height="46"/>
         <image name="clear" catalog="system" width="64" height="56"/>
         <image name="clear.fill" catalog="system" width="64" height="56"/>
         <image name="delete.left" catalog="system" width="64" height="52"/>
@@ -877,5 +940,6 @@
         <image name="nextIcn.png" width="43.216880798339844" height="43.216880798339844"/>
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="prevIcn.png" width="43.216880798339844" height="43.216880798339844"/>
+        <image name="rectangle" catalog="system" width="64" height="46"/>
     </resources>
 </document>

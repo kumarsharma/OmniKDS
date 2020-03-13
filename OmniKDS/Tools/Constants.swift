@@ -27,6 +27,8 @@ struct NIK { //network interchange keys
     static let SIGNATURE = "58df8b0c36d6982b82c3ecf6b4662e34fe8c25bba48f5369f135bf843651c3a4"
     static let AUTH = "AUTH"
     static let MESSAGE = "MESSAGE"
+    static let CURRENT_SENT_KEY = "CURRENT_SENT_KEY"
+    static let SYNC_ACTION_ACKKNOWLEDGEMENT = "SYNC_ACTION_ACKKNOWLEDGEMENT"
 }
 
 enum DBError : Error{

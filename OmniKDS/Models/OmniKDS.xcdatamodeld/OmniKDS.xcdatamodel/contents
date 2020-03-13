@@ -27,7 +27,7 @@
         <attribute name="userPIN" optional="YES" attributeType="String"/>
     </entity>
     <entity name="OmniKitchen" representedClassName="OmniKitchen" parentEntity="OPManagedObject" syncable="YES">
-        <attribute name="bgColor" optional="YES" attributeType="String" defaultValueString="#C0C0C0"/>
+        <attribute name="bgColor" optional="YES" attributeType="String" defaultValueString="707070"/>
         <attribute name="closeDocketNotification" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="closeDocketSoundName" optional="YES" attributeType="String" defaultValueString="sound7"/>
         <attribute name="docketSize" optional="YES" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
@@ -38,6 +38,7 @@
         <attribute name="kitchenName" optional="YES" attributeType="String" defaultValueString="Kitchen Display"/>
         <attribute name="newDocketNotification" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="newDocketSoundName" optional="YES" attributeType="String" defaultValueString="sound1"/>
+        <attribute name="screenTemplate" optional="YES" attributeType="Integer 32" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="turnToRedAfter" optional="YES" attributeType="Integer 32" defaultValueString="4" usesScalarValueType="YES"/>
         <attribute name="turnToYellowAfter" optional="YES" attributeType="Integer 32" defaultValueString="2" usesScalarValueType="YES"/>
         <attribute name="unDoItemNotification" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
@@ -81,7 +82,7 @@
         <element name="ItemOption" positionX="18" positionY="180" width="128" height="103"/>
         <element name="KitchenTransaction" positionX="-36" positionY="90" width="128" height="178"/>
         <element name="KitchenUser" positionX="-54" positionY="63" width="128" height="148"/>
-        <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="298"/>
+        <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="313"/>
         <element name="OPManagedObject" positionX="-9" positionY="144" width="128" height="43"/>
         <element name="Order" positionX="-18" positionY="126" width="128" height="208"/>
         <element name="OrderItem" positionX="0" positionY="153" width="128" height="283"/>

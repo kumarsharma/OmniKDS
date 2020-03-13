@@ -75,6 +75,10 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             servedByLabel?.backgroundColor = .lightGray
             servedByLabel?.font = .italicSystemFont(ofSize: 17)
             servedByLabel?.textAlignment = .center
+            
+            servedByLabel?.layer.cornerRadius=10
+            servedByLabel?.clipsToBounds=true
+            servedByLabel?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMaxYCorner]
 
             footerButton = UIButton(type: UIButton.ButtonType.custom)
             footerButton?.setImage(UIImage(named: "checkAllIcn"), for: UIControl.State.normal)
@@ -358,7 +362,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             }
         }else{
             item?.isFinished=true
-            
+            item?.endTime = Date.init()
             if sharedKitchen!.doneItemNotification{
                 
                 self.playSound(soundName: sharedKitchen!.doneItemSoundEffect!)

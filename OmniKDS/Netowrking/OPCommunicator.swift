@@ -15,7 +15,6 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
     
     override init() {
         
-        
     }
     
     func startInitials() {
@@ -30,7 +29,6 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
     }
     
     @objc func reachabilityChanged(_ notification: NSNotification) {
-        
         
     }
     
@@ -98,6 +96,20 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
                             if newOrder != nil{
                                 sharedCoredataCoordinator.saveContext()
                             }
+                            
+                            //send acknowledgement
+                            /*
+                            var host : NSString?
+                            var port : UInt16?
+                            GCDAsyncUdpSocket.getHost(&host, port: &port!, fromAddress: address)
+                            if host != nil{
+                                
+                                let key = dict.value(forKey: NIK.CURRENT_SENT_KEY)
+                                let returnDict = [NIK.SYNC_ACTION:NIK.SYNC_ACTION_ACKKNOWLEDGEMENT, NIK.CURRENT_SENT_KEY:key]
+                                let ackData = try NSKeyedArchiver.archivedData(withRootObject: returnDict, requiringSecureCoding: false)
+                                
+                                self.udpSocket.send(ackData, toHost: host, port: port, withTimeout: 1, tag: 1)
+                            }*/
                         }
                     }catch let error as NSError{
                         
