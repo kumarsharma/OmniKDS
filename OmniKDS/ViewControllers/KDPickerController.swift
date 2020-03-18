@@ -21,6 +21,7 @@ class KDPickerController: UITableViewController {
     var delegate:KDPickerDelegate?
     var soundEffect : AVAudioPlayer?
     var currentCell: UITableViewCell?
+    var selectedIndexPath : IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +30,29 @@ class KDPickerController: UITableViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
         
+        if (itemList?.contains(self.selectedItem as Any))!{
+            
+            self.selectedIndexPath = IndexPath(row: (self.itemList?.index(of: self.selectedItem!))!, section: 0)
+        }
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        
+        if self.selectedIndexPath != nil{
+            
+            self.tableView.scrollToRow(at: self.selectedIndexPath!, at: UITableView.ScrollPosition.middle, animated: false)
+        }
+    }
+    
+    @objc func populateSelectedColor(){
+        
+        if self.selectedIndexPath != nil{
+            
+            self.tableView.scrollToRow(at: self.selectedIndexPath!, at: UITableView.ScrollPosition.middle, animated: false)
+        }
     }
     
     @objc func cancelBtnAction(){
@@ -67,6 +90,7 @@ class KDPickerController: UITableViewController {
             
             if selectedItem == item{
                 cell.accessoryType=UITableViewCell.AccessoryType.checkmark
+                
             }
             else{
                 cell.accessoryType=UITableViewCell.AccessoryType.none

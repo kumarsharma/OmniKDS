@@ -390,7 +390,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let pickerVc = KDPickerController(style: UITableView.Style.grouped)
         pickerVc.delegate=self
         pickerVc.itemList=NSArray(array: ["sound1","sound2", "sound3", "sound4", "sound5","sound6","sound7", "sound8", "sound9", "sound10", "sound11","sound12","sound13", "sound14", "sound15", "sound16", "sound17","sound18","sound19", "sound20", "sound21", "sound22", "sound23","sound24","sound25", "sound26", "sound27", "sound28", "sound29", "sound30"])
-        pickerVc.selectedItem=newDocketSoundField?.text
+        pickerVc.selectedItem=self.activeTextField?.text
         let navVc = UINavigationController(rootViewController: pickerVc)
         navVc.modalPresentationStyle = .popover
         navVc.navigationBar.barStyle = .black
@@ -398,7 +398,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         if let presentationController = viewPresentationController{
             
             presentationController.delegate=self
-            presentationController.sourceView=newDocketSoundField
+            presentationController.sourceView=self.activeTextField
             presentationController.permittedArrowDirections=UIPopoverArrowDirection.down
         }
         
