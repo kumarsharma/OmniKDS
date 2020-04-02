@@ -28,4 +28,6 @@ extension Order {
     @NSManaged public var isOpen: Bool
     @NSManaged public var orderType: String?
     @NSManaged public var guestCount: String?
+    @NSManaged public var processingTime : Float
+    @NSManaged public var isLateOrder : Bool
 }

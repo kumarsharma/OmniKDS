@@ -51,12 +51,14 @@
         <attribute name="closedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="customerName" optional="YES" attributeType="String"/>
         <attribute name="guestCount" optional="YES" attributeType="String" defaultValueString="1"/>
+        <attribute name="isLateOrder" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isOpen" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="orderBy" optional="YES" attributeType="String"/>
         <attribute name="orderDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="orderId" optional="YES" attributeType="String"/>
         <attribute name="orderNo" optional="YES" attributeType="String"/>
         <attribute name="orderType" optional="YES" attributeType="String"/>
+        <attribute name="processingTime" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="tableName" optional="YES" attributeType="String"/>
         <attribute name="tableText" optional="YES" attributeType="String"/>
     </entity>
@@ -84,7 +86,7 @@
         <element name="KitchenUser" positionX="-54" positionY="63" width="128" height="148"/>
         <element name="OmniKitchen" positionX="-63" positionY="-18" width="128" height="313"/>
         <element name="OPManagedObject" positionX="-9" positionY="144" width="128" height="43"/>
-        <element name="Order" positionX="-18" positionY="126" width="128" height="208"/>
+        <element name="Order" positionX="-18" positionY="126" width="128" height="238"/>
         <element name="OrderItem" positionX="0" positionY="153" width="128" height="283"/>
     </elements>
 </model>

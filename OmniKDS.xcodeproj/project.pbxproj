@@ -16,6 +16,7 @@
 		CE12E8EF23FD24CF0028BF56 /* logoutIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12E8EE23FD24CE0028BF56 /* logoutIcn.png */; };
 		CE1F672423E16D2D00536C40 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1F672323E16D2D00536C40 /* colorPalette.plist */; };
 		CE1F672623E170FE00536C40 /* OPColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F672523E170FE00536C40 /* OPColorPickerController.swift */; };
+		CE1FD4622423B17000114807 /* KDAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1FD4612423B17000114807 /* KDAnalysisViewController.swift */; };
 		CE26801124079D26002F33CA /* checkAllIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE26801024079D26002F33CA /* checkAllIcn.png */; };
 		CE2680192407A52C002F33CA /* nextIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2680172407A52B002F33CA /* nextIcn.png */; };
 		CE26801A2407A52C002F33CA /* prevIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2680182407A52B002F33CA /* prevIcn.png */; };
@@ -57,6 +58,7 @@
 		CE5FB1102403CC5F00AE068E /* SampleOrders.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */; };
 		CE5FB1122403D6C400AE068E /* doneIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB1112403D6C400AE068E /* doneIcn.png */; };
 		CE5FB1142403ECD100AE068E /* OmniKDS_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB1132403ECD000AE068E /* OmniKDS_BG.png */; };
+		CE721DAE2435F2ED00D35B30 /* KSDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */; };
 		CE7D298223D6E1EA0009D699 /* KDSectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */; };
 		CE7D298423D6E1F90009D699 /* KDRowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298323D6E1F90009D699 /* KDRowObject.swift */; };
 		CE7D298623D6EAA50009D699 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */; };
@@ -132,6 +134,7 @@
 		CE12E8EE23FD24CE0028BF56 /* logoutIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoutIcn.png; sourceTree = "<group>"; };
 		CE1F672323E16D2D00536C40 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
 		CE1F672523E170FE00536C40 /* OPColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPColorPickerController.swift; sourceTree = "<group>"; };
+		CE1FD4612423B17000114807 /* KDAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDAnalysisViewController.swift; sourceTree = "<group>"; };
 		CE26801024079D26002F33CA /* checkAllIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkAllIcn.png; sourceTree = "<group>"; };
 		CE2680172407A52B002F33CA /* nextIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextIcn.png; sourceTree = "<group>"; };
 		CE2680182407A52B002F33CA /* prevIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prevIcn.png; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 		CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SampleOrders.txt; sourceTree = "<group>"; };
 		CE5FB1112403D6C400AE068E /* doneIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneIcn.png; sourceTree = "<group>"; };
 		CE5FB1132403ECD000AE068E /* OmniKDS_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OmniKDS_BG.png; sourceTree = "<group>"; };
+		CE721DAC2435F2ED00D35B30 /* KSDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSDateUtil.h; sourceTree = "<group>"; };
+		CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSDateUtil.m; sourceTree = "<group>"; };
 		CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSectionObject.swift; sourceTree = "<group>"; };
 		CE7D298323D6E1F90009D699 /* KDRowObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDRowObject.swift; sourceTree = "<group>"; };
 		CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -278,6 +283,8 @@
 				CE5400AE23EBFD2100F7FC46 /* KDTools.swift */,
 				CE5400B023EC0A6300F7FC46 /* KDSoundTool.swift */,
 				CECE98D823FBE547003E04B7 /* KDSummaryItem.swift */,
+				CE721DAC2435F2ED00D35B30 /* KSDateUtil.h */,
+				CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -344,6 +351,7 @@
 				CE5EA415240E68E100330A76 /* KDCourseSummaryViewController.swift */,
 				CE1F672523E170FE00536C40 /* OPColorPickerController.swift */,
 				CEEB8F3723E3F05900494334 /* KDPickerController.swift */,
+				CE1FD4612423B17000114807 /* KDAnalysisViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -661,6 +669,7 @@
 				CECE98D923FBE547003E04B7 /* KDSummaryItem.swift in Sources */,
 				CE830937240691EF00D1A2E9 /* LoadingIndicatorView.m in Sources */,
 				CE7D299323D70D300009D699 /* KDSettingsTableViewCell.swift in Sources */,
+				CE721DAE2435F2ED00D35B30 /* KSDateUtil.m in Sources */,
 				CEEB8F3A23E4064600494334 /* KDUserViewController.swift in Sources */,
 				CEED07BF23BF986700731147 /* ViewController.swift in Sources */,
 				CEEB8F3823E3F05900494334 /* KDPickerController.swift in Sources */,
@@ -675,6 +684,7 @@
 				CEC515EA23CB457700DA0645 /* GCDAsyncUdpSocket.m in Sources */,
 				CEED07C523BF986700731147 /* OmniKDS.xcdatamodeld in Sources */,
 				CEC515E923CB457700DA0645 /* AsyncSocket.m in Sources */,
+				CE1FD4622423B17000114807 /* KDAnalysisViewController.swift in Sources */,
 				CEC515DC23CA1B4400DA0645 /* Order+CoreDataProperties.swift in Sources */,
 				CE83093A2406932000D1A2E9 /* StatusView.m in Sources */,
 				CEC515D523CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift in Sources */,

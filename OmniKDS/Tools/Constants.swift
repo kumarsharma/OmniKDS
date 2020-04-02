@@ -19,6 +19,11 @@ let kSomeItemStateDidChangeNotification = "SomeItemStateDidChangeNotification"
 let kDidArriveNewDocketNotification = "DidArriveNewDocketNotification"
 let kDidUpdateUsersDBNOtification = "DidUpdateUsersDBNOtification"
 
+let kOrderCount = "OrderCount"
+let kItemsCount = "ItemsCount"
+let kAvgProcessingTime = "AvgProcessingTime"
+let kLateOrders = "LateOrders"
+
 struct NIK { //network interchange keys
     
 //    let GlobalKitchenID = 1111

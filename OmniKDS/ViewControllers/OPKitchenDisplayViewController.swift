@@ -227,7 +227,11 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     @objc func analyticsAction(){
         
-        
+        let analysisVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AnalysisViewController")
+       let navVc = UINavigationController(rootViewController: analysisVc)
+       navVc.navigationBar.barStyle = .black
+       navVc.modalPresentationStyle=UIModalPresentationStyle.fullScreen
+       self.present(navVc, animated: true, completion: nil)
     }
     
     @objc func courseAction(sender:UIBarButtonItem){

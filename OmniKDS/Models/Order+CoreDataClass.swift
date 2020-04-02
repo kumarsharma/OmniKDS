@@ -71,4 +71,68 @@ public class Order: OPManagedObject {
          fetchRequest.predicate = NSPredicate(format: "isOpen=true")
          return fetchRequest as! NSFetchRequest<NSFetchRequestResult>
     }
+    
+    class func fetchOrderDetailsForDay(date: Date) -> NSDictionary{
+        
+        let dict : NSMutableDictionary? = NSMutableDictionary()
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Order")
+        let sd = NSSortDescriptor(key: "orderDate", ascending: false)
+        fetchRequest.sortDescriptors = [sd]
+        fetchRequest.predicate = NSPredicate(format: "isOpen=false")
+        
+        let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+       var components = gregorian.components([.year, .month, .day, .hour, .minute, .second], from: date)
+
+       components.hour = 0
+       components.minute = 0
+       components.second = 0
+       
+       let fromDate = gregorian.date(from: components)! as NSDate
+       
+       var components2 = gregorian.components([.year, .month, .day, .hour, .minute, .second], from: date)
+       components2.hour = 23
+       components2.minute = 59
+       components2.second = 59
+       
+       let toDate = gregorian.date(from: components2)! as NSDate
+       
+       let predicate = NSPredicate(format: "(orderDate > %@) AND (orderDate < %@)", fromDate, toDate)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest)
+            
+            if records.count > 0{
+                
+                let orderCount = records.count
+                var itemsCount : Int? = 0
+                var totalProcessingTime : Float? = 0
+                var latOrderCount : Int? = 0
+                for order in records{
+                    
+                    let anOrder = order as? Order
+                    let items = OrderItem.getItemsForOrderId(orderId: anOrder!.orderId!) 
+                    itemsCount! += items.count
+                    totalProcessingTime! += Float((anOrder?.processingTime)!)
+                    if anOrder!.isLateOrder{
+                        
+                        latOrderCount! += 1
+                    }
+                }
+                
+                let avgProcessing = Float(totalProcessingTime!)/Float(orderCount)
+                
+                dict?.setValue(orderCount, forKey: "OrderCount")
+                dict?.setValue(itemsCount, forKey: "ItemsCount")
+                dict?.setValue(avgProcessing, forKey: "AvgProcessingTime")
+                dict?.setValue(latOrderCount, forKey: "LateOrders")
+            }
+        } catch _ as NSError {
+            
+            
+        }
+
+        return dict!
+    }
 }

@@ -103,6 +103,15 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
         order?.isOpen = false
         order?.closedAt = Date()
+        let seconds = KSDateUtil.getTimeDiffBetweenDate1(order?.orderDate!, andDate2: order?.closedAt!)
+        let mins = Float(seconds/60)
+        order?.processingTime = mins
+        let max = NSNumber(value: sharedKitchen!.turnToRedAfter) 
+        
+        if mins > max.floatValue{
+            
+            order?.isLateOrder = true
+        }
         sharedCoredataCoordinator.saveContext()
         
         if sharedKitchen!.closeDocketNotification{

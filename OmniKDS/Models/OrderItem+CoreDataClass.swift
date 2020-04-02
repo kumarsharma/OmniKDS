@@ -65,6 +65,9 @@ public class OrderItem: OPManagedObject {
         let str2:String! = jsonDict.value(forKey: "quantity") as? String 
         anItem.quantity = Float(str2) ?? 0
         
+        anItem.placeTime = Date()
+        
+        /*
         let str:String! = jsonDict.value(forKey: "placeTime") as? String
         
         do{
@@ -72,7 +75,7 @@ public class OrderItem: OPManagedObject {
             anItem.placeTime = date
         }catch{
             
-        }
+        }*/
     
         let options = jsonDict.value(forKey: "itemOPtions") as! NSArray
         for option in options {
