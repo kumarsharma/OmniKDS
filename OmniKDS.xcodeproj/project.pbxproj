@@ -76,6 +76,7 @@
 		CE7D299323D70D300009D699 /* KDSettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D299223D70D300009D699 /* KDSettingsTableViewCell.swift */; };
 		CE830937240691EF00D1A2E9 /* LoadingIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE830935240691EF00D1A2E9 /* LoadingIndicatorView.m */; };
 		CE83093A2406932000D1A2E9 /* StatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8309382406932000D1A2E9 /* StatusView.m */; };
+		CE972D6A243C78A600C469BD /* KSAnalysisChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE972D69243C78A600C469BD /* KSAnalysisChartView.swift */; };
 		CEA8C907240515C00060B5EF /* OmniKDS_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA8C906240515C00060B5EF /* OmniKDS_Logo.png */; };
 		CEA8C909240515F50060B5EF /* OmniKDS_BG_Plain.png in Resources */ = {isa = PBXBuildFile; fileRef = CEA8C908240515F50060B5EF /* OmniKDS_BG_Plain.png */; };
 		CEC515D523CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */; };
@@ -211,6 +212,7 @@
 		CE830936240691EF00D1A2E9 /* LoadingIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingIndicatorView.h; sourceTree = "<group>"; };
 		CE8309382406932000D1A2E9 /* StatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusView.m; sourceTree = "<group>"; };
 		CE8309392406932000D1A2E9 /* StatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusView.h; sourceTree = "<group>"; };
+		CE972D69243C78A600C469BD /* KSAnalysisChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSAnalysisChartView.swift; sourceTree = "<group>"; };
 		CEA8C906240515C00060B5EF /* OmniKDS_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OmniKDS_Logo.png; sourceTree = "<group>"; };
 		CEA8C908240515F50060B5EF /* OmniKDS_BG_Plain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OmniKDS_BG_Plain.png; sourceTree = "<group>"; };
 		CEC515C923CA1B4400DA0645 /* KitchenUser+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KitchenUser+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 				CE5BFDF12437797A00DF9A0D /* KSGridView.h */,
 				CE5BFDF02437797A00DF9A0D /* KSGridView.m */,
 				CE77CDC0243B1DA200DEDBE3 /* KDScoreCardView.swift */,
+				CE972D69243C78A600C469BD /* KSAnalysisChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				CEC515D823CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift in Sources */,
 				CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */,
 				CEDFB4AB2437503D00CE673D /* OPCalendarViewCOntroller.m in Sources */,
+				CE972D6A243C78A600C469BD /* KSAnalysisChartView.swift in Sources */,
 				CEC515DD23CA1B4400DA0645 /* ItemOption+CoreDataClass.swift in Sources */,
 				CEC515DA23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift in Sources */,
 				CE5EA416240E68E100330A76 /* KDCourseSummaryViewController.swift in Sources */,

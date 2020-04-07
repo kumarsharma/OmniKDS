@@ -20,6 +20,7 @@ class KDAnalysisViewController: UIViewController, OPDateSelectionDelegate, UIPop
     var fromDate: Date? = Date()
     var toDate: Date? = Date()
     var currentScoreCard : KDScoreCardView?
+    var currentChartView : KSAnalysisChartView?
     
     let xPos = 40.0
     
@@ -28,7 +29,7 @@ class KDAnalysisViewController: UIViewController, OPDateSelectionDelegate, UIPop
 
         fromDateField?.text = String(format: "%@ - %@", KSDateUtil.getShortDateOnlyString(self.fromDate), KSDateUtil.getShortDateOnlyString(self.toDate))
 
-        self.title="Analysis"
+        self.title="Analytics"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
         
@@ -82,7 +83,7 @@ class KDAnalysisViewController: UIViewController, OPDateSelectionDelegate, UIPop
     
     @IBAction func segmentedControlAction(sender:UISegmentedControl){
         
-        
+        self.fetchReports()
     }
     
     func didSelectDate1(_ date1: Date!, andDate2 date2: Date!) {
@@ -96,17 +97,54 @@ class KDAnalysisViewController: UIViewController, OPDateSelectionDelegate, UIPop
     
     @IBAction func fetchReports(){
         
-        if self.currentScoreCard == nil{
+        if segmentedControl?.selectedSegmentIndex == 0{
             
-            let scoreCard = KDScoreCardView.init()
-            scoreCard.frame = CGRect(x: 30, y: (segmentedControl?.frame.size.height)!+(segmentedControl?.frame.origin.y)!, width: (segmentedControl?.frame.size.width)!, height: self.view.frame.size.height-((dateBgView?.frame.size.height)! + (segmentedControl?.frame.size.height)!)-105)
-            self.currentScoreCard = scoreCard
-            self.view.addSubview(scoreCard)
+            self.showScoreCard()
+        }else{
+            
+            self.showChartView()
         }
-        
-        self.currentScoreCard!.fromDate = self.fromDate!
-        self.currentScoreCard!.toDate = self.toDate!
-        self.currentScoreCard!.fetchScoreCard()
     }
        
+    func showScoreCard(){
+        
+        if self.currentChartView != nil{
+            
+            self.currentChartView?.isHidden = true
+        }
+        
+        if self.currentScoreCard == nil{
+                   
+           let scoreCard = KDScoreCardView.init()
+           scoreCard.frame = CGRect(x: 30, y: (segmentedControl?.frame.size.height)!+(segmentedControl?.frame.origin.y)!, width: (segmentedControl?.frame.size.width)!, height: self.view.frame.size.height-((dateBgView?.frame.size.height)! + (segmentedControl?.frame.size.height)!)-105)
+           self.currentScoreCard = scoreCard
+           self.view.addSubview(scoreCard)
+       }
+       
+        self.currentScoreCard?.isHidden = false
+       self.currentScoreCard!.fromDate = self.fromDate!
+       self.currentScoreCard!.toDate = self.toDate!
+       self.currentScoreCard!.fetchScoreCard()
+    }
+    
+    func showChartView(){
+        
+        if self.currentScoreCard != nil{
+            
+            self.currentScoreCard?.isHidden = true
+        }
+        
+        if self.currentChartView == nil{
+            
+            let chartView = KSAnalysisChartView.init()
+            chartView.frame = CGRect(x: 30, y: (segmentedControl?.frame.size.height)!+(segmentedControl?.frame.origin.y)!, width: (segmentedControl?.frame.size.width)!, height: self.view.frame.size.height-((dateBgView?.frame.size.height)! + (segmentedControl?.frame.size.height)!)-105)
+            self.currentChartView = chartView
+            self.view.addSubview(chartView)
+        }
+        
+        self.currentChartView?.isHidden = false
+        self.currentChartView!.fromDate = self.fromDate!
+        self.currentChartView!.toDate = self.toDate!
+        self.currentChartView!.fetchScoreCard()
+    }
 }

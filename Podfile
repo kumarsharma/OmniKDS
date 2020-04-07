@@ -13,5 +13,6 @@ target 'OmniKDS' do
   end
 
   pod 'FSCalendar'
+  pod 'SwiftChart'
 
 end

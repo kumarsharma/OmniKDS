@@ -1,16 +1,20 @@
 PODS:
   - FSCalendar (2.8.1)
+  - SwiftChart (1.0.1)
 
 DEPENDENCIES:
   - FSCalendar
+  - SwiftChart
 
 SPEC REPOS:
   trunk:
     - FSCalendar
+    - SwiftChart
 
 SPEC CHECKSUMS:
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  SwiftChart: ba767a678d568a5ee22d419e146a0582865e1aff
 
-PODFILE CHECKSUM: 3748bb09faf8c957ce0b646dd3a42afc6d7b536e
+PODFILE CHECKSUM: e654a0df8097c78d0678c265eb8bfce2e909562a
 
 COCOAPODS: 1.8.1
