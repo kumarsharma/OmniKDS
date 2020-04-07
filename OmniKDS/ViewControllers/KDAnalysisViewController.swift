@@ -8,21 +8,34 @@
 
 import UIKit
 
-class KDAnalysisViewController: UIViewController {
+class KDAnalysisViewController: UIViewController, OPDateSelectionDelegate, UIPopoverPresentationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var backgroundView: UIImageView?
     @IBOutlet weak var fromDateField: UITextField?
-    @IBOutlet weak var toDateField: UITextField?
     @IBOutlet weak var submitButton: UIButton?
+    @IBOutlet weak var segmentedControl : UISegmentedControl?
+    @IBOutlet weak var dateBgView : UIView?
+    var activeTextField : UITextField?
+    var currentPopoverController : UIViewController?
+    var fromDate: Date? = Date()
+    var toDate: Date? = Date()
+    var currentScoreCard : KDScoreCardView?
+    
+    let xPos = 40.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        fromDateField?.text = String(format: "%@ - %@", KSDateUtil.getShortDateOnlyString(self.fromDate), KSDateUtil.getShortDateOnlyString(self.toDate))
 
         self.title="Analysis"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
         
         backgroundView?.frame = self.view.bounds
+        dateBgView?.frame = CGRect(x: 30, y: 85, width: self.view.frame.size.width-60, height: (dateBgView?.frame.size.height)!)
+        segmentedControl?.frame = CGRect(x: 30, y: (dateBgView?.frame.size.height)!+(dateBgView?.frame.origin.y)!, width: (dateBgView?.frame.size.width)!, height: (segmentedControl?.frame.size.height)!)
+        
     }
     
     @objc func cancelBtnAction(){
@@ -31,8 +44,69 @@ class KDAnalysisViewController: UIViewController {
     }
 
     @objc func doneBtnAction(){
-           
- 
+            
         self.dismiss(animated: true, completion: nil)   
     }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool{
+        
+        self.activeTextField = textField
+        if textField == fromDateField{
+            
+            self.showCalendar()
+            return false
+        }
+        
+        return true
+    }
+    
+    @objc func showCalendar(){
+        
+        let calendarVc = OPCalendarViewController(date1: self.fromDate, date2: self.toDate)
+        calendarVc?.delegate = self
+        let nav = UINavigationController(rootViewController: calendarVc!)
+        nav.modalPresentationStyle = .popover
+        
+        let viewPresentationController = nav.popoverPresentationController
+        if let presentationController = viewPresentationController{
+            
+            presentationController.delegate=self
+            presentationController.sourceView=self.activeTextField
+            presentationController.permittedArrowDirections=UIPopoverArrowDirection.any
+         }
+        
+        nav.preferredContentSize = CGSize(width: 400, height: 345)
+        self.present(nav, animated: true, completion: nil)
+        self.currentPopoverController=nav
+    }
+    
+    @IBAction func segmentedControlAction(sender:UISegmentedControl){
+        
+        
+    }
+    
+    func didSelectDate1(_ date1: Date!, andDate2 date2: Date!) {
+           
+        self.fromDate = date1
+        self.toDate = date2
+        
+        fromDateField?.text = String(format: "%@ - %@", KSDateUtil.getShortDateOnlyString(self.fromDate), KSDateUtil.getShortDateOnlyString(self.toDate))        
+        self.currentPopoverController?.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func fetchReports(){
+        
+        if self.currentScoreCard == nil{
+            
+            let scoreCard = KDScoreCardView.init()
+            scoreCard.frame = CGRect(x: 30, y: (segmentedControl?.frame.size.height)!+(segmentedControl?.frame.origin.y)!, width: (segmentedControl?.frame.size.width)!, height: self.view.frame.size.height-((dateBgView?.frame.size.height)! + (segmentedControl?.frame.size.height)!)-105)
+            self.currentScoreCard = scoreCard
+            self.view.addSubview(scoreCard)
+        }
+        
+        self.currentScoreCard!.fromDate = self.fromDate!
+        self.currentScoreCard!.toDate = self.toDate!
+        self.currentScoreCard!.fetchScoreCard()
+    }
+       
 }

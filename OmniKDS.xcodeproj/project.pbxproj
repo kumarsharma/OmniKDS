@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		74995F350B4084613B43A30B /* Pods_OmniKDS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4029CD1A4C3C983FA24262BC /* Pods_OmniKDS.framework */; };
+		AE2D9C01A1EE9600BBDAFF13 /* Pods_OmniKDSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11ADC395E5B3B60C4B158355 /* Pods_OmniKDSTests.framework */; };
 		CE06FE8D2405352600A7A664 /* analyticsIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE06FE8C2405352600A7A664 /* analyticsIcn.png */; };
 		CE12E8DF23FD1B600028BF56 /* OmniKDS_Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12E8DE23FD1B600028BF56 /* OmniKDS_Splash.png */; };
 		CE12E8E723FD22400028BF56 /* saveIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12E8E623FD22400028BF56 /* saveIcn.png */; };
@@ -53,12 +55,16 @@
 		CE529D53240E67E5001B949C /* courseIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE529D52240E67E5001B949C /* courseIcn.png */; };
 		CE5400AF23EBFD2100F7FC46 /* KDTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5400AE23EBFD2100F7FC46 /* KDTools.swift */; };
 		CE5400B123EC0A6300F7FC46 /* KDSoundTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5400B023EC0A6300F7FC46 /* KDSoundTool.swift */; };
+		CE5BFDF52437797B00DF9A0D /* KSGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5BFDF02437797A00DF9A0D /* KSGridView.m */; };
+		CE5BFDF62437797B00DF9A0D /* KSGridSection.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5BFDF22437797A00DF9A0D /* KSGridSection.m */; };
+		CE5BFDF72437797B00DF9A0D /* KSGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5BFDF32437797B00DF9A0D /* KSGridTableViewCell.m */; };
 		CE5EA416240E68E100330A76 /* KDCourseSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5EA415240E68E100330A76 /* KDCourseSummaryViewController.swift */; };
 		CE5FB10E2403C93C00AE068E /* privacyIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB10D2403C93C00AE068E /* privacyIcn.png */; };
 		CE5FB1102403CC5F00AE068E /* SampleOrders.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */; };
 		CE5FB1122403D6C400AE068E /* doneIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB1112403D6C400AE068E /* doneIcn.png */; };
 		CE5FB1142403ECD100AE068E /* OmniKDS_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB1132403ECD000AE068E /* OmniKDS_BG.png */; };
 		CE721DAE2435F2ED00D35B30 /* KSDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */; };
+		CE77CDC1243B1DA200DEDBE3 /* KDScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CDC0243B1DA200DEDBE3 /* KDScoreCardView.swift */; };
 		CE7D298223D6E1EA0009D699 /* KDSectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */; };
 		CE7D298423D6E1F90009D699 /* KDRowObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298323D6E1F90009D699 /* KDRowObject.swift */; };
 		CE7D298623D6EAA50009D699 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */; };
@@ -91,6 +97,8 @@
 		CEC5160623CC863A00DA0645 /* OPKitchenDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */; };
 		CECE98D923FBE547003E04B7 /* KDSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE98D823FBE547003E04B7 /* KDSummaryItem.swift */; };
 		CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */; };
+		CEDFB4AB2437503D00CE673D /* OPCalendarViewCOntroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFB4A72437503D00CE673D /* OPCalendarViewCOntroller.m */; };
+		CEDFB4AC2437503D00CE673D /* RangePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFB4AA2437503D00CE673D /* RangePickerCell.m */; };
 		CEE1AA1B23F824160042752C /* KDSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE1AA1A23F824160042752C /* KDSummaryViewController.swift */; };
 		CEEB8F3823E3F05900494334 /* KDPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB8F3723E3F05900494334 /* KDPickerController.swift */; };
 		CEEB8F3A23E4064600494334 /* KDUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB8F3923E4064600494334 /* KDUserViewController.swift */; };
@@ -125,6 +133,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11ADC395E5B3B60C4B158355 /* Pods_OmniKDSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniKDSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29F564EB4BDE456F8545984C /* Pods-OmniKDSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniKDSTests.release.xcconfig"; path = "Target Support Files/Pods-OmniKDSTests/Pods-OmniKDSTests.release.xcconfig"; sourceTree = "<group>"; };
+		4029CD1A4C3C983FA24262BC /* Pods_OmniKDS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OmniKDS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4582007AB7A742504EE877DA /* Pods-OmniKDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniKDS.release.xcconfig"; path = "Target Support Files/Pods-OmniKDS/Pods-OmniKDS.release.xcconfig"; sourceTree = "<group>"; };
+		C0D94E91640E043555D0FDB9 /* Pods-OmniKDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniKDS.debug.xcconfig"; path = "Target Support Files/Pods-OmniKDS/Pods-OmniKDS.debug.xcconfig"; sourceTree = "<group>"; };
 		CE06FE8C2405352600A7A664 /* analyticsIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyticsIcn.png; sourceTree = "<group>"; };
 		CE12E8DE23FD1B600028BF56 /* OmniKDS_Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OmniKDS_Splash.png; sourceTree = "<group>"; };
 		CE12E8E623FD22400028BF56 /* saveIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveIcn.png; sourceTree = "<group>"; };
@@ -171,6 +184,12 @@
 		CE529D52240E67E5001B949C /* courseIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = courseIcn.png; sourceTree = "<group>"; };
 		CE5400AE23EBFD2100F7FC46 /* KDTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDTools.swift; sourceTree = "<group>"; };
 		CE5400B023EC0A6300F7FC46 /* KDSoundTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSoundTool.swift; sourceTree = "<group>"; };
+		CE5BFDEF2437797A00DF9A0D /* KSGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSGridTableViewCell.h; sourceTree = "<group>"; };
+		CE5BFDF02437797A00DF9A0D /* KSGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSGridView.m; sourceTree = "<group>"; };
+		CE5BFDF12437797A00DF9A0D /* KSGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSGridView.h; sourceTree = "<group>"; };
+		CE5BFDF22437797A00DF9A0D /* KSGridSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSGridSection.m; sourceTree = "<group>"; };
+		CE5BFDF32437797B00DF9A0D /* KSGridTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSGridTableViewCell.m; sourceTree = "<group>"; };
+		CE5BFDF42437797B00DF9A0D /* KSGridSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSGridSection.h; sourceTree = "<group>"; };
 		CE5EA415240E68E100330A76 /* KDCourseSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDCourseSummaryViewController.swift; sourceTree = "<group>"; };
 		CE5FB10D2403C93C00AE068E /* privacyIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = privacyIcn.png; sourceTree = "<group>"; };
 		CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SampleOrders.txt; sourceTree = "<group>"; };
@@ -178,6 +197,7 @@
 		CE5FB1132403ECD000AE068E /* OmniKDS_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OmniKDS_BG.png; sourceTree = "<group>"; };
 		CE721DAC2435F2ED00D35B30 /* KSDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSDateUtil.h; sourceTree = "<group>"; };
 		CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSDateUtil.m; sourceTree = "<group>"; };
+		CE77CDC0243B1DA200DEDBE3 /* KDScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDScoreCardView.swift; sourceTree = "<group>"; };
 		CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSectionObject.swift; sourceTree = "<group>"; };
 		CE7D298323D6E1F90009D699 /* KDRowObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDRowObject.swift; sourceTree = "<group>"; };
 		CE7D298523D6EAA50009D699 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -216,6 +236,10 @@
 		CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenDisplayViewController.swift; sourceTree = "<group>"; };
 		CECE98D823FBE547003E04B7 /* KDSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSummaryItem.swift; sourceTree = "<group>"; };
 		CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenItemView.swift; sourceTree = "<group>"; };
+		CEDFB4A72437503D00CE673D /* OPCalendarViewCOntroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCalendarViewCOntroller.m; sourceTree = "<group>"; };
+		CEDFB4A82437503D00CE673D /* OPCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCalendarViewController.h; sourceTree = "<group>"; };
+		CEDFB4A92437503D00CE673D /* RangePickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RangePickerCell.h; sourceTree = "<group>"; };
+		CEDFB4AA2437503D00CE673D /* RangePickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RangePickerCell.m; sourceTree = "<group>"; };
 		CEE1AA1A23F824160042752C /* KDSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSummaryViewController.swift; sourceTree = "<group>"; };
 		CEEB8F3723E3F05900494334 /* KDPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDPickerController.swift; sourceTree = "<group>"; };
 		CEEB8F3923E4064600494334 /* KDUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDUserViewController.swift; sourceTree = "<group>"; };
@@ -236,6 +260,7 @@
 		CEED07E123BF986800731147 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPTableItemView.swift; sourceTree = "<group>"; };
 		CEFE375023D5BE410033C0A1 /* OPSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPSettingsViewController.swift; sourceTree = "<group>"; };
+		E68E545AC6948EC09CE95F46 /* Pods-OmniKDSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniKDSTests.debug.xcconfig"; path = "Target Support Files/Pods-OmniKDSTests/Pods-OmniKDSTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +268,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74995F350B4084613B43A30B /* Pods_OmniKDS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +276,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE2D9C01A1EE9600BBDAFF13 /* Pods_OmniKDSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +290,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B4A6ED1EE7CDBE2D2180582 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0D94E91640E043555D0FDB9 /* Pods-OmniKDS.debug.xcconfig */,
+				4582007AB7A742504EE877DA /* Pods-OmniKDS.release.xcconfig */,
+				E68E545AC6948EC09CE95F46 /* Pods-OmniKDSTests.debug.xcconfig */,
+				29F564EB4BDE456F8545984C /* Pods-OmniKDSTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		CE1F672223E16CCA00536C40 /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +325,17 @@
 				CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		CE77CDBF243B1D3300DEDBE3 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				CEDFB4A82437503D00CE673D /* OPCalendarViewController.h */,
+				CEDFB4A72437503D00CE673D /* OPCalendarViewCOntroller.m */,
+				CEDFB4A92437503D00CE673D /* RangePickerCell.h */,
+				CEDFB4AA2437503D00CE673D /* RangePickerCell.m */,
+			);
+			path = Calendar;
 			sourceTree = "<group>";
 		};
 		CE7D298723D708BB0009D699 /* Sounds */ = {
@@ -344,6 +393,7 @@
 		CEC515EE23CC54D700DA0645 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CE77CDBF243B1D3300DEDBE3 /* Calendar */,
 				CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */,
 				CEFE375023D5BE410033C0A1 /* OPSettingsViewController.swift */,
 				CEEB8F3923E4064600494334 /* KDUserViewController.swift */,
@@ -399,6 +449,13 @@
 				CE830935240691EF00D1A2E9 /* LoadingIndicatorView.m */,
 				CE8309392406932000D1A2E9 /* StatusView.h */,
 				CE8309382406932000D1A2E9 /* StatusView.m */,
+				CE5BFDF42437797B00DF9A0D /* KSGridSection.h */,
+				CE5BFDF22437797A00DF9A0D /* KSGridSection.m */,
+				CE5BFDEF2437797A00DF9A0D /* KSGridTableViewCell.h */,
+				CE5BFDF32437797B00DF9A0D /* KSGridTableViewCell.m */,
+				CE5BFDF12437797A00DF9A0D /* KSGridView.h */,
+				CE5BFDF02437797A00DF9A0D /* KSGridView.m */,
+				CE77CDC0243B1DA200DEDBE3 /* KDScoreCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -410,6 +467,8 @@
 				CEED07D323BF986800731147 /* OmniKDSTests */,
 				CEED07DE23BF986800731147 /* OmniKDSUITests */,
 				CEED07B823BF986700731147 /* Products */,
+				5B4A6ED1EE7CDBE2D2180582 /* Pods */,
+				E63E7F6EF18330C6DA2ACF69 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -484,6 +543,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E63E7F6EF18330C6DA2ACF69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4029CD1A4C3C983FA24262BC /* Pods_OmniKDS.framework */,
+				11ADC395E5B3B60C4B158355 /* Pods_OmniKDSTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -491,9 +559,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEED07E423BF986800731147 /* Build configuration list for PBXNativeTarget "OmniKDS" */;
 			buildPhases = (
+				C4EC834E4B475D032FFC5CC8 /* [CP] Check Pods Manifest.lock */,
 				CEED07B323BF986700731147 /* Sources */,
 				CEED07B423BF986700731147 /* Frameworks */,
 				CEED07B523BF986700731147 /* Resources */,
+				E37BA4586B7B5AF813BA4FEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -508,6 +578,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEED07E723BF986800731147 /* Build configuration list for PBXNativeTarget "OmniKDSTests" */;
 			buildPhases = (
+				1513C81E84EB648524921CA3 /* [CP] Check Pods Manifest.lock */,
 				CEED07CC23BF986800731147 /* Sources */,
 				CEED07CD23BF986800731147 /* Frameworks */,
 				CEED07CE23BF986800731147 /* Resources */,
@@ -659,6 +730,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1513C81E84EB648524921CA3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OmniKDSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4EC834E4B475D032FFC5CC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OmniKDS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E37BA4586B7B5AF813BA4FEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OmniKDS/Pods-OmniKDS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OmniKDS/Pods-OmniKDS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OmniKDS/Pods-OmniKDS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CEED07B323BF986700731147 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -670,10 +805,12 @@
 				CE830937240691EF00D1A2E9 /* LoadingIndicatorView.m in Sources */,
 				CE7D299323D70D300009D699 /* KDSettingsTableViewCell.swift in Sources */,
 				CE721DAE2435F2ED00D35B30 /* KSDateUtil.m in Sources */,
+				CE5BFDF52437797B00DF9A0D /* KSGridView.m in Sources */,
 				CEEB8F3A23E4064600494334 /* KDUserViewController.swift in Sources */,
 				CEED07BF23BF986700731147 /* ViewController.swift in Sources */,
 				CEEB8F3823E3F05900494334 /* KDPickerController.swift in Sources */,
 				CEC515DE23CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift in Sources */,
+				CE5BFDF62437797B00DF9A0D /* KSGridSection.m in Sources */,
 				CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */,
 				CE5400B123EC0A6300F7FC46 /* KDSoundTool.swift in Sources */,
 				CEC5160623CC863A00DA0645 /* OPKitchenDisplayViewController.swift in Sources */,
@@ -682,6 +819,7 @@
 				CE7D298223D6E1EA0009D699 /* KDSectionObject.swift in Sources */,
 				CEC515E323CA2F0700DA0645 /* OPCommunicator.swift in Sources */,
 				CEC515EA23CB457700DA0645 /* GCDAsyncUdpSocket.m in Sources */,
+				CE77CDC1243B1DA200DEDBE3 /* KDScoreCardView.swift in Sources */,
 				CEED07C523BF986700731147 /* OmniKDS.xcdatamodeld in Sources */,
 				CEC515E923CB457700DA0645 /* AsyncSocket.m in Sources */,
 				CE1FD4622423B17000114807 /* KDAnalysisViewController.swift in Sources */,
@@ -695,7 +833,9 @@
 				CEC515D623CA1B4400DA0645 /* KitchenUser+CoreDataProperties.swift in Sources */,
 				CEC515D723CA1B4400DA0645 /* KitchenTransaction+CoreDataClass.swift in Sources */,
 				CEED07BB23BF986700731147 /* AppDelegate.swift in Sources */,
+				CEDFB4AC2437503D00CE673D /* RangePickerCell.m in Sources */,
 				CEC515D923CA1B4400DA0645 /* OmniKitchen+CoreDataClass.swift in Sources */,
+				CE5BFDF72437797B00DF9A0D /* KSGridTableViewCell.m in Sources */,
 				CEC515DF23CA1B4400DA0645 /* OrderItem+CoreDataClass.swift in Sources */,
 				CEE1AA1B23F824160042752C /* KDSummaryViewController.swift in Sources */,
 				CE5000BF23C9DBF700A14306 /* OPDateTools.swift in Sources */,
@@ -705,6 +845,7 @@
 				CE5000C723C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift in Sources */,
 				CEC515D823CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift in Sources */,
 				CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */,
+				CEDFB4AB2437503D00CE673D /* OPCalendarViewCOntroller.m in Sources */,
 				CEC515DD23CA1B4400DA0645 /* ItemOption+CoreDataClass.swift in Sources */,
 				CEC515DA23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift in Sources */,
 				CE5EA416240E68E100330A76 /* KDCourseSummaryViewController.swift in Sources */,
@@ -879,6 +1020,7 @@
 		};
 		CEED07E523BF986800731147 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0D94E91640E043555D0FDB9 /* Pods-OmniKDS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -902,6 +1044,7 @@
 		};
 		CEED07E623BF986800731147 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4582007AB7A742504EE877DA /* Pods-OmniKDS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -924,6 +1067,7 @@
 		};
 		CEED07E823BF986800731147 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E68E545AC6948EC09CE95F46 /* Pods-OmniKDSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -946,6 +1090,7 @@
 		};
 		CEED07E923BF986800731147 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29F564EB4BDE456F8545984C /* Pods-OmniKDSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

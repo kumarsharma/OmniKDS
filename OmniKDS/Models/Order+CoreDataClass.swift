@@ -74,41 +74,27 @@ public class Order: OPManagedObject {
     
     class func fetchOrderDetailsForDay(date: Date) -> NSDictionary{
         
-        let dict : NSMutableDictionary? = NSMutableDictionary()
-        
+        let dict : NSMutableDictionary? = NSMutableDictionary()        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Order")
-        let sd = NSSortDescriptor(key: "orderDate", ascending: false)
-        fetchRequest.sortDescriptors = [sd]
-        fetchRequest.predicate = NSPredicate(format: "isOpen=false")
-        
-        let gregorian = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
-       var components = gregorian.components([.year, .month, .day, .hour, .minute, .second], from: date)
 
-       components.hour = 0
-       components.minute = 0
-       components.second = 0
-       
-       let fromDate = gregorian.date(from: components)! as NSDate
-       
-       var components2 = gregorian.components([.year, .month, .day, .hour, .minute, .second], from: date)
-       components2.hour = 23
-       components2.minute = 59
-       components2.second = 59
-       
-       let toDate = gregorian.date(from: components2)! as NSDate
-       
-       let predicate = NSPredicate(format: "(orderDate > %@) AND (orderDate < %@)", fromDate, toDate)
-        fetchRequest.predicate = predicate
+        let calendar = NSCalendar.current
+        let startDate = calendar.startOfDay(for: date) as NSDate
+        let endDate = calendar.date(byAdding: .day, value: 1, to: date, wrappingComponents: false)! as NSDate
         
+        let predicate = NSPredicate(format: "(isOpen = false) && (orderDate >= %@ && orderDate < %@)", startDate, endDate)
+        let sortD = NSSortDescriptor(key: "orderDate", ascending: false)
+        fetchRequest.sortDescriptors = [sortD]
+        fetchRequest.predicate = predicate 
         do {
             let records = try sharedCoredataCoordinator.persistentContainer.viewContext.fetch(fetchRequest)
             
+            let orderCount = records.count
+            var itemsCount : Int? = 0
+            var totalProcessingTime : Float? = 0
+            var latOrderCount : Int? = 0
+            
             if records.count > 0{
                 
-                let orderCount = records.count
-                var itemsCount : Int? = 0
-                var totalProcessingTime : Float? = 0
-                var latOrderCount : Int? = 0
                 for order in records{
                     
                     let anOrder = order as? Order
@@ -123,14 +109,22 @@ public class Order: OPManagedObject {
                 
                 let avgProcessing = Float(totalProcessingTime!)/Float(orderCount)
                 
-                dict?.setValue(orderCount, forKey: "OrderCount")
-                dict?.setValue(itemsCount, forKey: "ItemsCount")
-                dict?.setValue(avgProcessing, forKey: "AvgProcessingTime")
-                dict?.setValue(latOrderCount, forKey: "LateOrders")
+                dict?.setValue(orderCount, forKey: ReportingKeys.TotalOrders)
+                dict?.setValue(itemsCount, forKey: ReportingKeys.TotalItems)
+                dict?.setValue(avgProcessing, forKey: ReportingKeys.AvgProcessingTime)
+                dict?.setValue(latOrderCount, forKey: ReportingKeys.LateOrders)
             }
-        } catch _ as NSError {
+            else{
+                
+                let avgProcessing = Float(0)
+                dict?.setValue(orderCount, forKey: ReportingKeys.TotalOrders)
+                dict?.setValue(itemsCount, forKey: ReportingKeys.TotalItems)
+                dict?.setValue(avgProcessing, forKey: ReportingKeys.AvgProcessingTime)
+                dict?.setValue(latOrderCount, forKey: ReportingKeys.LateOrders)
+            }
+        } catch let error as NSError {
             
-            
+            print("\(error)")
         }
 
         return dict!

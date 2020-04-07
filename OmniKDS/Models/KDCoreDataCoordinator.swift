@@ -68,18 +68,14 @@ class KDCoreDataCoordinator: NSObject {
                     dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
                     
                     let dict = NSDictionary(dictionary: dictionary!)
-                    if dict != nil{
-                        
+                     
                         let allOrders = (dict.value(forKey: "SampleOrders") as? NSArray)!
                         
                         for orderDict in allOrders{
                         
-                            let newOrder = Order.createOrderFromJSONDict(jsonDict: orderDict as! NSDictionary, container: sharedCoredataCoordinator.persistentContainer)
-                            if newOrder != nil{
-                                sharedCoredataCoordinator.saveContext()
-                            }
+                            _ = Order.createOrderFromJSONDict(jsonDict: orderDict as! NSDictionary, container: sharedCoredataCoordinator.persistentContainer)
+                            sharedCoredataCoordinator.saveContext()
                         }
-                    }
                 }catch let error as NSError{
                     
                     print("error in parsing \(error.userInfo)")

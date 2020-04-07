@@ -52,3 +52,20 @@ enum RowType{
     case RowTypeList
 }
 
+extension UserDefaults{
+    
+    enum Keys{
+        
+        static let ReportTypeScoreCard = "ReportTypeScoreCard"
+        static let ReportTypeAnalysis = "ReportTypeAnalysis"
+    }
+}
+
+enum ReportingKeys{
+    
+    static let TotalOrders = "TotalOrders"
+    static let TotalItems = "TotalItems"
+    static let AvgProcessingTime = "AvgProcessingTime"
+    static let LateOrders = "LateOrders"
+}
+

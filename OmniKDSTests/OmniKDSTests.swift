@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import OmniKDS
+//@testable import OmniKDS
 
 class OmniKDSTests: XCTestCase {
 
