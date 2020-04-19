@@ -17,7 +17,7 @@ class KSAnalysisChartView: UIView {
         
     public func fetchScoreCard(){
         
-        self.backgroundColor = UIColor.init(hexString: sharedKitchen!.bgColor!)
+        self.backgroundColor = .darkGray //UIColor.init(hexString: sharedKitchen!.bgColor!)
         let dates = OPDateTools.datesFrom(fromDate: fromDate!, toDate: toDate!)
         
         let firstView = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height/2))
