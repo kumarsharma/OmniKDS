@@ -53,7 +53,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         super.viewDidLoad()
         self.title="Display Settings"
 
-        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         kitchenNameField?.text=sharedKitchen.kitchenName
         turnToRedField?.text="\(sharedKitchen.turnToRedAfter)"
         turnToYelloField?.text="\(sharedKitchen.turnToYellowAfter)"
@@ -186,7 +186,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func playNewDocketSoundName(){
         
-        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         let path = Bundle.main.path(forResource: "\(sharedKitchen.newDocketSoundName!)", ofType: "m4r")!
         let url = URL(fileURLWithPath: path)
         do {
@@ -199,7 +199,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     @objc func playCloseDocketSoundName(){
         
-        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         let path = Bundle.main.path(forResource: "\(sharedKitchen.closeDocketSoundName!)", ofType: "m4r")!
         let url = URL(fileURLWithPath: path)
         do {
@@ -213,7 +213,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func playItemDoneSoundEffect(){
         
-        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         let path = Bundle.main.path(forResource: "\(sharedKitchen.doneItemSoundEffect!)", ofType: "m4r")!
         let url = URL(fileURLWithPath: path)
         do {
@@ -227,7 +227,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func playItemUnDoSoundEffect(){
         
-        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         let path = Bundle.main.path(forResource: "\(sharedKitchen.unDoItemSoundEffect!)", ofType: "m4r")!
         let url = URL(fileURLWithPath: path)
         do {
@@ -329,7 +329,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func saveChanges(){
         
-        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         
         sharedKitchen.kitchenName = kitchenNameField?.text
         let n=turnToRedField?.text as NSString?
@@ -361,7 +361,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func didSelectColorHex(colorHex: String) {
      
-        let sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        let sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         bgColorButton?.backgroundColor=UIColor.init(hexString: colorHex)
         sharedKitchen.bgColor=colorHex
         sharedCoredataCoordinator.saveContext()

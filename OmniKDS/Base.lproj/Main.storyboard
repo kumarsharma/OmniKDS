@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SBa-le-aTN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SBa-le-aTN">
     <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -940,7 +940,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xuw-i7-jmK">
+                            <segmentedControl hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xuw-i7-jmK">
                                 <rect key="frame" x="38" y="152" width="948" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -972,36 +972,36 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0.circle" catalog="system" width="64" height="60"/>
-        <image name="0.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="1.circle" catalog="system" width="64" height="60"/>
-        <image name="1.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="2.circle" catalog="system" width="64" height="60"/>
-        <image name="2.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="3.circle" catalog="system" width="64" height="60"/>
-        <image name="3.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="4.circle" catalog="system" width="64" height="60"/>
-        <image name="4.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="5.circle" catalog="system" width="64" height="60"/>
-        <image name="5.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="6.circle" catalog="system" width="64" height="60"/>
-        <image name="6.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="7.circle" catalog="system" width="64" height="60"/>
-        <image name="7.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="8.circle" catalog="system" width="64" height="60"/>
-        <image name="8.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="9.circle" catalog="system" width="64" height="60"/>
-        <image name="9.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="0.circle" catalog="system" width="128" height="121"/>
+        <image name="0.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="1.circle" catalog="system" width="128" height="121"/>
+        <image name="1.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="2.circle" catalog="system" width="128" height="121"/>
+        <image name="2.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="3.circle" catalog="system" width="128" height="121"/>
+        <image name="3.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="4.circle" catalog="system" width="128" height="121"/>
+        <image name="4.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="5.circle" catalog="system" width="128" height="121"/>
+        <image name="5.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="6.circle" catalog="system" width="128" height="121"/>
+        <image name="6.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="7.circle" catalog="system" width="128" height="121"/>
+        <image name="7.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="8.circle" catalog="system" width="128" height="121"/>
+        <image name="8.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="9.circle" catalog="system" width="128" height="121"/>
+        <image name="9.circle.fill" catalog="system" width="128" height="121"/>
         <image name="OmniKDS_BG_Plain.png" width="512" height="384"/>
         <image name="OmniKDS_Logo.png" width="320" height="117"/>
-        <image name="checkmark.rectangle" catalog="system" width="64" height="46"/>
-        <image name="clear" catalog="system" width="64" height="56"/>
-        <image name="clear.fill" catalog="system" width="64" height="56"/>
-        <image name="delete.left" catalog="system" width="64" height="52"/>
-        <image name="delete.left.fill" catalog="system" width="64" height="52"/>
+        <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
+        <image name="clear" catalog="system" width="128" height="114"/>
+        <image name="clear.fill" catalog="system" width="128" height="114"/>
+        <image name="delete.left" catalog="system" width="128" height="104"/>
+        <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="nextIcn.png" width="43.216880798339844" height="43.216880798339844"/>
-        <image name="plus" catalog="system" width="64" height="56"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="prevIcn.png" width="43.216880798339844" height="43.216880798339844"/>
-        <image name="rectangle" catalog="system" width="64" height="46"/>
+        <image name="rectangle" catalog="system" width="128" height="93"/>
     </resources>
 </document>

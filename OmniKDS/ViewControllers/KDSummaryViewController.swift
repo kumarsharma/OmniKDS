@@ -19,6 +19,7 @@ class KDSummaryViewController: UITableViewController, NSFetchedResultsController
         super.viewDidLoad()
         self.title = "Item Summary"
         isSearchActive = false
+        self.view.backgroundColor = .darkGray
         fetchSummaryOfItems()
         
         let searchController = UISearchController(searchResultsController: nil)
@@ -187,7 +188,7 @@ class KDSummaryViewController: UITableViewController, NSFetchedResultsController
         let item = isSearchActive! ? self.searchItemSummary?.object(at: indexPath.row) as! KDSummaryItem : self.itemSummary?.object(at: indexPath.row) as! KDSummaryItem
         
         cell.textLabel?.text=String(format: "(%0.0f) %@", item.quantity!.floatValue, item.itemName!)    
-        cell.backgroundColor = UIColor.black
+        cell.backgroundColor = UIColor.lightGray
         cell.textLabel?.textColor=UIColor.green
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
 

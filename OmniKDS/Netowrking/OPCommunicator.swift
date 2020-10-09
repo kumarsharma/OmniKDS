@@ -64,22 +64,22 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
     
     func udpSocket(_ sock: GCDAsyncUdpSocket!, didReceive data: Data!, fromAddress address: Data!, withFilterContext filterContext: Any!) 
     {
-        var dict : NSDictionary? = nil
+        var headerDict : NSDictionary? = nil
         
         do{
-            try dict = NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? NSDictionary
+            try headerDict = NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? NSDictionary
         }catch let error as NSError{
             
             print("Error in parsing data: Error \(error.userInfo)")
         }
         
-        let key : NSString = dict?.value(forKey: NIK.SYNC_ACTION) as! NSString
+        let key : NSString = headerDict?.value(forKey: NIK.SYNC_ACTION) as! NSString
         if key.isEqual(to: NIK.SYNC_ACTION_KITCHEN_DOCKETS){
             
-            let key2 : NSString = dict?.value(forKey: NIK.AUTH) as! NSString
+            let key2 : NSString = headerDict?.value(forKey: NIK.AUTH) as! NSString
             if key2.isEqual(to: NIK.SIGNATURE){
                 
-                let msgBody : String = dict?.value(forKey: NIK.MESSAGE) as! String
+                let msgBody : String = headerDict?.value(forKey: NIK.MESSAGE) as! String
                 if msgBody.count>0
                 {
                     print("Received data on KDS: \(msgBody)")
@@ -89,27 +89,32 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
                     do{
                         dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
                         
-                        let dict = NSDictionary(dictionary: dictionary!)
-                        if dict != nil{
+                        let bodyDict = NSDictionary(dictionary: dictionary!)
                             
-                            let newOrder = Order.createOrderFromJSONDict(jsonDict: dict, container: sharedCoredataCoordinator.persistentContainer)
-                            if newOrder != nil{
-                                sharedCoredataCoordinator.saveContext()
-                            }
+                        _ = Order.createOrderFromJSONDict(jsonDict: bodyDict, container: sharedCoredataCoordinator.persistentContainer)
+                        sharedCoredataCoordinator.saveContext()
                             
-                            //send acknowledgement
-                            /*
-                            var host : NSString?
-                            var port : UInt16?
-                            GCDAsyncUdpSocket.getHost(&host, port: &port!, fromAddress: address)
-                            if host != nil{
-                                
-                                let key = dict.value(forKey: NIK.CURRENT_SENT_KEY)
-                                let returnDict = [NIK.SYNC_ACTION:NIK.SYNC_ACTION_ACKKNOWLEDGEMENT, NIK.CURRENT_SENT_KEY:key]
-                                let ackData = try NSKeyedArchiver.archivedData(withRootObject: returnDict, requiringSecureCoding: false)
-                                
-                                self.udpSocket.send(ackData, toHost: host, port: port, withTimeout: 1, tag: 1)
-                            }*/
+                        //send acknowledgement
+                        var host : NSString? = ""
+                        var port : UInt16? = 0
+                        GCDAsyncUdpSocket.getHost(&host, port: &port!, fromAddress: address)
+                        if host != nil{
+                            
+                            let hhost = host as String?
+                            var addr = sockaddr_in()
+                            addr.sin_addr = in_addr(s_addr: inet_addr(hhost))
+                            addr.sin_family = sa_family_t(AF_INET)
+                            addr.sin_len = UInt8(MemoryLayout.size(ofValue: addr))
+                            addr.sin_port = (Int(OSHostByteOrder()) == OSLittleEndian ? _OSSwapInt16(port!) : port)!                            
+                            let cfData = NSData(bytes: &addr, length: MemoryLayout<sockaddr_in>.size) as CFData
+                            let addr_data = cfData as Data?
+                            
+                            let sentKey = headerDict!.value(forKey: NIK.CURRENT_SENT_KEY)
+                            let returnDict = [NIK.SYNC_ACTION:NIK.SYNC_ACTION_ACKKNOWLEDGEMENT, NIK.CURRENT_SENT_KEY:sentKey]
+                            
+                            let ackData = try NSKeyedArchiver.archivedData(withRootObject: returnDict, requiringSecureCoding: false)
+                            
+                            self.udpSocket.send(ackData, toAddress: addr_data, withTimeout: 60, tag: 1)
                         }
                     }catch let error as NSError{
                         

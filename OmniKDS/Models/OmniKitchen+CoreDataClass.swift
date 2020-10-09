@@ -23,7 +23,7 @@ public class OmniKitchen: OPManagedObject {
         Throughout the app, only one kitchen object is used. 
         Kitchen Display is one in the app, so do not create more than one kitchen
     */
-    class func getSharedKItchen(container:NSPersistentContainer) -> OmniKitchen {
+    class func getSharedKitchen(container:NSPersistentContainer) -> OmniKitchen {
         
         if sharedKitchen == nil{
             

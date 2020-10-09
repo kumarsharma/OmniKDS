@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         var sharedKitchen : OmniKitchen? = nil
-        sharedKitchen = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.getPersistentContainer())
+        sharedKitchen = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.getPersistentContainer())
         KitchenUser.addDefaultAdminUser()
         
         if sharedKitchen==nil{

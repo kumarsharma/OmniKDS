@@ -112,7 +112,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     func doInitialsForNavigationBar() {
         
-        self.title = OmniKitchen.getSharedKItchen(container: sharedCoredataCoordinator.persistentContainer).kitchenName
+        self.title = OmniKitchen.getSharedKitchen(container: sharedCoredataCoordinator.persistentContainer).kitchenName
         
         self.view.backgroundColor = UIColor.systemBlue
         let barButton1 : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "summaryIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.plain, target: self, action: #selector(showSummaryAction))
