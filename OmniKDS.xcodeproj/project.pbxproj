@@ -10,6 +10,7 @@
 		74995F350B4084613B43A30B /* Pods_OmniKDS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4029CD1A4C3C983FA24262BC /* Pods_OmniKDS.framework */; };
 		AE2D9C01A1EE9600BBDAFF13 /* Pods_OmniKDSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11ADC395E5B3B60C4B158355 /* Pods_OmniKDSTests.framework */; };
 		CE06FE8D2405352600A7A664 /* analyticsIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE06FE8C2405352600A7A664 /* analyticsIcn.png */; };
+		CE0BA6D42537749A00344181 /* ItemSummaryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0BA6D32537749A00344181 /* ItemSummaryPresenter.swift */; };
 		CE12E8DF23FD1B600028BF56 /* OmniKDS_Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12E8DE23FD1B600028BF56 /* OmniKDS_Splash.png */; };
 		CE12E8E723FD22400028BF56 /* saveIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12E8E623FD22400028BF56 /* saveIcn.png */; };
 		CE12E8E923FD22FB0028BF56 /* closeIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE12E8E823FD22FB0028BF56 /* closeIcn.png */; };
@@ -63,6 +64,8 @@
 		CE5FB1102403CC5F00AE068E /* SampleOrders.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */; };
 		CE5FB1122403D6C400AE068E /* doneIcn.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB1112403D6C400AE068E /* doneIcn.png */; };
 		CE5FB1142403ECD100AE068E /* OmniKDS_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5FB1132403ECD000AE068E /* OmniKDS_BG.png */; };
+		CE62D4DF2533590000A2F0BD /* ViewUpdateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62D4DE2533590000A2F0BD /* ViewUpdateProtocol.swift */; };
+		CE62D4E325335EB200A2F0BD /* KDSPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62D4E225335EB200A2F0BD /* KDSPresenter.swift */; };
 		CE721DAE2435F2ED00D35B30 /* KSDateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */; };
 		CE77CDC1243B1DA200DEDBE3 /* KDScoreCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CDC0243B1DA200DEDBE3 /* KDScoreCardView.swift */; };
 		CE7D298223D6E1EA0009D699 /* KDSectionObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */; };
@@ -97,6 +100,7 @@
 		CEC515ED23CB74F100DA0645 /* OPReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC515EC23CB74F100DA0645 /* OPReachability.m */; };
 		CEC5160623CC863A00DA0645 /* OPKitchenDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */; };
 		CECE98D923FBE547003E04B7 /* KDSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECE98D823FBE547003E04B7 /* KDSummaryItem.swift */; };
+		CED570A52530E948007A9F35 /* KDPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED570A42530E948007A9F35 /* KDPresenter.swift */; };
 		CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */; };
 		CEDFB4AB2437503D00CE673D /* OPCalendarViewCOntroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFB4A72437503D00CE673D /* OPCalendarViewCOntroller.m */; };
 		CEDFB4AC2437503D00CE673D /* RangePickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDFB4AA2437503D00CE673D /* RangePickerCell.m */; };
@@ -140,6 +144,7 @@
 		4582007AB7A742504EE877DA /* Pods-OmniKDS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniKDS.release.xcconfig"; path = "Target Support Files/Pods-OmniKDS/Pods-OmniKDS.release.xcconfig"; sourceTree = "<group>"; };
 		C0D94E91640E043555D0FDB9 /* Pods-OmniKDS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OmniKDS.debug.xcconfig"; path = "Target Support Files/Pods-OmniKDS/Pods-OmniKDS.debug.xcconfig"; sourceTree = "<group>"; };
 		CE06FE8C2405352600A7A664 /* analyticsIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyticsIcn.png; sourceTree = "<group>"; };
+		CE0BA6D32537749A00344181 /* ItemSummaryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSummaryPresenter.swift; sourceTree = "<group>"; };
 		CE12E8DE23FD1B600028BF56 /* OmniKDS_Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OmniKDS_Splash.png; sourceTree = "<group>"; };
 		CE12E8E623FD22400028BF56 /* saveIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saveIcn.png; sourceTree = "<group>"; };
 		CE12E8E823FD22FB0028BF56 /* closeIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = closeIcn.png; sourceTree = "<group>"; };
@@ -196,6 +201,8 @@
 		CE5FB10F2403CC5F00AE068E /* SampleOrders.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SampleOrders.txt; sourceTree = "<group>"; };
 		CE5FB1112403D6C400AE068E /* doneIcn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneIcn.png; sourceTree = "<group>"; };
 		CE5FB1132403ECD000AE068E /* OmniKDS_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OmniKDS_BG.png; sourceTree = "<group>"; };
+		CE62D4DE2533590000A2F0BD /* ViewUpdateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewUpdateProtocol.swift; sourceTree = "<group>"; };
+		CE62D4E225335EB200A2F0BD /* KDSPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSPresenter.swift; sourceTree = "<group>"; };
 		CE721DAC2435F2ED00D35B30 /* KSDateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSDateUtil.h; sourceTree = "<group>"; };
 		CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSDateUtil.m; sourceTree = "<group>"; };
 		CE77CDC0243B1DA200DEDBE3 /* KDScoreCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDScoreCardView.swift; sourceTree = "<group>"; };
@@ -237,6 +244,7 @@
 		CEC515EC23CB74F100DA0645 /* OPReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPReachability.m; sourceTree = "<group>"; };
 		CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenDisplayViewController.swift; sourceTree = "<group>"; };
 		CECE98D823FBE547003E04B7 /* KDSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDSummaryItem.swift; sourceTree = "<group>"; };
+		CED570A42530E948007A9F35 /* KDPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KDPresenter.swift; sourceTree = "<group>"; };
 		CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPKitchenItemView.swift; sourceTree = "<group>"; };
 		CEDFB4A72437503D00CE673D /* OPCalendarViewCOntroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPCalendarViewCOntroller.m; sourceTree = "<group>"; };
 		CEDFB4A82437503D00CE673D /* OPCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPCalendarViewController.h; sourceTree = "<group>"; };
@@ -303,6 +311,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CE0BA6D22537705B00344181 /* ItemSummary */ = {
+			isa = PBXGroup;
+			children = (
+				CE0BA6D32537749A00344181 /* ItemSummaryPresenter.swift */,
+				CEE1AA1A23F824160042752C /* KDSummaryViewController.swift */,
+			);
+			path = ItemSummary;
+			sourceTree = "<group>";
+		};
 		CE1F672223E16CCA00536C40 /* Others */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +332,7 @@
 		CE5000BB23C9C21700A14306 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				CE77CDBF243B1D3300DEDBE3 /* Calendar */,
 				CE5000BC23C9C24F00A14306 /* Constants.swift */,
 				CE5000BE23C9DBF700A14306 /* OPDateTools.swift */,
 				CE7D298123D6E1EA0009D699 /* KDSectionObject.swift */,
@@ -327,6 +345,15 @@
 				CE721DAD2435F2ED00D35B30 /* KSDateUtil.m */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		CE62D4DD253358A700A2F0BD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				CE62D4E225335EB200A2F0BD /* KDSPresenter.swift */,
+				CE62D4DE2533590000A2F0BD /* ViewUpdateProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		CE77CDBF243B1D3300DEDBE3 /* Calendar */ = {
@@ -377,6 +404,15 @@
 			path = Sounds;
 			sourceTree = "<group>";
 		};
+		CE90E7F22534DB7300F37FA5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */,
+				CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CEC515E123CA2EDB00DA0645 /* Netowrking */ = {
 			isa = PBXGroup;
 			children = (
@@ -395,11 +431,10 @@
 		CEC515EE23CC54D700DA0645 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CE77CDBF243B1D3300DEDBE3 /* Calendar */,
-				CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */,
+				CE0BA6D22537705B00344181 /* ItemSummary */,
+				CED570A32530E8F3007A9F35 /* KitchenDisplay */,
 				CEFE375023D5BE410033C0A1 /* OPSettingsViewController.swift */,
 				CEEB8F3923E4064600494334 /* KDUserViewController.swift */,
-				CEE1AA1A23F824160042752C /* KDSummaryViewController.swift */,
 				CE5EA415240E68E100330A76 /* KDCourseSummaryViewController.swift */,
 				CE1F672523E170FE00536C40 /* OPColorPickerController.swift */,
 				CEEB8F3723E3F05900494334 /* KDPickerController.swift */,
@@ -441,11 +476,19 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		CED570A32530E8F3007A9F35 /* KitchenDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				CE90E7F22534DB7300F37FA5 /* Views */,
+				CED570A42530E948007A9F35 /* KDPresenter.swift */,
+				CEC5160523CC863A00DA0645 /* OPKitchenDisplayViewController.swift */,
+			);
+			path = KitchenDisplay;
+			sourceTree = "<group>";
+		};
 		CED893C723D0BFEF00BB7355 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CED893C823D0C05F00BB7355 /* OPKitchenItemView.swift */,
-				CEFE374D23D58D1A0033C0A1 /* OPTableItemView.swift */,
 				CE7D299223D70D300009D699 /* KDSettingsTableViewCell.swift */,
 				CE830936240691EF00D1A2E9 /* LoadingIndicatorView.h */,
 				CE830935240691EF00D1A2E9 /* LoadingIndicatorView.m */,
@@ -488,6 +531,7 @@
 		CEED07B923BF986700731147 /* OmniKDS */ = {
 			isa = PBXGroup;
 			children = (
+				CE62D4DD253358A700A2F0BD /* Protocols */,
 				CEED07BA23BF986700731147 /* AppDelegate.swift */,
 				CEED07BC23BF986700731147 /* SceneDelegate.swift */,
 				CEED07BE23BF986700731147 /* ViewController.swift */,
@@ -804,6 +848,7 @@
 			files = (
 				CEC515ED23CB74F100DA0645 /* OPReachability.m in Sources */,
 				CE5400AF23EBFD2100F7FC46 /* KDTools.swift in Sources */,
+				CE0BA6D42537749A00344181 /* ItemSummaryPresenter.swift in Sources */,
 				CECE98D923FBE547003E04B7 /* KDSummaryItem.swift in Sources */,
 				CE830937240691EF00D1A2E9 /* LoadingIndicatorView.m in Sources */,
 				CE7D299323D70D300009D699 /* KDSettingsTableViewCell.swift in Sources */,
@@ -812,6 +857,7 @@
 				CEEB8F3A23E4064600494334 /* KDUserViewController.swift in Sources */,
 				CEED07BF23BF986700731147 /* ViewController.swift in Sources */,
 				CEEB8F3823E3F05900494334 /* KDPickerController.swift in Sources */,
+				CE62D4E325335EB200A2F0BD /* KDSPresenter.swift in Sources */,
 				CEC515DE23CA1B4400DA0645 /* ItemOption+CoreDataProperties.swift in Sources */,
 				CE5BFDF62437797B00DF9A0D /* KSGridSection.m in Sources */,
 				CED893C923D0C05F00BB7355 /* OPKitchenItemView.swift in Sources */,
@@ -847,12 +893,14 @@
 				CE7D298623D6EAA50009D699 /* UIColor+Hex.swift in Sources */,
 				CE5000C723C9E0B500A14306 /* OPManagedObject+CoreDataProperties.swift in Sources */,
 				CEC515D823CA1B4400DA0645 /* KitchenTransaction+CoreDataProperties.swift in Sources */,
+				CE62D4DF2533590000A2F0BD /* ViewUpdateProtocol.swift in Sources */,
 				CE5000C623C9E0B500A14306 /* OPManagedObject+CoreDataClass.swift in Sources */,
 				CEDFB4AB2437503D00CE673D /* OPCalendarViewCOntroller.m in Sources */,
 				CE972D6A243C78A600C469BD /* KSAnalysisChartView.swift in Sources */,
 				CEC515DD23CA1B4400DA0645 /* ItemOption+CoreDataClass.swift in Sources */,
 				CEC515DA23CA1B4400DA0645 /* OmniKitchen+CoreDataProperties.swift in Sources */,
 				CE5EA416240E68E100330A76 /* KDCourseSummaryViewController.swift in Sources */,
+				CED570A52530E948007A9F35 /* KDPresenter.swift in Sources */,
 				CE5000BD23C9C25000A14306 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

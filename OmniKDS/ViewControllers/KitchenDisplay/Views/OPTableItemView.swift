@@ -10,7 +10,6 @@ import UIKit
 
 class OPTableItemView: UICollectionViewCell {
     
-    
     var headerLabel, footerLabel : UILabel? 
     var order: Order?
     
