@@ -182,14 +182,14 @@ class KDSummaryViewController: UITableViewController, NSFetchedResultsController
             cell.layer.borderWidth=1
             cell.layer.borderColor = UIColor.brown.cgColor
             
-            cell.textLabel?.font = KDTools.docketTextFont()
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 21)
         }
         
         let item = isSearchActive! ? self.searchItemSummary?.object(at: indexPath.row) as! KDSummaryItem : self.itemSummary?.object(at: indexPath.row) as! KDSummaryItem
         
         cell.textLabel?.text=String(format: "(%0.0f) %@", item.quantity!.floatValue, item.itemName!)    
-        cell.backgroundColor = UIColor.lightGray
-        cell.textLabel?.textColor=UIColor.green
+        cell.backgroundColor = .lightGray
+        cell.textLabel?.textColor = .black
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
 
         return cell

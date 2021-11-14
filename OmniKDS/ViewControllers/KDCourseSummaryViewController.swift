@@ -119,7 +119,7 @@ class KDCourseSummaryViewController: UIViewController, UITableViewDelegate, UITa
             cell.layer.borderWidth=1
             cell.layer.borderColor = UIColor.brown.cgColor
             
-            cell.textLabel?.font = KDTools.docketTextFont()
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 21)
         }
         let item = self.itemFRC.object(at: indexPath) as? OrderItem
         var title = String(format:"%0.0f X ", item!.quantity)+item!.itemName!

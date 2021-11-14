@@ -55,7 +55,7 @@ public class OrderItem: OPManagedObject {
         var course_Name = jsonDict.value(forKey: "courseName") as? String
         if course_Name == nil || course_Name!.count <= 0 {
             
-            course_Name = "NO COURSE"
+            course_Name = ""
         }
         anItem.courseName = course_Name
         

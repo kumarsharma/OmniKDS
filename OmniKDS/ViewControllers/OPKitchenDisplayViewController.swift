@@ -328,9 +328,18 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let docketHeight = sharedKitchen?.screenTemplate == 1 ? 600 : 300
+        let ht = view.frame.size.height
+        var docketHeight: Int?
         
-        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: docketHeight) : CGSize(width: 90, height: 55)
+        if sharedKitchen?.screenTemplate == 1 {
+            
+            docketHeight = Int(ht-210)
+        }else {
+            
+            docketHeight = Int((ht/2)-110)
+        }
+        
+        let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: docketHeight!) : CGSize(width: 90, height: 55)
         return size
     }
     
@@ -355,6 +364,9 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
             orderCollectionView?.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
             docketCollectionView?.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
             self.performSelector(onMainThread: #selector(indicateVisibleOrders), with: nil, waitUntilDone: false)
+            
+            let cell = docketCollectionView?.cellForItem(at: indexPath) as? OPKitchenItemView
+            cell?.highlight()
         }
     }
     
@@ -443,7 +455,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         let pageWidth = Float((docketCollectionView?.frame.size.width)!)
         let noOfPages = Float(floor(Float(contentSize!.width)/pageWidth))
         
-        if noOfPages > 1{
+        if noOfPages >= 1{
             
             let currentPage = Float(offset!.x) == 0 ? 0 : ceil((Float(offset!.x) / Float(contentSize!.width)) * noOfPages)
             
@@ -479,7 +491,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         let noOfPages = Float(floor(Float(contentSize!.width)/pageWidth))
         let currentPage = Float(offset!.x) == 0 ? 0 : ceil((Float(offset!.x) / Float(contentSize!.width)) * noOfPages)
         
-        if noOfPages > 1{
+        if noOfPages >= 1{
             
             nextButton?.isEnabled = currentPage < noOfPages ? true : false
             prevButton?.isEnabled = currentPage > 0 ? true : false
@@ -516,8 +528,8 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
             
         }
         
-        totalOrdersLabel?.text = String(format: "Total orders: %d", totalOrders ?? 0)
-        totalItemsLabel?.text = String(format: "Totam items: %d (Done: %d, Pending: %d)", totalItems, totalItemsDone, totalItemsPending)
+        totalOrdersLabel?.text = String(format: "Orders: %d", totalOrders ?? 0)
+        totalItemsLabel?.text = String(format: "Items: %d (Pending: %d)", totalItems, totalItemsPending)
     }
     
     func doSumOfDigits(num:Int)-> Int{

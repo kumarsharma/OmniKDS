@@ -60,7 +60,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             headerLabel?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             
             tableView=UITableView.init(frame: CGRect.zero, style: UITableView.Style.grouped)
-            tableView?.frame=CGRect.init(x: 0, y: headerLabel!.frame.size.height, width: self.frame.size.width, height: self.frame.size.height-headerLabel!.frame.size.height)
+            tableView?.frame=CGRect.init(x: 0, y: headerLabel!.frame.size.height-30, width: self.frame.size.width, height: self.frame.size.height-(headerLabel!.frame.size.height-30))
             tableView!.delegate=self; tableView!.dataSource=self
             
            let bgview = UIView(frame: tableView!.frame)
@@ -81,18 +81,27 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             servedByLabel?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMaxYCorner]
 
             footerButton = UIButton(type: UIButton.ButtonType.custom)
-            footerButton?.setImage(UIImage(named: "checkAllIcn"), for: UIControl.State.normal)
+//            footerButton?.setImage(UIImage(named: "checkAllIcn"), for: UIControl.State.normal)
+            footerButton?.setTitle("Finish All", for: .normal)
+            footerButton?.setTitle("Close", for: .selected)
+            footerButton?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
             footerButton?.frame=CGRect(x: 0, y: 20, width: footerView.frame.size.width, height: 44)
             footerButton?.addTarget(self, action: #selector(orderDoneButtonAction), for: UIControl.Event.touchUpInside)
             footerButton?.backgroundColor = .green
-            footerButton?.isHidden = !self.hasDoneAllItems()
+            footerButton?.isSelected = self.hasDoneAllItems()
             footerButton?.layer.cornerRadius = 8
-            footerButton?.layer.borderWidth = 0.5
+            footerButton?.layer.borderWidth = 1
             footerButton?.layer.borderColor = UIColor.darkGray.cgColor
-            
+            footerButton?.setTitleColor(.black, for: .normal)
+            footerButton?.setTitleColor(.black, for: .selected)
+            footerButton?.showsTouchWhenHighlighted = true
             footerView.addSubview(servedByLabel!)
             footerView.addSubview(footerButton!)
             tableView?.tableFooterView=footerView
+           
+            if !(self.order!.isOpen) {
+                footerButton?.isHidden = true
+            }
             
             self.addSubview(headerLabel!)
             self.addSubview(tableView!)
@@ -101,22 +110,41 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
 
     @objc func orderDoneButtonAction(){
         
-        order?.isOpen = false
-        order?.closedAt = Date()
-        let seconds = KSDateUtil.getTimeDiffBetweenDate1(order?.orderDate!, andDate2: order?.closedAt!)
-        let mins = Float(Float(seconds)/60) as Float
-        order?.processingTime = mins
-        let max = NSNumber(value: sharedKitchen!.turnToRedAfter) 
+        if footerButton!.isSelected {
         
-        if mins > max.floatValue{
+            order?.isOpen = false
+            order?.closedAt = Date()
+            let seconds = KSDateUtil.getTimeDiffBetweenDate1(order?.orderDate!, andDate2: order?.closedAt!)
+            let mins = Float(Float(seconds)/60) as Float
+            order?.processingTime = mins
+            let max = NSNumber(value: sharedKitchen!.turnToRedAfter) 
             
-            order?.isLateOrder = true
-        }
-        sharedCoredataCoordinator.saveContext()
-        
-        if sharedKitchen!.closeDocketNotification{
-        
-            self.playSound(soundName: sharedKitchen!.closeDocketSoundName!)
+            if mins > max.floatValue{
+                
+                order?.isLateOrder = true
+            }
+            sharedCoredataCoordinator.saveContext()
+            
+            if sharedKitchen!.closeDocketNotification{
+            
+                self.playSound(soundName: sharedKitchen!.closeDocketSoundName!)
+            }
+            footerButton?.isHidden = true
+        } else {
+            
+            let kitchenItems = self.itemFRC.fetchedObjects
+            kitchenItems?.forEach { it in
+                
+                let item = it as! OrderItem
+                item.isFinished=true
+                item.endTime = Date.init()
+                let indexPath = self.itemFRC.indexPath(forObject: item)
+                self.tableView!.reloadRows(at: [indexPath!], with: UITableView.RowAnimation.fade)
+            }
+            self.playSound(soundName: sharedKitchen!.doneItemSoundEffect!)
+            sharedCoredataCoordinator.saveContext()
+            self.footerButton?.isSelected = true
+            NotificationCenter.default.post(name: NSNotification.Name(kSomeItemStateDidChangeNotification), object: nil)
         }
     }
     
@@ -136,9 +164,11 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
         if order!.isOpen{
             
-            self.footerButton?.isHidden = !self.hasDoneAllItems()
+            self.footerButton?.isSelected = self.hasDoneAllItems()
+            self.footerButton?.isHidden = false
         }else{
             
+            self.footerButton?.isSelected = true
             self.footerButton?.isHidden = true
         }
                 
@@ -215,10 +245,25 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         return sectionInfo.name
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        guard let sectionInfo = self.itemFRC.sections?[section] else {
+            return 0
+        }
+        
+        if sectionInfo.name.isEmpty {
+            
+            return 35
+        } else {
+            
+            return 35
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = self.itemFRC.object(at: indexPath) as? OrderItem
         let optionCount = item?.getItemOptions().count
-        var h = 30+(optionCount!*20)
+        var h = 35+(optionCount!*20)
         if (item?.note!.count)! > 0{
          
             h += 20
@@ -378,7 +423,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             }
         }
         sharedCoredataCoordinator.saveContext()
-        self.footerButton?.isHidden = !self.hasDoneAllItems()
+        self.footerButton?.isSelected = self.hasDoneAllItems()
         self.tableView!.reloadRows(at: [indexPath], with: UITableView.RowAnimation.fade)
         
         NotificationCenter.default.post(name: NSNotification.Name(kSomeItemStateDidChangeNotification), object: nil)
@@ -399,6 +444,26 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             }
         }else{
             return false
+        }
+    }
+    
+    func highlight() {
+        
+        self.perform(#selector(doHighlight), with: nil, afterDelay: 0.1)
+    }
+    
+    @objc func doHighlight() {
+        
+        let bgcolor = self.layer.borderColor
+        let width = self.layer.borderWidth
+        UIView.animate(withDuration: 0.1, delay: 0, options: [.allowUserInteraction, .curveLinear], animations: {
+            self.layer.borderWidth = 20
+            self.layer.borderColor = UIColor.white.cgColor
+        }) { (_) in
+            UIView.animate(withDuration: 0.1, delay: 1, options: [.allowUserInteraction, .curveLinear], animations: {
+                self.layer.borderColor = bgcolor
+                self.layer.borderWidth = width
+            })
         }
     }
     

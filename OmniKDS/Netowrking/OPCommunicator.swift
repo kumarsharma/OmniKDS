@@ -124,4 +124,9 @@ class OPCommunicator: NSObject, GCDAsyncUdpSocketDelegate {
             }
         }
     }
+    
+    func isServerClosed() -> Bool {
+        
+        return self.udpSocket.isClosed()
+    }
 }
