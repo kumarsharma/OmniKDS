@@ -72,20 +72,21 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             footerView.backgroundColor = .clear
             
             servedByLabel = UILabel(frame: CGRect(x: 0, y: 0, width: footerView.frame.size.width, height: 20))
-            servedByLabel?.backgroundColor = .lightGray
+            servedByLabel?.backgroundColor = .darkGray
             servedByLabel?.font = .italicSystemFont(ofSize: 17)
             servedByLabel?.textAlignment = .center
+            servedByLabel?.textColor = .white
             
             servedByLabel?.layer.cornerRadius=10
             servedByLabel?.clipsToBounds=true
             servedByLabel?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMaxYCorner]
 
             footerButton = UIButton(type: UIButton.ButtonType.custom)
-//            footerButton?.setImage(UIImage(named: "checkAllIcn"), for: UIControl.State.normal)
-            footerButton?.setTitle("Finish All", for: .normal)
-            footerButton?.setTitle("Close", for: .selected)
+            footerButton?.setImage(UIImage(named: "checkAllIcn"), for: UIControl.State.normal)
+//            footerButton?.setTitle("Finish All", for: .normal)
+//            footerButton?.setTitle("Close", for: .selected)
             footerButton?.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21)
-            footerButton?.frame=CGRect(x: 0, y: 20, width: footerView.frame.size.width, height: 44)
+            footerButton?.frame=CGRect(x: self.frame.size.width-50, y: 5, width: 44, height: 44)
             footerButton?.addTarget(self, action: #selector(orderDoneButtonAction), for: UIControl.Event.touchUpInside)
             footerButton?.backgroundColor = .green
             footerButton?.isSelected = self.hasDoneAllItems()
@@ -96,7 +97,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             footerButton?.setTitleColor(.black, for: .selected)
             footerButton?.showsTouchWhenHighlighted = true
             footerView.addSubview(servedByLabel!)
-            footerView.addSubview(footerButton!)
+//            footerView.addSubview(footerButton!)
             tableView?.tableFooterView=footerView
            
             if !(self.order!.isOpen) {
@@ -104,6 +105,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             }
             
             self.addSubview(headerLabel!)
+            self.addSubview(footerButton!)
             self.addSubview(tableView!)
         }
     }
@@ -129,6 +131,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             
                 self.playSound(soundName: sharedKitchen!.closeDocketSoundName!)
             }
+            NotificationCenter.default.post(name: NSNotification.Name(kSomeItemStateDidChangeNotification), object: nil)
             footerButton?.isHidden = true
         } else {
             

@@ -96,7 +96,7 @@
     calendar.appearance.headerTitleColor = [UIColor blackColor];
     calendar.appearance.titleFont = [UIFont systemFontOfSize:16];
     calendar.weekdayHeight = 0;
-    calendar.backgroundColor = UIColor.groupTableViewBackgroundColor;
+    calendar.backgroundColor = UIColor.systemGroupedBackgroundColor;
     calendar.swipeToChooseGesture.enabled = YES;
     
     calendar.today = nil; // Hide the today circle

@@ -119,7 +119,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         let settingsBarBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingsIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(settingsAction))
         
-        let logoutBarBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "logoutIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))//UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))
+//        let logoutBarBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "logoutIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))//UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))
         
         let analyticsBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "analyticsIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(analyticsAction))
         
@@ -270,6 +270,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         }
         docketCollectionView?.reloadData()
         orderCollectionView?.reloadData()
+        self.updateCountLabels()
     }
     
     @objc func cancelBtnAction() {
@@ -396,7 +397,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
             docketCollectionView?.reloadItems(at: [indexPath!])
             orderCollectionView?.reloadItems(at: [indexPath!])
         }
-        
+        self.updateCountLabels()
     }
     
     @objc func playSound(soundName:String){
