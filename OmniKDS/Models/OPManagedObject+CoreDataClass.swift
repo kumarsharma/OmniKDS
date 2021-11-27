@@ -91,7 +91,18 @@ public class OPManagedObject: NSManagedObject {
     
     class func removeAll(){
         
+        self.removeAll(with: nil)
+    }
+    
+    class func removeAll(with predicate: NSPredicate?){
+        
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: self.entity().name!)
+            
+        if predicate != nil {
+            
+            fetchRequest.predicate = predicate
+        }
+        
         let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest as! NSFetchRequest<NSFetchRequestResult>)
         do {
             

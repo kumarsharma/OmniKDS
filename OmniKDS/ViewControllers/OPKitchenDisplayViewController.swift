@@ -100,9 +100,15 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     @objc func didChangeOrderContent(){
         
+        do{
+            try orderFetchedController.performFetch()
+        }catch{
+            
+        }
         segmentedControl!.selectedSegmentIndex = 0
         docketCollectionView?.reloadData()
         orderCollectionView?.reloadData()
+        updateCountLabels()
     }
     
     @objc func someItemStateDidChange(){
@@ -530,7 +536,14 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         }
         
         totalOrdersLabel?.text = String(format: "Orders: %d", totalOrders ?? 0)
-        totalItemsLabel?.text = String(format: "Items: %d (Pending: %d)", totalItems, totalItemsPending)
+        
+        if segmentedControl!.selectedSegmentIndex == 0 {
+            
+            totalItemsLabel?.text = String(format: "Items: %d (Pending: %d)", totalItems, totalItemsPending)
+        } else {
+            
+            totalItemsLabel?.text = String(format: "Items: %d", totalItems)
+        }
     }
     
     func doSumOfDigits(num:Int)-> Int{

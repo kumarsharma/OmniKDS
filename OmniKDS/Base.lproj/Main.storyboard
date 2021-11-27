@@ -666,6 +666,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIu-b5-D86">
+                                                <rect key="frame" x="0.0" y="578" width="751" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                                     </view>
@@ -735,6 +742,7 @@
                         <outlet property="turnToYelloField" destination="ymw-XV-HyT" id="dqT-XP-pZs"/>
                         <outlet property="userBgView" destination="aBS-NF-CjN" id="gRk-e1-Smz"/>
                         <outlet property="userTableView" destination="4Ln-bH-ilK" id="a0V-GQ-dzc"/>
+                        <outlet property="versionLabel" destination="fIu-b5-D86" id="bBN-Sn-8LW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLn-1L-nec" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

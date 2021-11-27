@@ -14,6 +14,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
     var tableView : UITableView?
     var headerLabel : UILabel?
+    var headerView : UIView?
     var footerButton : UIButton?
     var order : Order?
     var soundEffect : AVAudioPlayer?
@@ -49,9 +50,14 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
         if headerLabel==nil{
             
-            headerLabel=UILabel(frame: CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: 70))
+            headerView=UIView(frame: CGRect.init(x: 0, y: 0, width: self.frame.size.width, height: 70))
+            headerView!.backgroundColor=UIColor.red
+            headerView?.layer.cornerRadius=10
+            headerView?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            
+            headerLabel=UILabel(frame: CGRect.init(x: 0, y: 0, width: self.frame.size.width-44, height: 70))
             headerLabel!.textColor=UIColor.black
-            headerLabel!.backgroundColor=UIColor.red
+            headerLabel!.backgroundColor=UIColor.clear
             headerLabel?.numberOfLines=10
             headerLabel?.textAlignment = .center
             headerLabel?.font = KDTools.docketHeaderFont()
@@ -104,7 +110,10 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
                 footerButton?.isHidden = true
             }
             
-            self.addSubview(headerLabel!)
+            headerView?.addSubview(headerLabel!)
+            headerView?.addSubview(footerButton!)
+            
+            self.addSubview(headerView!)
             self.addSubview(footerButton!)
             self.addSubview(tableView!)
         }
@@ -224,7 +233,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         }
         
         self.layer.borderColor = bgColor?.cgColor
-        headerLabel!.backgroundColor = bgColor
+        headerView!.backgroundColor = bgColor
         headerLabel!.text=headerInfo
     }
     

@@ -129,4 +129,42 @@ public class Order: OPManagedObject {
 
         return dict!
     }
+    
+    class func removeAll(open isOpen: Bool){
+        
+        let predicate = NSPredicate(format: "isOpen=%d", isOpen)
+        
+        do {
+           
+            //fewth all closed orders
+            let closedOrders = try Order.fetchWithPredicate(predicate: predicate)
+            for obj in closedOrders {
+                
+                let order = obj as! Order
+                let orderId = order.orderId! as String
+                let itemPredicate = NSPredicate(format: "orderId=%@", orderId)
+                
+                do {
+                    
+                    //fetch all closed items
+                    let closedItems = try OrderItem.fetchWithPredicate(predicate: itemPredicate)
+                    
+                    for obj2 in closedItems {
+                        
+                        let item = obj2 as! OrderItem
+                        let itemId = item.orderItemId! as String
+                        let itemPredicate2 = NSPredicate(format: "orderItemId=%@", itemId)
+                                
+                        //remove all options
+                        ItemOption.removeAll(with: itemPredicate2)
+                    }
+                } catch _ as NSError {}
+                
+                //remove all items
+                OrderItem.removeAll(with: itemPredicate)
+            }
+        } catch _ as NSError {}
+        
+        self.removeAll(with: predicate)
+    }
 }

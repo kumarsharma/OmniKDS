@@ -46,7 +46,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var templateButtonTwo : UIButton?
     
     @IBOutlet weak var addUserButton : UIButton?
-    
+    @IBOutlet weak var versionLabel:UILabel?
     var userFRC : NSFetchedResultsController<NSFetchRequestResult>?
     
     override func viewDidLoad() {
@@ -171,6 +171,10 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         self.changeBgEffectOf(bgView: docketDoneBgView!)
         self.changeBgEffectOf(bgView: itemDoneBgView!)
         self.changeBgEffectOf(bgView: itemUnDoneBgView!)
+        
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
+        versionLabel?.text = "OmniKDS Version \(appVersion!) (\(buildVersion!))"
         
         let tvBgView = UIView(frame: userTableView!.frame)
         tvBgView.backgroundColor = .clear
@@ -477,9 +481,22 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         if loggedInUser?.userPIN! == password{
             
             let alert = UIAlertController(title: "Admin Action", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
             alert.addAction(UIAlertAction(title: "Clear All Dockets", style: UIAlertAction.Style.destructive, handler: { _ in
                 
                self.performSelector(onMainThread: #selector(self.clearAllDockets), with: nil, waitUntilDone: false)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Clear All Open Dockets", style: UIAlertAction.Style.destructive, handler: { _ in
+                
+               self.performSelector(onMainThread: #selector(self.clearAllOpenDockets), with: nil, waitUntilDone: false)
+                
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Clear All Closed Dockets", style: UIAlertAction.Style.destructive, handler: { _ in
+                
+               self.performSelector(onMainThread: #selector(self.clearAllClosedDockets), with: nil, waitUntilDone: false)
                 
             }))
             
@@ -507,6 +524,26 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         ItemOption.removeAll()
         
         let alert = UIAlertController(title: "All dockets have been cleared!", message: nil, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true) {}
+        NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
+    }
+    
+    @objc func clearAllClosedDockets(){
+        
+        Order.removeAll(open: false)
+        
+        let alert = UIAlertController(title: "All closed dockets have been cleared!", message: nil, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        self.present(alert, animated: true) {}
+        NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
+    }
+    
+    @objc func clearAllOpenDockets(){
+        
+        Order.removeAll(open: true)
+        
+        let alert = UIAlertController(title: "All open dockets have been cleared!", message: nil, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true) {}
         NotificationCenter.default.post(name: NSNotification.Name(kDidChangeOrderContentNotification), object: nil)
