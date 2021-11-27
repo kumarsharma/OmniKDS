@@ -1029,7 +1029,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = USPNU3D3XV;
 				INFOPLIST_FILE = OmniKDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1037,6 +1037,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.OmniSystems.OmniKDS;
 				PRODUCT_NAME = "Kitchen Display";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniKDS/Netowrking/OmniKDS-Bridging-Header.h";
@@ -1053,7 +1054,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = USPNU3D3XV;
 				INFOPLIST_FILE = OmniKDS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1061,6 +1062,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.OmniSystems.OmniKDS;
 				PRODUCT_NAME = "Kitchen Display";
 				SWIFT_OBJC_BRIDGING_HEADER = "OmniKDS/Netowrking/OmniKDS-Bridging-Header.h";
