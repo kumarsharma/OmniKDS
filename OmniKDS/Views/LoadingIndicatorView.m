@@ -30,7 +30,7 @@
 
 -(id)initWithFrame:(CGRect)frame{
 		
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
 		frame = CGRectMake(0, 0, 160, 160);
 	else
 		frame = CGRectMake(0, 0, 160, 140);	
@@ -46,7 +46,7 @@
 
 -(id)initWithFrame:(CGRect)frame isFullViewMessageMode:(BOOL)fullViewMessageMode cancelOptionTitle:(NSString *)cancelTitle
 {
-    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
     {
         if(cancelTitle)
             frame = CGRectMake(0, 0, 220, 220);
@@ -69,13 +69,13 @@
 
 -(void)addSubviews{
     
-    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleLarge];
 	[indicatorView startAnimating];	
 	indicatorView.center = CGPointMake(self.frame.size.width/2, (self.frame.size.height/2 - 45));
 
 	UILabel *lbl = [[UILabel alloc] init];
 	
-	if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+	if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad)
     {
         if(self.isFullViewMessageMode)
         {
@@ -99,7 +99,6 @@
                 btn.layer.borderWidth = 1.0;
                 btn.showsTouchWhenHighlighted = YES;
                 self.cancelButton = btn;
-                [btn addTarget:self action:@selector(cacncelBtnAction) forControlEvents:UIControlEventTouchUpInside];
                 [self addSubview:btn];
             }
         }
@@ -132,31 +131,6 @@
 	[self addSubview:lbl];
 	[self addSubview:indicatorView];
 	self.messageLabel = lbl;
-}
-
-- (void)cacncelBtnAction
-{
-    if(self.isDirectCancelMode)
-    {
-//        if([self.delegate respondsToSelector:@selector(didCancelIndicatorView)])
-//            [self.delegate didCancelIndicatorView];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cancel this transaction?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-        [alert show];
-    }
-    else
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cancel for Later Upload?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-        [alert show];
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex == 1)
-    {
-        if([self.delegate respondsToSelector:@selector(didCancelIndicatorView)])
-            [self.delegate didCancelIndicatorView];
-    }
 }
 
 -(void)updateStatusMessage:(NSString*)statusMessage{
@@ -204,10 +178,6 @@
     LoadingIndicatorView *liv = [self showLoadingIndicatorInView:view withMessage:message];
     
     liv.didIgnoreInteractionEvents = shouldIgnore;
-    if(shouldIgnore)
-    {
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    }
     return liv;
 }
 
@@ -218,11 +188,6 @@
     {
         liv.superview.userInteractionEnabled = YES;
         [liv removeFromSuperview];
-    }
-    
-    if([[UIApplication sharedApplication] isIgnoringInteractionEvents])
-    {
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
     }
 }
 

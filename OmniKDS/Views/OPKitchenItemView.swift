@@ -162,7 +162,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
      func reloadCell(){
         
-        kitchenItems=OrderItem.getItemsForOrderId(orderId: order!.orderId!)
+//        kitchenItems=OrderItem.getItemsForOrderId(orderId: order!.orderId!)
         self.itemFRC.fetchRequest.predicate = NSPredicate(format: "orderId=%@", self.order!.orderId!)
         do{
             try self.itemFRC.performFetch()
