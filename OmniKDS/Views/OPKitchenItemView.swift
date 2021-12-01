@@ -162,7 +162,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
      func reloadCell(){
         
-//        kitchenItems=OrderItem.getItemsForOrderId(orderId: order!.orderId!)
+        kitchenItems=OrderItem.getItemsForOrderId(orderId: order!.orderId!)
         self.itemFRC.fetchRequest.predicate = NSPredicate(format: "orderId=%@", self.order!.orderId!)
         do{
             try self.itemFRC.performFetch()
@@ -171,7 +171,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         }
         
         bgColor = UIColor(hexString: "E0E0E0")
-        tableView?.reloadData()
+//        tableView?.reloadData()
         self.updateHeaderWithTime()
         
         if order!.isOpen{
@@ -333,10 +333,21 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }else{
             
-            cell.backgroundColor = UIColor.lightGray
-            cell.textLabel?.textColor=UIColor.black
+            
             cell.accessoryType = UITableViewCell.AccessoryType.none
+            
+            let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: (item?.placeTime!)!, to: Date())
+            if difference.minute! < 1 {
+                
+                cell.backgroundColor = UIColor.systemPink
+                cell.textLabel?.textColor=UIColor.black
+            } else {
+                
+                cell.backgroundColor = UIColor.lightGray
+                cell.textLabel?.textColor=UIColor.black
+            }
         }
+
         return cell
     }
     
@@ -394,13 +405,49 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         header.textLabel?.font = .boldSystemFont(ofSize: 21)
     }
     
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        
+        self.tableView?.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView?.endUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        
+        if type == .insert {
+            
+            self.tableView?.insertSections(IndexSet.init(integer: sectionIndex), with: .fade)
+        }
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        if type == NSFetchedResultsChangeType.insert{
+        
+            if sharedKitchen!.newDocketNotification{
+                
+                self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.newDocketSoundName!, waitUntilDone: true)
+            }
+            self.tableView?.insertRows(at: [newIndexPath!], with: .fade)
+        }else if type == NSFetchedResultsChangeType.delete{
+        
+            self.tableView?.deleteRows(at: [indexPath!], with: .fade)
+        }else if type == NSFetchedResultsChangeType.update{
+        
+            
+        }
+//        self.updateCountLabels()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
        super.init(coder: aDecoder)
     }
     
     //MARK: play sound
 
-    func playSound(soundName:String){
+    @objc func playSound(soundName:String){
         
         let path = Bundle.main.path(forResource: soundName, ofType: "m4r")!
         let url = URL(fileURLWithPath: path)
