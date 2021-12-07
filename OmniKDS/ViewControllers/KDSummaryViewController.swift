@@ -20,6 +20,15 @@ class KDSummaryViewController: UITableViewController, NSFetchedResultsController
         self.title = "Item Summary"
         isSearchActive = false
         self.view.backgroundColor = .darkGray
+        
+        let closeBtn = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
+        closeBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem = closeBtn
+        
+        let doneBtn = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
+        doneBtn.tintColor = .white
+        self.navigationItem.rightBarButtonItem = doneBtn
+        
         fetchSummaryOfItems()
         
         let searchController = UISearchController(searchResultsController: nil)
@@ -28,8 +37,19 @@ class KDSummaryViewController: UITableViewController, NSFetchedResultsController
         searchController.searchBar.placeholder = "Search Items"
         searchController.searchBar.scopeButtonTitles = ["Name (A-Z)", "Name (Z-A)", "Qty>", "Qty<"]
         searchController.searchBar.showsScopeBar=true
+        searchController.searchBar.tintColor = .white
         navigationItem.searchController=searchController
         definesPresentationContext=true
+    }
+    
+    @objc func cancelBtnAction(){
+           
+        self.dismiss(animated: true, completion: nil)
+    }
+       
+    @objc func doneBtnAction(){
+          
+        self.dismiss(animated: true, completion: nil)
     }
     
     func updateSearchResults(for searchController: UISearchController) {

@@ -30,13 +30,19 @@ class KDAnalysisViewController: UIViewController, OPDateSelectionDelegate, UIPop
         fromDateField?.text = String(format: "%@ - %@", KSDateUtil.getShortDateOnlyString(self.fromDate), KSDateUtil.getShortDateOnlyString(self.toDate))
 
         self.title="Analytics"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
+        self.view.backgroundColor = .darkGray
+        let leftBtn = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
+        leftBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem = leftBtn
+        
+        let rightBtn = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
+        rightBtn.tintColor = .white
+        self.navigationItem.rightBarButtonItem = rightBtn
         
         backgroundView?.frame = self.view.bounds
         dateBgView?.frame = CGRect(x: 30, y: 85, width: self.view.frame.size.width-60, height: (dateBgView?.frame.size.height)!)
         segmentedControl?.frame = CGRect(x: 30, y: (dateBgView?.frame.size.height)!+(dateBgView?.frame.origin.y)!, width: (dateBgView?.frame.size.width)!, height: (segmentedControl?.frame.size.height)!)
-        
+        backgroundView?.alpha = 0
     }
     
     @objc func cancelBtnAction(){

@@ -31,9 +31,15 @@ class KDCourseSummaryViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Items by Course"
+        self.view.backgroundColor = .darkGray
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
+        let closeBtn = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelBtnAction))
+        closeBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem = closeBtn
+        
+        let doneBtn = UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(doneBtnAction))
+        doneBtn.tintColor = .white
+        self.navigationItem.rightBarButtonItem = doneBtn
      
         headerLabel=UILabel(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 70))
          headerLabel!.textColor=UIColor.black
@@ -46,7 +52,7 @@ class KDCourseSummaryViewController: UIViewController, UITableViewDelegate, UITa
          headerLabel?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
          
          itemsTableView=UITableView.init(frame: CGRect.zero, style: UITableView.Style.grouped)
-         itemsTableView?.frame=CGRect.init(x: 0, y: headerLabel!.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height-headerLabel!.frame.size.height)
+         itemsTableView?.frame=CGRect.init(x: 0, y: headerLabel!.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height-(headerLabel!.frame.size.height+65))
          itemsTableView!.delegate=self; itemsTableView!.dataSource=self
          
         let bgview = UIView(frame: itemsTableView!.frame)

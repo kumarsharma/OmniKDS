@@ -122,14 +122,18 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         
         self.view.backgroundColor = UIColor.systemBlue
         let barButton1 : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "summaryIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.plain, target: self, action: #selector(showSummaryAction))
+        barButton1.tintColor = .white
         
         let settingsBarBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "settingsIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(settingsAction))
+        settingsBarBtn.tintColor = .white
         
 //        let logoutBarBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "logoutIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))//UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.done, target: self, action: #selector(logoutAction))
         
         let analyticsBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "analyticsIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(analyticsAction))
+        analyticsBtn.tintColor = .white
         
         let courseBtn : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "courseIcn"), landscapeImagePhone: nil, style: UIBarButtonItem.Style.done, target: self, action: #selector(courseAction))
+        courseBtn.tintColor = .white
         
         self.navigationItem.leftBarButtonItems = [barButton1, settingsBarBtn, analyticsBtn, courseBtn]
         
@@ -138,10 +142,11 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         docketSearchBar!.delegate = self
         docketSearchBar?.showsSearchResultsButton = true
         docketSearchBar?.showsCancelButton=true
+        docketSearchBar?.searchTextField.textColor = .white
         
         segmentedControl = UISegmentedControl(items: ["Open", "Closed"])
         segmentedControl!.addTarget(self, action: #selector(segmentedControlAction), for: UIControl.Event.valueChanged)
-        segmentedControl!.backgroundColor = .brown
+        segmentedControl!.tintColor = .darkGray
         
         let font = UIFont.boldSystemFont(ofSize: 16)
         segmentedControl!.setTitleTextAttributes([NSAttributedString.Key.font : font], for: UIControl.State.normal)

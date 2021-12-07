@@ -122,7 +122,9 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         templateButtonOne?.isSelected = sharedKitchen.screenTemplate == 1 ? true : false
         templateButtonTwo?.isSelected = sharedKitchen.screenTemplate == 2 ? true : false
 
-        self.navigationItem.leftBarButtonItem=UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(dismissView))
+        let closeBtn = UIBarButtonItem(image: UIImage(named: "closeIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(dismissView))
+        closeBtn.tintColor = .white
+        self.navigationItem.leftBarButtonItem=closeBtn
             
         userFRC = NSFetchedResultsController(fetchRequest: KitchenUser.viewFetchRequest(), managedObjectContext: sharedCoredataCoordinator.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
         userFRC?.delegate=self
@@ -147,12 +149,15 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
             closeDocketSoundField?.isUserInteractionEnabled=false
 
             let saveBtn=UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(saveChanges))
+            saveBtn.tintColor = .white
             self.navigationItem.rightBarButtonItems = [saveBtn]
                    
         }else{
             
             let privacyBtn=UIBarButtonItem(image: UIImage(named: "privacyIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(privacyAction))
+            privacyBtn.tintColor = .white
             let saveBtn=UIBarButtonItem(image: UIImage(named: "doneIcn"), style: UIBarButtonItem.Style.done, target: self, action: #selector(saveChanges))
+            saveBtn.tintColor = .white
             self.navigationItem.rightBarButtonItems = [saveBtn, privacyBtn]       
         }
         
@@ -164,7 +169,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         userBgView?.layer.borderColor = UIColor.darkGray.cgColor
         userBgView?.layer.cornerRadius = 5
         
-        mainBgView?.backgroundColor = .clear
+        mainBgView?.backgroundColor = .gray
         mainBgView?.center = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height/2)
         
         self.changeBgEffectOf(bgView: newDocketBgView!)
@@ -179,6 +184,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         let tvBgView = UIView(frame: userTableView!.frame)
         tvBgView.backgroundColor = .clear
         userTableView?.backgroundView = tvBgView
+        self.view.backgroundColor = .darkGray
     }
     
     func changeBgEffectOf(bgView:UIView){

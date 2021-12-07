@@ -20,7 +20,10 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     var soundEffect : AVAudioPlayer?
     var bgColor : UIColor?
     var timer : Timer?
+    var itemTimer : Timer?
     var servedByLabel : UILabel?
+    var wasNewItemsAdded: Bool?
+    var newItemColor: UIColor?
     
     lazy var itemFRC :  NSFetchedResultsController<NSFetchRequestResult> = {
         
@@ -40,7 +43,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
         super.init(frame:.zero)
         bgColor = UIColor(hexString: "E0E0E0")
-        
+        self.wasNewItemsAdded = false
         self.layer.cornerRadius=10
         self.layer.borderWidth=2
         self.layer.borderColor = UIColor.magenta.cgColor
@@ -171,7 +174,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         }
         
         bgColor = UIColor(hexString: "E0E0E0")
-//        tableView?.reloadData()
+        tableView?.reloadData()
         self.updateHeaderWithTime()
         
         if order!.isOpen{
@@ -188,17 +191,30 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             
             timer?.invalidate()
         }
+         
+         if itemTimer != nil && itemTimer!.isValid {
+             
+             itemTimer?.invalidate()
+         }
         
         if order?.isOpen == true{
             
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateHeaderWithTime), userInfo: nil, repeats: true)
             timer?.fire()
+            
+            itemTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(updateItemsWithTime), userInfo: nil, repeats: true)
+            itemTimer?.fire()
         }
         
         if (order?.orderBy!.count)!>0{
             
             servedByLabel?.text = "Served by " + (order?.orderBy!)!
         }
+    }
+    
+    @objc func updateItemsWithTime() {
+        
+        self.tableView?.reloadData()
     }
     
     @objc func updateHeaderWithTime(){
@@ -275,7 +291,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let item = self.itemFRC.object(at: indexPath) as? OrderItem
         let optionCount = item?.getItemOptions().count
-        var h = 35+(optionCount!*20)
+        var h = 45+(optionCount!*20)
         if (item?.note!.count)! > 0{
          
             h += 20
@@ -339,7 +355,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: (item?.placeTime!)!, to: Date())
             if difference.minute! < 1 {
                 
-                cell.backgroundColor = UIColor.systemPink
+                cell.backgroundColor = .blue
                 cell.textLabel?.textColor=UIColor.black
             } else {
                 
@@ -407,18 +423,24 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         
-        self.tableView?.beginUpdates()
+//        self.tableView?.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        self.tableView?.endUpdates()
+//        self.tableView?.endUpdates()
+        
+        if wasNewItemsAdded! {
+            
+            wasNewItemsAdded = false
+            doHighlight()
+        }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
         
         if type == .insert {
             
-            self.tableView?.insertSections(IndexSet.init(integer: sectionIndex), with: .fade)
+//            self.tableView?.insertSections(IndexSet.init(integer: sectionIndex), with: .fade)
         }
     }
     
@@ -428,17 +450,19 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
             if sharedKitchen!.newDocketNotification{
                 
+                newItemColor? = .random()
                 self.performSelector(onMainThread: #selector(playSound), with: sharedKitchen!.newDocketSoundName!, waitUntilDone: true)
+                self.wasNewItemsAdded=true
             }
-            self.tableView?.insertRows(at: [newIndexPath!], with: .fade)
+//            self.tableView?.insertRows(at: [newIndexPath!], with: .fade)
+//            self.tableView?.reloadRows(at: [newIndexPath!], with: .fade)
         }else if type == NSFetchedResultsChangeType.delete{
         
-            self.tableView?.deleteRows(at: [indexPath!], with: .fade)
+//            self.tableView?.deleteRows(at: [indexPath!], with: .fade)
         }else if type == NSFetchedResultsChangeType.update{
         
             
         }
-//        self.updateCountLabels()
     }
     
     required init?(coder aDecoder: NSCoder) {
