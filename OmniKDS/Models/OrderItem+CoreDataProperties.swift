@@ -33,5 +33,6 @@ extension OrderItem {
     @NSManaged public var seatNo: String?
     @NSManaged public var startTime: Date?
     @NSManaged public var takenBy: String?
-
+    @NSManaged public var voidQuantity: Int32
+    @NSManaged public var isVoidItem: Bool
 }

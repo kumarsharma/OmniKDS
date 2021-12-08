@@ -65,6 +65,12 @@ public class OrderItem: OPManagedObject {
         let str2:String! = jsonDict.value(forKey: "quantity") as? String 
         anItem.quantity = Float(str2) ?? 0
         
+        let str3:String! = jsonDict.value(forKey: "voidQuantity") as? String 
+        anItem.voidQuantity = Int32(str3) ?? 0
+        
+        let str4:String! = jsonDict.value(forKey: "isVoidItem") as? String 
+        anItem.isVoidItem = (str4 as NSString).boolValue ?? false
+        
         anItem.placeTime = Date()
         
         /*

@@ -302,6 +302,16 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             h += 20
         }
         
+        if (item?.voidQuantity)! > 0{
+         
+            h += 20
+        }
+        
+        if item!.isVoidItem {
+         
+            h += 20
+        }
+        
         return CGFloat(h)
     }
     
@@ -340,6 +350,16 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             title += "\n #"+item!.seatNo!
         }
         
+        if((item?.voidQuantity)! > 0) {
+            
+            title += "\n VOID: \(item!.voidQuantity)"
+        }
+        
+        if item!.isVoidItem {
+            
+            title += "\n *** VOID ***"
+        }
+        
         cell.textLabel?.text=title
         
         if item!.isFinished{
@@ -353,9 +373,15 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             cell.accessoryType = UITableViewCell.AccessoryType.none
             
             let difference = Calendar.current.dateComponents([.hour, .minute, .second], from: (item?.placeTime!)!, to: Date())
-            if difference.minute! < 1 {
+            
+            if item!.isVoidItem {
                 
-                cell.backgroundColor = .blue
+                cell.backgroundColor = .red
+                cell.textLabel?.textColor=UIColor.black
+            }
+            else if difference.minute! < 1 {
+                
+                cell.backgroundColor = .darkGray
                 cell.textLabel?.textColor=UIColor.black
             } else {
                 
