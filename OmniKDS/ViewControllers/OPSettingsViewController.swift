@@ -179,7 +179,7 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         let buildVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String
-        versionLabel?.text = "OmniKDS Version \(appVersion!) (\(buildVersion!))"
+        versionLabel?.text = "OmniKDS - Version: \(appVersion!), Build: \(buildVersion!)"
         
         let tvBgView = UIView(frame: userTableView!.frame)
         tvBgView.backgroundColor = .clear
