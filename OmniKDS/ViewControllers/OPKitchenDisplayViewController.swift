@@ -109,6 +109,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
         docketCollectionView?.reloadData()
         orderCollectionView?.reloadData()
         updateCountLabels()
+        self.title = sharedKitchen!.kitchenName!
     }
     
     @objc func someItemStateDidChange(){
