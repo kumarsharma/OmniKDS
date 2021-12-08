@@ -68,8 +68,10 @@ class OPSettingsViewController: UIViewController, UITableViewDelegate, UITableVi
         itemDoneSoundField?.text=sharedKitchen.doneItemSoundEffect
         itemUnDoNotiSwitch?.isOn=sharedKitchen.unDoItemNotification
         itemUnDoSoundField?.text=sharedKitchen.unDoItemSoundEffect
-                
-        if sharedKitchen.newDocketSoundName!.count>0{
+        
+        let sn = sharedKitchen.closeDocketSoundName!
+                    
+        if sn.count>0{
             
             newDocketSoundField?.rightViewMode = UITextField.ViewMode.always
             let btn = UIButton(type: UIButton.ButtonType.custom)
