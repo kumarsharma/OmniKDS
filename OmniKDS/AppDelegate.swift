@@ -16,6 +16,7 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 var loggedInUser : KitchenUser?
 @UIApplicationMain
@@ -35,6 +36,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             print("ready to go!! good luck!!!!!")
         }
+        
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+          try audioSession.setCategory(.playback, mode: .moviePlayback)
+        try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+          print("Setting category to AVAudioSessionCategoryPlayback failed.")
+        }
+        
         
         doAdminLogin()
         sharedCommunicator.startServer()

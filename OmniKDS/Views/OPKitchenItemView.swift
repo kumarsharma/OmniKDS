@@ -81,7 +81,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             footerView.backgroundColor = .clear
             
             servedByLabel = UILabel(frame: CGRect(x: 0, y: 0, width: footerView.frame.size.width, height: 20))
-            servedByLabel?.backgroundColor = .darkGray
+            servedByLabel?.backgroundColor = .clear
             servedByLabel?.font = .italicSystemFont(ofSize: 17)
             servedByLabel?.textAlignment = .center
             servedByLabel?.textColor = .white
@@ -120,6 +120,8 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             self.addSubview(footerButton!)
             self.addSubview(tableView!)
         }
+        let height = self.order?.viewHeight()
+        tableView?.frame = CGRect(x: (tableView?.frame.origin.x)!, y: (tableView?.frame.origin.y)!, width: (tableView?.frame.size.width)!, height: CGFloat(height!-40))
     }
 
     @objc func orderDoneButtonAction(){
@@ -203,6 +205,7 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             timer?.fire()
             
             itemTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(updateItemsWithTime), userInfo: nil, repeats: true)
+            RunLoop.main.add(itemTimer!, forMode: .common)
             itemTimer?.fire()
         }
         
@@ -281,10 +284,10 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
         if sectionInfo.name.isEmpty {
             
-            return 35
+            return 0
         } else {
             
-            return 35
+            return 0
         }
     }
     
@@ -323,14 +326,14 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "cell")
             cell.textLabel?.numberOfLines=10
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
-            cell.layer.cornerRadius=5
-            cell.layer.borderWidth=1
-            cell.layer.borderColor = UIColor.brown.cgColor
+//            cell.layer.cornerRadius=5
+//            cell.layer.borderWidth=1
+//            cell.layer.borderColor = UIColor.brown.cgColor
             
             cell.textLabel?.font = KDTools.docketTextFont()
         }
         let item = self.itemFRC.object(at: indexPath) as? OrderItem
-        var title = String(format:"%0.0f X ", item!.quantity)+item!.itemName!
+        var title = String(format:"%0.0f  ", item!.quantity)+item!.itemName!
         if (item?.getItemOptions().count)!>=1{
             
             for item_op in (item?.getItemOptions())! {
@@ -364,8 +367,8 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
         
         if item!.isFinished{
             
-            cell.backgroundColor = UIColor.black
-            cell.textLabel?.textColor=UIColor.green
+//            cell.backgroundColor = UIColor.black
+            cell.textLabel?.textColor=UIColor.lightGray
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         }else{
             
@@ -376,19 +379,20 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
             
             if item!.isVoidItem {
                 
-                cell.backgroundColor = .red
-                cell.textLabel?.textColor=UIColor.black
+                cell.backgroundColor = .white
+                cell.textLabel?.textColor=UIColor.red
             }
             else if difference.minute! < 1 {
                 
                 cell.backgroundColor = .darkGray
-                cell.textLabel?.textColor=UIColor.black
+                cell.textLabel?.textColor=UIColor.white
             } else {
                 
-                cell.backgroundColor = UIColor.lightGray
+                cell.backgroundColor = UIColor.white
                 cell.textLabel?.textColor=UIColor.black
             }
         }
+        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
 
         return cell
     }
@@ -441,10 +445,10 @@ class OPKitchenItemView: UICollectionViewCell, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
-        view.tintColor = .red
+//        view.tintColor = .white
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = .orange
-        header.textLabel?.font = .boldSystemFont(ofSize: 21)
+        header.textLabel?.textColor = .white
+        header.textLabel?.font = .italicSystemFont(ofSize: 12)
     }
     
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

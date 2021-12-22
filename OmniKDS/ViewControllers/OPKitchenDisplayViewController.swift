@@ -44,6 +44,7 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.title = sharedKitchen!.kitchenName!
         self.isLoadingSampleOrder = false
         isSearchActive = false
@@ -341,16 +342,26 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let ht = view.frame.size.height
+        let ht = Int(view.frame.size.height-200)
         var docketHeight: Int?
         
+        if collectionView==docketCollectionView {
+            
+            let anOrder = self.orderFetchedController.object(at: indexPath) as? Order
+            docketHeight = anOrder?.viewHeight()
+            if docketHeight!>ht {
+                
+                docketHeight = ht
+            }
+        }
+        /*
         if sharedKitchen?.screenTemplate == 1 {
             
             docketHeight = Int(ht-210)
         }else {
             
             docketHeight = Int((ht/2)-110)
-        }
+        }*/
         
         let size = (collectionView==docketCollectionView) ? CGSize(width: KDTools.docketWidth(), height: docketHeight!) : CGSize(width: 90, height: 55)
         return size
@@ -443,10 +454,16 @@ class OPKitchenDisplayViewController: UIViewController, UICollectionViewDelegate
             let visibleCellAny = docketCollectionView?.visibleCells[0]
             let ip = docketCollectionView?.indexPath(for: visibleCellAny!)
             
-            orderCollectionView?.scrollToItem(at: ip!, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
-            
-            let cell = orderCollectionView?.cellForItem(at: ip!)
-            lowerScrollIndicator?.frame = .init(x: (cell?.frame.origin.x)!, y: (lowerScrollIndicator?.frame.origin.y)!, width: (lowerScrollIndicator?.frame.size.width)!, height: (lowerScrollIndicator?.frame.size.height)!)
+            if ip != nil {
+                
+                orderCollectionView?.scrollToItem(at: ip!, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: false)
+                
+                let cell = orderCollectionView?.cellForItem(at: ip!)
+                if cell != nil {
+                    
+                    lowerScrollIndicator?.frame = .init(x: (cell?.frame.origin.x)!, y: (lowerScrollIndicator?.frame.origin.y)!, width: (lowerScrollIndicator?.frame.size.width)!, height: (lowerScrollIndicator?.frame.size.height)!)
+                }
+            }
         }
         updateNextPrevButtons()
     }

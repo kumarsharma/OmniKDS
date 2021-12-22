@@ -167,4 +167,47 @@ public class Order: OPManagedObject {
         
         self.removeAll(with: predicate)
     }
+    
+    func viewHeight() -> Int {
+        
+        var h = 134
+        
+        let orderId = self.orderId! as String
+        let itemPredicate = NSPredicate(format: "orderId=%@", orderId)
+        
+        do {
+            
+            //fetch all closed items
+            let items = try OrderItem.fetchWithPredicate(predicate: itemPredicate)
+            
+            for obj2 in items {
+                
+                let item = obj2 as! OrderItem
+                let optionCount = item.getItemOptions().count
+                
+                h += 45+(optionCount*20)
+                if (item.note!.count) > 0{
+                 
+                    h += 20
+                }
+                
+                if (item.seatNo!.count) > 0{
+                 
+                    h += 20
+                }
+                
+                if (item.voidQuantity) > 0{
+                 
+                    h += 20
+                }
+                
+                if item.isVoidItem {
+                 
+                    h += 20
+                }
+            }
+        } catch _ as NSError {}
+        
+        return h
+    }
 }
